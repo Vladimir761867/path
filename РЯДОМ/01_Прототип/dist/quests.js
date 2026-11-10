@@ -166,7 +166,7 @@
 
   function renderIntro() {
     const r = root(); r.replaceChildren(); topBar(r);
-    const w = h('div', 'qz-intro'); w.append(h('span', 'qz-kicker', Q.kicker), h('h2', null, Q.intro.title));
+    const w = h('div', 'qz-intro'); w.append(h('span', 'qz-kicker', ((META[Q.id] || {}).tag) || Q.kicker), h('h2', null, Q.intro.title));
     Q.intro.paragraphs.forEach(p => w.append(h('p', null, p)));
     const setup = h('div', 'qz-setup');
     const lab = h('label', null, 'Как тебя зовут в этой истории?'); lab.htmlFor = 'qzName'; const inp = h('input'); inp.id = 'qzName'; inp.maxLength = 20; inp.placeholder = 'Саша'; inp.value = (S && S.name) || '';

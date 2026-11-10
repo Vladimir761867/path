@@ -1,5 +1,5 @@
 /* Стартовый блок, «Подходит сейчас», маршруты и локальная статистика использования.
- * Всё хранится только в этом браузере (localStorage); ничего не отправляется. */
+ * Всё хранится только на этом устройстве (localStorage); ничего не отправляется. */
 (function () {
   'use strict';
   const $ = s => document.querySelector(s);
@@ -111,7 +111,7 @@
   function renderStats() {
     const sec = $('#profile'); if (!sec) return;
     let box = $('#statBox'); if (!box) { box = h('div', 'card stat-box'); box.id = 'statBox'; sec.append(box); }
-    box.replaceChildren(h('h3', null, 'Моя активность за 7 дней'), h('p', 'stat-note', 'Считается только в этом браузере и никуда не отправляется. Помогает понять, чем ты пользуешься.'));
+    box.replaceChildren(h('h3', null, 'Моя активность за 7 дней'), h('p', 'stat-note', 'Считается только на этом устройстве и никуда не отправляется. Помогает понять, чем ты пользуешься.'));
     const { days, t } = totals(7);
     const ul = h('ul', 'stat-list');
     Object.keys(NAMES).forEach(k => { if (t[k]) ul.append(h('li', null, NAMES[k] + ': ' + t[k])); });

@@ -70,21 +70,19 @@ renderCalendarDetail=function(){
       block.append(messages);archive.append(block);
     });
     const remove=document.createElement('button');remove.className='archive-delete';remove.textContent='Удалить разговоры за этот день';
-    remove.onclick=()=>{
-      if(!confirm('Удалить тексты разговоров за '+title.textContent+'? Отметки состояния останутся.'))return;
+    remove.onclick=()=>askConfirm('Удалить тексты разговоров за '+title.textContent+'? Отметки состояния останутся.',remove,()=>{
       const removed=sessions.map(x=>x.id);
       localStorage.setItem('ryadom-dialogues-v1',JSON.stringify(dialogues().filter(x=>x.day!==selectedDay)));
       if(removed.includes(activeDialogueId)){activeDialogueId=null;pendingTranscript=[]}
       renderCalendar();
-    };
+    });
     archive.append(remove);panel.append(archive);
   }
   const practice=entries.filter(x=>x.practice);
   if(practice.length){const p=document.createElement('p');p.textContent='Практики: '+practice.map(x=>(practices[x.practice]?.title||x.practice)+' — '+({better:'чуть легче',same:'без изменений',worse:'стало хуже'}[x.outcome]||'без оценки')).join('; ');panel.append(p)}
 };
 renderCalendar();
-document.querySelector('#clearData').onclick=()=>{
-  if(!confirm('Удалить разговоры, отметки, места и любимые места из дневника этого браузера? Игровой прогресс останется.'))return;
+document.querySelector('#clearData').onclick=()=>askConfirm('Удалить разговоры, отметки, места и любимые места из дневника на этом устройстве? Игровой прогресс останется.',document.querySelector('#clearData'),()=>{
   ['ryadom-history','ryadom-checkins','ryadom-dialogues-v1',PLACE_VISITS_KEY,PLACE_FAVORITES_KEY].forEach(key=>localStorage.removeItem(key));
   activeDialogueId=null;pendingTranscript=[];renderHistory();renderCalendar();
-};
+});
