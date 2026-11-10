@@ -25,15 +25,15 @@ jobs:
     env:
       RYADOM_BUILD_NUMBER: ${{ github.run_number }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 21
-      - uses: android-actions/setup-android@v3
+      # Android SDK уже установлен в образе ubuntu-latest (ANDROID_HOME); недостающие платформы Gradle докачает сам.
       - name: Install
         run: npm ci --no-audit --no-fund
       - name: Build web bundle
@@ -86,8 +86,8 @@ jobs:
       run:
         working-directory: РЯДОМ/03_Приложение
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
       - name: Install
