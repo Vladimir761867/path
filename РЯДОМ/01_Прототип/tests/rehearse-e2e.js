@@ -1,0 +1,16 @@
+const {chromium}=require('playwright');
+(async()=>{const b=await chromium.launch();const pg=await (await b.newContext({viewport:{width:390,height:800}})).newPage();
+const errs=[];pg.on('pageerror',e=>errs.push(e.message));pg.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+await pg.goto('http://localhost:8789/');await pg.evaluate(()=>view('games'));
+console.log('card:',await pg.$$eval('.qz-card',e=>e.map(x=>x.innerText.split('\n')[1])).then(a=>a[a.length-1]));
+await pg.click('.qz-card:last-child');await pg.click('.qz-variant >> nth=1');
+await pg.fill('.rs-form textarea','Мне нужно, чтобы ты вышел вместо меня в субботу');await pg.press('.rs-form textarea','Enter');await pg.waitForSelector('.qz-bubble.boss');
+await pg.fill('.rs-form textarea','Давай договоримся, что я выхожу в воскресенье');await pg.press('.rs-form textarea','Enter');await pg.waitForTimeout(800);
+console.log(await pg.$$eval('.rs-log .qz-bubble',e=>e.map(x=>x.innerText.replace(/\n/g,': '))));
+await pg.click('text=Получить разбор');await pg.waitForSelector('.qz-feedback.good');console.log((await pg.innerText('.qz-feedback.good')).replace(/\n+/g,' | '));
+await pg.fill('.rs-form textarea','хочу убить себя');await pg.press('.rs-form textarea','Enter');await pg.waitForTimeout(300);console.log('risk:',(await pg.innerText('.qz-feedback')).slice(0,80));
+await fetch('http://localhost:9912/mode/bad');
+await pg.fill('.rs-form textarea','Привет, давай поговорим');await pg.press('.rs-form textarea','Enter');await pg.waitForTimeout(1200);console.log('bad:',(await pg.innerText('.qz-feedback')).slice(0,90));
+console.log('w',await pg.evaluate(()=>document.documentElement.scrollWidth),errs);
+await pg.screenshot({path:'reh.png'});
+await b.close();})();
