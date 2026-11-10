@@ -43,7 +43,7 @@ jobs:
       - name: Sync Capacitor
         run: npx cap sync android
       - name: Debug APK (для установки и проверки)
-        run: cd android && chmod +x gradlew && ./gradlew --no-daemon assembleDebug
+        run: cd android && chmod +x gradlew && ./gradlew --no-daemon --stacktrace assembleDebug
       - name: Prepare signing key (если задан секрет ANDROID_KEYSTORE_BASE64)
         id: sign
         env:
