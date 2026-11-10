@@ -1,0 +1,26 @@
+/* Доступность и удобство нажатия: размеры целей не меньше 44 px, читаемый мелкий текст, видимый фокус */
+:focus-visible{outline:3px solid #2f7a58;outline-offset:2px;border-radius:6px}
+button,summary,select,.linkbtn,.choice,.places-mood,.chain-open,.chain-chk,.prof-ghost,.secondary{min-height:44px}
+.linkbtn{display:inline-flex;align-items:center;padding-inline:4px}
+.choice{padding-block:10px}
+.calendar-day{min-height:48px;min-width:40px}
+.calendar-controls button{width:44px!important;height:44px!important}
+input:not([type=range]):not([type=checkbox]):not([type=radio]),select{min-height:44px}
+input[type=checkbox],input[type=radio]{width:22px;height:22px}
+label:has(>input[type=checkbox]){min-height:44px;display:inline-flex;align-items:center;gap:8px}
+/* мелкий текст: не меньше 12 px */
+small,.practice-topic,.chain-tag,.qz-card-tag,.calendar-week span,.calendar-legend,.diary-privacy,.day-dots,.archive-time,.archive-bubble small,.detail-metric,.places-note label,label small,.focus-kicker,.eyebrow small{font-size:max(12px,1em)!important}
+.calendar-legend,.diary-privacy,.archive-time,.chain-tag,.qz-card-tag,.practice-topic{font-size:12px!important}
+/* ползунки в стиле приложения */
+input[type=range]{-webkit-appearance:none;appearance:none;height:32px;background:transparent;width:100%}
+input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:8px;background:#dce5db}
+input[type=range]::-moz-range-track{height:8px;border-radius:8px;background:#dce5db}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#315f4c;border:3px solid #fffdf9;box-shadow:0 1px 4px rgba(0,0,0,.3);margin-top:-10px}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#315f4c;border:3px solid #fffdf9;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+/* верх страницы под вырезом/статус-баром */
+body{padding-top:env(safe-area-inset-top,0)}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+.mic-button{min-width:44px;min-height:44px}
+.calendar-day{min-width:0}
+.calendar-week span,.day-dots,small,label small{font-size:12px!important}

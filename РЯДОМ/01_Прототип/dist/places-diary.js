@@ -13,7 +13,7 @@ function renderPlacesForDay(panel,day){
   heading.append(placeElement('span','',count?count+' '+(count===1?'место':count<5?'места':'мест'):'Пока пусто'));
   section.append(heading);
   const rows=placeVisits().filter(x=>x.day===day).sort((a,b)=>(a.time||'').localeCompare(b.time||''));
-  if(!rows.length)section.append(placeElement('p','places-empty','Добавь место, где была или был. Приложение не отслеживает перемещения автоматически.'));
+  if(!rows.length)section.append(placeElement('p','places-empty','Добавь посещённое место. Приложение не отслеживает перемещения автоматически.'));
   rows.forEach(row=>{
     const card=placeElement('article','diary-place-card');
     const top=placeElement('div','diary-place-top');
@@ -31,7 +31,7 @@ function renderPlacesForDay(panel,day){
     actions.append(edit,remove);card.append(actions);section.append(card)
   });
   const add=placeElement('button','add-place-button','＋ Добавить место');add.type='button';add.onclick=()=>showPlaceForm(section,day);section.append(add);
-  section.append(placeElement('p','place-privacy','Места записываешь ты сама или сам. Они остаются в этом браузере прототипа и не привязаны к игровому прогрессу.'));
+  section.append(placeElement('p','place-privacy','Места записываешь только ты. Они остаются в этом браузере прототипа и не привязаны к игровому прогрессу.'));
   panel.append(section)
 }
 function showPlaceForm(section,day,existing){
