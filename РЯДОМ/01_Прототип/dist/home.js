@@ -95,9 +95,9 @@
       ch.steps.forEach(([t, id], i) => {
         const li = h('li', d.includes(i) ? 'done' : '');
         const name = t === 'p' ? ((practices[id] || {}).title || id) : (QT[id] || id);
-        const open = h('button', 'chain-open'); open.type = 'button'; open.append(h('span', 'chain-tag', t === 'p' ? 'практика' : 'тренажёр'), document.createTextNode(' ' + name));
+        const open = h('button', 'chain-open'); open.type = 'button'; open.setAttribute('aria-label', (t === 'p' ? 'Открыть практику: ' : 'Открыть тренажёр: ') + name); open.append(h('span', 'chain-tag', t === 'p' ? 'практика' : 'тренажёр'), document.createTextNode(' ' + name));
         open.onclick = () => { if (t === 'p') openPractice(id); else { view('games'); setTimeout(() => window.RyadomQuest && window.RyadomQuest.open(id), 80); } };
-        const chk = h('button', 'chain-chk', d.includes(i) ? '✓ Сделано' : 'Отметить'); chk.type = 'button'; chk.setAttribute('aria-pressed', d.includes(i) ? 'true' : 'false');
+        const chk = h('button', 'chain-chk', d.includes(i) ? '✓ Сделано' : 'Отметить'); chk.type = 'button'; chk.setAttribute('aria-label', 'Отметить шаг цепочки: ' + name); chk.setAttribute('aria-pressed', d.includes(i) ? 'true' : 'false');
         chk.onclick = () => { const x = readC(); const a = x[ch.id] || []; x[ch.id] = a.includes(i) ? a.filter(v => v !== i) : a.concat(i); writeC(x); renderNow(); const again = $('#nowBox details:nth-of-type(' + (CHAINS.indexOf(ch) + 1) + ')'); if (again) again.open = true; };
         li.append(open, chk); ol.append(li);
       });
