@@ -1,0 +1,59 @@
+{
+  "note": "Проектные примеры контрактов. Это не реальные записи пользователей и не работающий API.",
+  "checkin": {
+    "localDate": "2026-11-09",
+    "timeZone": "Europe/Moscow",
+    "anxiety": 2,
+    "sadness": 1,
+    "restlessness": 2,
+    "calm": 3,
+    "note": "После прогулки стало спокойнее"
+  },
+  "place": {
+    "id": "internal-place-id",
+    "provider": "osm",
+    "providerPlaceId": "N/123456",
+    "name": "Пример места",
+    "category": "cafe",
+    "lat": 41.7,
+    "lon": 44.8,
+    "rating": null,
+    "ratingCount": null,
+    "socialSignal": null,
+    "dataUpdatedAt": null
+  },
+  "visit": {
+    "id": "visit-id",
+    "localDate": "2026-11-09",
+    "placeId": "internal-place-id",
+    "time": "16:30",
+    "feeling": "Спокойно",
+    "note": "Понравилось сидеть у окна",
+    "confirmedByUser": true
+  },
+  "practice": {
+    "id": "after-difficult-conversation",
+    "version": 1,
+    "title": "После трудного разговора",
+    "durationMinutes": [4, 6],
+    "contexts": ["work", "relationships"],
+    "status": "requires_expert_review",
+    "steps": ["notice", "ground", "separate-event-and-thought", "choose-one-action", "optional-feedback"]
+  },
+  "conversationResponse": {
+    "message": "Похоже, особенно задело, что замечание прозвучало при других. Я правильно поняла?",
+    "understoodContext": ["public-criticism", "work", "unclear-feedback"],
+    "userNeed": "uncertain",
+    "suggestedActions": ["listen", "prepare-conversation"],
+    "safetyRoute": "ordinary",
+    "memoryCandidate": null
+  },
+  "gameSession": {
+    "storyId": "quiet-city",
+    "storyVersion": 1,
+    "chapter": 3,
+    "decisions": [0, 1, 0],
+    "route": null,
+    "relationshipState": {"mom": 56, "dad": 51, "agency": 47}
+  }
+}

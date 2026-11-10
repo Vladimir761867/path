@@ -1,0 +1,29 @@
+.calendar-day .day-dots i.place-dot{background:#4b927a;width:7px;height:7px;box-shadow:0 0 0 2px #dff2e7}
+.calendar-day.has-place:not(.mood-hard):not(.mood-anxious):not(.mood-angry):not(.mood-good){background:#eaf4eb}
+.diary-places{border-top:1px solid #e3e9df;margin-top:24px;padding-top:19px}
+.diary-places-heading{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px}
+.diary-places-heading h5{font-size:16px;margin:0;letter-spacing:-.02em}
+.diary-places-heading span{font-size:11px;color:#7b907e}
+.places-empty,.place-privacy{color:#768a79;font-size:12px;line-height:1.5}
+.diary-place-card{border:1px solid #dce8dc;background:#f8fbf7;border-radius:15px;padding:12px;margin:9px 0}
+.diary-place-top{display:flex;align-items:center;gap:10px}
+.place-kind-icon{width:32px;height:32px;flex:none;border-radius:10px;background:#e4eee4;color:#47715c;display:grid;place-items:center;font-size:16px}
+.diary-place-info{min-width:0;flex:1;display:grid;gap:3px}
+.diary-place-info strong{font-size:13px;overflow-wrap:anywhere}
+.diary-place-info small{font-size:11px;color:#78907b}
+.place-favorite{border:0;background:none;color:#78967e;font-size:23px;line-height:1;cursor:pointer;padding:5px}
+.place-favorite.active{color:#c47e72}
+.diary-place-memory{font-size:12px;line-height:1.5;margin:10px 0 0;color:#58705f;overflow-wrap:anywhere}
+.diary-place-actions{display:flex;gap:15px;margin:11px 0 0 42px}
+.diary-place-actions button{border:0;background:none;padding:0;color:#50765f;text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-size:11px}
+.add-place-button{width:100%;border:1px dashed #a8c7ac;background:#f5faf4;color:#35604a;border-radius:12px;padding:12px;margin-top:9px;cursor:pointer;font-weight:750;text-align:left}
+.add-place-button:hover{background:#e7f3e7}
+.place-entry-form{border:1px solid #d8e6d9;background:#fffefb;border-radius:16px;padding:15px;margin:14px 0;display:grid;gap:11px}
+.place-entry-form h6{font-size:15px;margin:0 0 3px}
+.place-quick{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.place-quick span{font-size:11px;color:#718474;width:100%}.place-quick button{border:1px solid #c4dac6;border-radius:99px;background:#eef6eb;color:#39624a;padding:7px 9px;font-size:11px;cursor:pointer}
+.place-entry-form label{font-size:11px;color:#516b59;display:grid;gap:5px;font-weight:700}
+.place-entry-form input,.place-entry-form select,.place-entry-form textarea{width:100%;min-width:0;box-sizing:border-box;border:1px solid #d7e3d8;border-radius:9px;padding:10px;background:#fafbf7;color:#263e30;font:inherit;font-size:13px;font-weight:400}
+.place-entry-form textarea{resize:vertical;min-height:65px}
+.place-form-actions{display:flex;gap:7px;flex-wrap:wrap}
+.place-form-actions button{font-size:11px;padding:10px 12px}
+@media(max-width:640px){.diary-places{margin-top:20px}.place-entry-form{padding:12px}.diary-place-card{padding:11px}}

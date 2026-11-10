@@ -1,0 +1,28 @@
+/* «Обо мне» */
+#profile .lede{max-width:640px}
+.prof-bar{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;margin:16px 0 8px}
+.prof-use{display:flex;gap:9px;align-items:center;font-weight:600;cursor:pointer}
+.prof-use input{width:18px;height:18px;accent-color:#315f4c}
+.prof-ghost{border:1px solid #cddbd0;background:#fffdf9;color:#315f4c;border-radius:12px;padding:10px 14px;font-weight:700}
+.prof-note{margin:8px 0;font-size:13px;color:#6d7a72;line-height:1.5;max-width:640px}
+.prof-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(290px,100%),1fr));gap:14px;margin:16px 0}
+.prof-card{min-width:0;background:#fffdf9;border:1px solid #e5e7df;border-radius:20px;padding:16px 17px;display:grid;gap:8px;align-content:start}
+.prof-card h3{margin:0;font-size:16px}.prof-card small{color:#8a978f;font-size:12px;margin-top:-4px}
+.prof-chips{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:7px}
+.prof-chips li{display:inline-flex;align-items:center;gap:6px;background:#eef5ef;border-radius:99px;padding:5px 6px 5px 12px;font-size:14px}
+.prof-chips li em{font-style:normal;font-size:10px;color:#7a867f}
+.prof-chips li button{border:0;background:#dce9dc;border-radius:50%;width:22px;height:22px;line-height:20px;color:#315f4c;font-size:15px}
+.prof-chips li.empty{background:none;padding:0;color:#8b978f;font-size:13px}
+.prof-add{display:flex;gap:8px;margin-top:4px}
+.prof-add input{flex:1 1 0;width:0;min-width:0;border:1px solid #d5dfd3;border-radius:12px;padding:10px 12px;background:#fbfaf6}
+.prof-add button{flex:none;border:0;background:#315f4c;color:#fff;border-radius:12px;padding:10px 14px;font-weight:700}
+.prof-danger{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:14px;margin:6px 0}
+.prof-places{margin:0 0 14px;padding:12px 15px;border-radius:14px;background:#f1f6ee;font-size:14px;line-height:1.5;color:#34493f}
+@media(max-width:860px){.mobile-nav.has-profile{grid-template-columns:repeat(6,1fr)}.mobile-nav.has-profile button{font-size:10px;padding-left:2px;padding-right:2px}}
+.voice-toggle{border:1px solid #cddbd0;background:#fffdf9;border-radius:12px;padding:0 12px;font-size:18px;cursor:pointer}
+.voice-toggle[aria-pressed=true]{background:#dce9dc}
+.voice-toggle{flex:none;min-width:44px}
+@media(max-width:520px){.composer{padding:12px;gap:6px}.composer button{flex:none}}
+/* узкие экраны: верхняя строка и сетка не должны раздвигать страницу */
+.top{flex-wrap:wrap}.layout>*,.shell>main{min-width:0}
+.top .eyebrow{min-width:0}

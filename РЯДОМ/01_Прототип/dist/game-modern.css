@@ -1,0 +1,69 @@
+/* Narrative game art direction: cinematic indie story, distinct from the private diary. */
+#gamesHub>.eyebrow{color:#a06d57}
+#gamesHub>.page-title{font-size:clamp(42px,5vw,66px)}
+#gamesHub>.lede{max-width:530px}
+#games .game-feature{min-height:410px;padding:clamp(24px,4vw,45px);align-items:end;position:relative;isolation:isolate;border:1px solid #33443d;border-radius:29px;background-image:linear-gradient(90deg,rgba(16,31,31,.96) 0%,rgba(18,37,35,.9) 39%,rgba(25,42,40,.28) 78%),url('assets/quiet-city-concept.png');background-size:cover;background-position:center;box-shadow:0 26px 56px #273b3450}
+#games .game-feature:after{content:none}
+#games .game-feature .eyebrow{color:#d6ae8b}
+#games .game-feature h2{color:#fffdf7;font-size:clamp(34px,4.5vw,52px);line-height:1.05;max-width:470px;text-wrap:balance}
+#games .game-feature p{color:#e1e8e2;max-width:450px;font-size:14px;line-height:1.65;text-wrap:pretty}
+#games .game-feature small{color:#e0e8dd;font-size:12px}
+#games .game-feature .level-meter{background:#ffffff45;max-width:360px;height:5px;margin:24px 0 9px}
+#games .game-feature .level-meter span{background:#e9b998}
+#games .game-feature .primary{background:#fffdf5;color:#1c3933;box-shadow:0 12px 23px #101f1f44;white-space:nowrap}
+#games .game-feature .primary:hover{background:#e4eee5}
+#games .game-grid{gap:13px}
+#games .game-card{position:relative;isolation:isolate;min-height:205px;overflow:hidden;border:1px solid #374942;background:#233a37;color:#fffdf7;box-shadow:0 15px 30px #273b3421;transition:transform .25s,box-shadow .25s}
+#games .game-card:nth-child(4n+2){background:#3d414e}
+#games .game-card:nth-child(4n+3){background:#604a43}
+#games .game-card:nth-child(4n){background:#3e5049}
+#games .game-card:before{content:'';position:absolute;right:-55px;top:-65px;width:185px;height:185px;border-radius:50%;border:24px solid #ffffff0b;z-index:-1}
+#games .game-card:hover{transform:translateY(-3px);box-shadow:0 21px 40px #273b3438}
+#games .game-card .emoji{font-size:25px;color:#ddc4ae}
+#games .game-card h3{font-size:20px;letter-spacing:-.03em;margin:21px 0 5px;color:#fffdf7}
+#games .game-card p{color:#d7e0da;line-height:1.5}
+#games .game-card small{color:#eac2a3;text-transform:uppercase;letter-spacing:.11em;font-size:10px}
+#games .game-note{margin-top:20px}
+#gamePlay .story-top{margin:2px 0 20px}
+#gamePlay .story-top button{background:#243a34;color:#f8f9ef;border:0}
+#gamePlay .story-top span{letter-spacing:.14em;font-weight:800;color:#536e61}
+#gamePlay .story-intro{min-height:640px;background-image:linear-gradient(90deg,rgba(16,29,31,.97) 0%,rgba(18,34,33,.83) 47%,rgba(18,34,33,.17) 100%),url('assets/quiet-city-concept.png');background-size:cover;background-position:center;border:1px solid #1e3432;box-shadow:0 20px 48px #273b3438}
+#gamePlay .story-intro:after{content:none}
+#gamePlay .story-intro>.eyebrow{color:#e3b995}
+#gamePlay .story-intro h2{color:#fffdf7;font-size:clamp(39px,5vw,62px);max-width:600px;margin:15px 0}
+#gamePlay .story-intro>p{color:#e4ebe3;max-width:525px}
+#gamePlay .hero-setup{margin-top:30px;max-width:495px;padding:25px;background:#f8f7f1f2;backdrop-filter:blur(15px)}
+#gamePlay .avatar-choice.selected{border-color:#376a50;box-shadow:inset 0 0 0 2px #376a50;background:#e3eee1}
+#gamePlay .story-title h2{font-size:clamp(29px,3vw,39px)}
+#gamePlay .story-title span{letter-spacing:.07em;text-transform:uppercase;font-weight:750;color:#739080}
+#gamePlay .chapter-pips{margin:14px 0 19px;gap:6px}
+#gamePlay .chapter-pips i{height:4px;background:#d2dbd2}
+#gamePlay .chapter-pips i.done{background:#ba8a6e}
+#gamePlay .world{height:365px;border-radius:25px;box-shadow:inset 0 -65px 85px #2d362549,0 18px 35px #283c3328}
+#gamePlay .world.kitchen,#gamePlay .world.bedroom{background:linear-gradient(167deg,#ccd8ce 0%,#e8e5db 62%,#b69e89 63%,#aa8b75 100%)}
+#gamePlay .world.cafe{background:linear-gradient(170deg,#b7d2cc 0%,#e5e0d0 60%,#a8866b 61%,#ae8d70 100%)}
+#gamePlay .world.street,#gamePlay .world.station{background:linear-gradient(177deg,#b1ced4 0%,#dce3d9 61%,#83958e 62%,#72877f 100%)}
+#gamePlay .scene-label{background:#1a332fdc;color:#f6f4e9;font-size:11px;text-transform:uppercase;letter-spacing:.08em;padding:10px 14px}
+#gamePlay .character{filter:drop-shadow(0 18px 12px #37473d5c)}
+#gamePlay .character .head{border:1px solid #ffffff50}
+#gamePlay .character-name{background:#19342de8;color:#fff9ed;padding:5px 11px}
+#gamePlay .hotspot{width:52px;height:52px;background:#f9f8eee8;border:2px solid white;box-shadow:0 0 0 6px #ffffff40,0 10px 25px #0e272844}
+#gamePlay .hotspot.seen{background:#dbead7}
+#gamePlay .scene-card{margin-top:13px;border-radius:22px;background:#1f3532;border:1px solid #304f44;box-shadow:0 17px 36px #243b3430;padding:24px 26px;color:#f5f7ee}
+#gamePlay .dialogue p{background:#314741;color:#f7f7ef;border-radius:5px 15px 15px 15px;font-size:14px}
+#gamePlay .dialogue.player p{background:#506b5a;border-radius:15px 5px 15px 15px}
+#gamePlay .speaker{background:#577663;color:#fff9ec}
+#gamePlay .scene-info{background:#3c5749;color:#e7f0df;margin:18px 0}
+#gamePlay .scene-prompt{color:#bed0bf;text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-size:11px;margin-top:22px}
+#gamePlay .scene-actions{gap:8px}
+#gamePlay .scene-actions button{background:#2b4740;border:1px solid #527566;color:#f8f9ed;border-radius:13px;padding:14px 16px;transition:background .2s,transform .2s}
+#gamePlay .scene-actions button:not(:disabled):hover{background:#3e6252;transform:translateX(3px)}
+#gamePlay .scene-actions button:disabled{background:#2b3f3a;color:#90a59a}
+#gamePlay .scene-advance{background:#e2b391;color:#1d352b}
+#gamePlay .story-side .card{background:#f9f9f4;border:1px solid #e3e7de;border-radius:20px;box-shadow:0 14px 27px #273b3417}
+#gamePlay .story-side h3{font-size:14px;letter-spacing:.01em}
+#gamePlay .story-side .hint{font-size:11px}
+#gamePlay .story-ending{min-height:450px;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:40px;background-image:linear-gradient(90deg,#dce9dfef,#eaf0e9da),url('assets/quiet-city-concept.png');background-size:cover;background-position:center}
+#gamePlay .story-ending h2{font-size:clamp(30px,4vw,46px)}
+@media(max-width:800px){#games .game-feature{background-image:linear-gradient(90deg,#10201fea,#182a28ba 65%,#182a2855),url('assets/quiet-city-concept.png');min-height:390px}#gamePlay .story-intro{background-image:linear-gradient(90deg,#10201ff5,#182a28bf 75%),url('assets/quiet-city-concept.png')}}
+@media(max-width:540px){#games .game-feature{min-height:420px;background-position:59% center;align-items:end}#games .game-feature h2{font-size:36px}#games .game-feature p{font-size:13px;line-height:1.5}#games .game-feature .primary{white-space:normal}#games .game-card{min-height:165px}#gamePlay .story-intro{min-height:0;padding:23px 19px;background-position:57% center}#gamePlay .story-intro h2{font-size:36px}#gamePlay .story-intro>p{font-size:13px}#gamePlay .hero-setup{padding:17px}#gamePlay .world{height:285px}#gamePlay .scene-card{padding:19px 17px}#gamePlay .dialogue p{font-size:13px}#gamePlay .story-ending{padding:28px 19px;min-height:400px}}
