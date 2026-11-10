@@ -53,8 +53,12 @@
       let m;
       if ((m = new RegExp(POS + '\\s+([^.!?;\\n]{3,70})').exec(s))) {
         const clause = stop(m[1]);
-        if (FOOD.test(' ' + clause + ' ') && !/не /.test(s.slice(Math.max(0, m.index - 4), m.index + 1))) out.push({ cat: 'food', text: clause });
-        else if (PLACE.test(' ' + clause + ' ')) out.push({ cat: 'place', text: clause });
+        const neg = /не /.test(s.slice(Math.max(0, m.index - 4), m.index + 1));
+        const parts = clause.split(/\s*(?:,| и |, и )\s*/).map(x => x.trim()).filter(x => x.length > 2);
+        (parts.length ? parts : [clause]).forEach(part => {
+          if (FOOD.test(' ' + part + ' ') && !neg) out.push({ cat: 'food', text: part });
+          else if (PLACE.test(' ' + part + ' ')) out.push({ cat: 'place', text: part });
+        });
       }
       if ((m = /(?:помогает|помогают|успокаивает|успокаивают|расслабляет)\s+([^.!?;\n]{3,70})/.exec(s))) { const c = stop(m[1]); if (c.length > 2) out.push({ cat: 'help', text: c }); }
       if ((m = /(?:не люблю|не переношу|бесит|раздражает|выматывает)\s+([^.!?;\n]{3,60})/.exec(s))) { const c = stop(m[1]); if (c.length > 2) out.push({ cat: 'avoid', text: c }); }

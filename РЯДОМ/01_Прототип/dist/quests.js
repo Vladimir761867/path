@@ -3,12 +3,16 @@
  * интересы вместо позиций, конкретный план). Данные — quests/<id>.json. Это учебная симуляция, не прогноз реакции живого человека. */
 (function () {
   'use strict';
-  const QUESTS = ['boss-feedback', 'refuse-colleague', 'mom-boundaries', 'apology-friend'];
+  const QUESTS = ['boss-feedback', 'refuse-colleague', 'mom-boundaries', 'apology-friend', 'ask-help', 'money-talk', 'partner-needs', 'say-no-friend'];
   const META = {
     'boss-feedback': { title: 'Разговор с начальником', tag: 'КВЕСТ · 6 ШАГОВ · 2 СТИЛЯ', desc: 'Трудная обратная связь. Неудачный ответ оставляет на месте, удачный пускает дальше и называет приём, на котором он держится.', em: 'Тренажёр разговора' },
     'refuse-colleague': { title: 'Сказать «нет» коллеге', tag: 'КВЕСТ · 5 ШАГОВ · 2 СТИЛЯ', desc: 'Отказать на просьбу о выходных так, чтобы не поссориться: пауза, спокойное «нет», держать решение, предложить своё.', em: 'Границы на работе' },
     'mom-boundaries': { title: 'Разговор с мамой о границах', tag: 'КВЕСТ · 5 ШАГОВ · 2 СТИЛЯ', desc: 'Сохранить близость и право решать самому: признать чувства, сказать «я», договориться о понятном ритме.', em: 'Границы в семье' },
-    'apology-friend': { title: 'Извиниться и починить', tag: 'КВЕСТ · 5 ШАГОВ · 2 СТИЛЯ', desc: 'Подвели близкого человека. Как извиниться конкретно, выслушать и предложить, что исправите.', em: 'Конфликт и примирение' }
+    'apology-friend': { title: 'Извиниться и починить', tag: 'КВЕСТ · 5 ШАГОВ · 2 СТИЛЯ', desc: 'Подвели близкого человека. Как извиниться конкретно, выслушать и предложить, что исправите.', em: 'Конфликт и примирение' },
+    'ask-help': { title: 'Попросить о помощи', tag: 'КВЕСТ · 5 ШАГОВ · 2 СТИЛЯ', desc: 'Попросить так, чтобы человеку было легко и согласиться, и отказать: конкретно, без извинений, с взаимностью.', em: 'Просьбы' },
+    'money-talk': { title: 'Разговор о деньгах', tag: 'КВЕСТ · 5 ШАГОВ · 2 СТИЛЯ', desc: 'Обсудить неравные общие расходы без обвинений: факты, отражение, пропорциональное решение, срок сверки.', em: 'Деньги и близкие' },
+    'partner-needs': { title: 'Сказать, что тебе нужно', tag: 'КВЕСТ · 5 ШАГОВ · 2 СТИЛЯ', desc: 'Попросить больше времени вместе, не обвиняя: мягкий старт, «я»-сообщение, валидация, небольшой эксперимент.', em: 'Отношения' },
+    'say-no-friend': { title: 'Отказать другу', tag: 'КВЕСТ · 5 ШАГОВ · 2 СТИЛЯ', desc: 'Отказаться от поездки так, чтобы дружба не пострадала: пауза, тёплое «нет», повтор решения, альтернатива.', em: 'Дружба и границы' }
   };
   const KEY = id => 'ryadom-quest-' + id;
   const cache = {};
@@ -178,7 +182,7 @@
     const go = h('button', 'qz-next', 'Начать →'); go.type = 'button'; go.onclick = () => start(inp.value.trim().slice(0, 20) || 'Саша', chosen);
     setup.append(go); w.append(setup, h('p', 'qz-note', Q.intro.note), h('p', 'qz-note', Q.intro.disclaimer)); r.append(w);
   }
-  function start(name, variant) { S = { name, variant, i: 0, phase: 'ask', fails: {}, tension: 2, path: [], firsts: 0, tried: {}, picked: null, shown: false }; render(true); }
+  function start(name, variant) { if (window.RyadomStats) window.RyadomStats.hit('quest_start'); S = { name, variant, i: 0, phase: 'ask', fails: {}, tension: 2, path: [], firsts: 0, tried: {}, picked: null, shown: false }; render(true); }
   const nodeOf = () => Q.nodes[S.i];
   const varOf = () => Q.variants.find(v => v.id === S.variant);
   const bossName = () => varOf().boss.name;
@@ -269,6 +273,7 @@
 
   function renderEnd() {
     const r = root(); r.replaceChildren(); topBar(r); stageKey = ''; refs = {};
+    if (window.RyadomStats) window.RyadomStats.hit('quest_done');
     markDone(Q.id, S.variant);
     const F = Q.finale, wrap = h('div', 'qz-end');
     const stage = h('div', 'qz-stage qz-host in'); const lastStage = Q.nodes[Q.nodes.length - 1].stage; stage.innerHTML = roomScene(lastStage, S.variant, varOf().boss.look);
@@ -300,6 +305,11 @@
       b.append(h('span', 'qz-card-tag', m.tag), h('b', null, m.title), h('p', null, m.desc), h('em', null, done ? 'Пройдено стилей: ' + done + ' из 2' : m.em));
       b.onclick = () => open(id); host.append(b);
     });
+    if (window.RyadomRehearse && window.RyadomRehearse.available()) {
+      const b = h('button', 'qz-card'); b.type = 'button';
+      b.append(h('span', 'qz-card-tag', 'СВОБОДНАЯ РЕПЕТИЦИЯ · С МОДЕЛЬЮ'), h('b', null, 'Репетиция своими словами'), h('p', null, 'Модель играет собеседника в твоей ситуации, потом даёт короткий разбор формулировок.'), h('em', null, 'Нужен сервер помощника'));
+      b.onclick = () => window.RyadomRehearse.open(); host.append(b);
+    }
   }
   function open(id) { loadQuest(id).then(q => { Q = q; S = null; renderIntro(); }).catch(() => { const r = root(); r.replaceChildren(); topBar(r); r.append(h('p', 'qz-note', 'Не удалось загрузить квест. Проверь соединение и попробуй ещё раз.')); }); }
   function mount() {

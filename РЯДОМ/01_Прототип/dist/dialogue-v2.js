@@ -41,14 +41,14 @@
 
   /* ---------- лексикон ---------- */
   const EMO = [
-    { k: 'fear', gen: 'тревоги', mood: 'anxious', topic: 'anxiety', re: / тревож| тревог| страшн| страх| боюсь| бояться| пережива| паник| волную| волнуюсь| беспоко| жутк| напряж/ },
-    { k: 'anger', gen: 'злости', mood: 'angry', topic: 'anger', re: / злюсь| злость| злой| злая| бесит| бесят| раздража| ярост| взбесил| достал| достала| гнев| возмущ/ },
-    { k: 'hurt', gen: 'обиды', mood: 'hard', topic: 'sadness', re: / обид| задел| задело| унизил| унижен| оскорбил| несправедлив| больно / },
-    { k: 'sad', gen: 'грусти', mood: 'hard', topic: 'sadness', re: / груст| тоскл| тоск | плачу| плакать| слез| депресс| подавлен| пусто| безнадежн/ },
-    { k: 'lonely', gen: 'одиночества', mood: 'hard', topic: 'sadness', re: / одинок| никому не нужн| некому | никто не пишет| никто не звонит| никто не понимает/ },
-    { k: 'tired', gen: 'усталости', mood: 'hard', topic: 'energy', re: / устал| нет сил| без сил| вымотал| выгор| выжат| измотан| не могу больше| сил нет/ },
-    { k: 'shame', gen: 'стыда и вины', mood: 'hard', topic: 'sadness', re: / стыд| виноват| вину | вина | облажал| накосячил| зря сказал| зря сделал/ },
-    { k: 'lost', gen: 'растерянности', mood: 'okay', topic: 'focus', re: / растерян| запутал| не знаю что делать| не знаю как быть| не знаю как поступить| не понимаю что делать| не знаю как/ },
+    { k: 'fear', nom: 'тревога', gen: 'тревоги', mood: 'anxious', topic: 'anxiety', re: / тревож| тревог| страшн| страх| боюсь| бояться| пережива| паник| волную| волнуюсь| беспоко| жутк| напряж/ },
+    { k: 'anger', nom: 'злость', gen: 'злости', mood: 'angry', topic: 'anger', re: / злюсь| злость| злой| злая| бесит| бесят| раздража| ярост| взбесил| достал| достала| гнев| возмущ/ },
+    { k: 'hurt', nom: 'обида', gen: 'обиды', mood: 'hard', topic: 'sadness', re: / обид| задел| задело| унизил| унижен| оскорбил| несправедлив| больно / },
+    { k: 'sad', nom: 'грусть', gen: 'грусти', mood: 'hard', topic: 'sadness', re: / груст| тоскл| тоск | плачу| плакать| слез| депресс| подавлен| пусто| безнадежн/ },
+    { k: 'lonely', nom: 'одиночество', gen: 'одиночества', mood: 'hard', topic: 'sadness', re: / одинок| никому не нужн| некому | никто не пишет| никто не звонит| никто не понимает/ },
+    { k: 'tired', nom: 'усталость', gen: 'усталости', mood: 'hard', topic: 'energy', re: / устал| нет сил| без сил| вымотал| выгор| выжат| измотан| не могу больше| сил нет/ },
+    { k: 'shame', nom: 'стыд и вина', gen: 'стыда и вины', mood: 'hard', topic: 'sadness', re: / стыд| виноват| вину | вина | облажал| накосячил| зря сказал| зря сделал/ },
+    { k: 'lost', nom: 'растерянность', gen: 'растерянности', mood: 'okay', topic: 'focus', re: / растерян| запутал| не знаю что делать| не знаю как быть| не знаю как поступить| не понимаю что делать| не знаю как/ },
     { k: 'good', gen: '', mood: 'good', topic: 'calm', re: / хорошо | отлично | рад | рада | рады | счастлив| доволен| довольна| получилось| горжусь| классно| здорово/ }
   ];
   const NEG_GOOD = / не (очень )?(хорошо|отлично|весело|радостно)| нехорошо| не в порядке| не нормально| совсем плохо| плохо /;
@@ -117,6 +117,7 @@
   function understand(raw, weight = 1) {
     const s = N(raw);
     const found = { emo: [], themes: [], cues: [] };
+    D.raw = ((D.raw || '') + s).slice(-1500); D.last = s;
     EMO.forEach(e => {
       if (e.re.test(s)) {
         if (e.k === 'good' && NEG_GOOD.test(s)) { D.emo.set('low', (D.emo.get('low') || 0) + weight); return; }
@@ -147,6 +148,7 @@
     if (!top && D.emo.get('good')) return 'good';
     return top;
   }
+  const emoNom = k => (EMO.find(e => e.k === k) || {}).nom || (k === 'low' ? 'тяжесть' : '');
   const emoGen = k => (EMO.find(e => e.k === k) || {}).gen || (k === 'low' ? 'тяжести' : '');
   function moodOf() {
     if (D.mood) return D.mood;
@@ -194,13 +196,15 @@
     let out;
     if (cues.length) {
       out = 'Похоже, тут важно: ' + cues.join(', а ещё ') + '.';
-      if (gen) out += ' В этом слышится много ' + gen + '.';
+      if (gen) out += ' Ещё слышится ' + emoNom(dom) + '.';
     } else if (quote && gen) {
-      out = 'Ты пишешь: «' + quote + '». В этом слышится ' + gen + '.';
+      out = 'Ты пишешь: «' + quote + '». В этом слышится ' + emoNom(dom) + '.';
+    } else if (gen) {
+      out = ({ lonely: 'Похоже, сейчас одиноко.', tired: 'Похоже, сил сейчас совсем немного.', fear: 'Похоже, сейчас тревожно.', sad: 'Похоже, сейчас грустно.', anger: 'Похоже, сейчас много злости.', hurt: 'Похоже, это задело.', shame: 'Похоже, это сопровождается чувством вины.', lost: 'Похоже, сейчас трудно понять, что делать.' })[dom] || ('Слышу ' + gen + '.');
     } else if (quote) {
       out = 'Ты пишешь: «' + quote + '». Пока мне трудно понять, какое чувство здесь главное.';
     } else {
-      out = 'Пока мне мало деталей, чтобы понять, что здесь главное.';
+      out = 'Пока мне мало деталей, чтобы понять, что здесь главное. Можно несколькими словами: что случилось или на что это похоже?';
     }
     return out;
   }
@@ -253,6 +257,30 @@
     choices([['Да, примерно так', 'cmd:yes'], ['Не совсем', 'cmd:no'], ['Хочу добавить', 'cmd:add']]);
   }
 
+  const QUEST_NAME = { 'boss-feedback': 'разговор с начальником', 'refuse-colleague': 'отказ коллеге', 'mom-boundaries': 'разговор с мамой о границах', 'apology-friend': 'извинение', 'ask-help': 'просьбу о помощи', 'money-talk': 'разговор о деньгах', 'partner-needs': 'разговор о том, что тебе нужно', 'say-no-friend': 'отказ другу' };
+  function questFor() {
+    return questIn(D.last || '') || questIn(D.raw || '');
+  }
+  function questIn(r) {
+    const th = D.themes;
+    if (!r) return null;
+    if (/ извин| виноват | виновата | обидел | обидела | подвел| подвела | не пришел | не пришла | забыл | забыла /.test(r) && (th.has('friend') || th.has('partner') || th.has('family') || /обидел|подвел|забыл|извин/.test(r))) return 'apology-friend';
+    if (/ деньг| долг| зарплат| тратим| тратит| кредит| оплат/.test(r) && (th.has('partner') || th.has('family') || th.has('friend') || / разговор/.test(r))) return 'money-talk';
+    if (/ попросить помощ| попросить о помощи| неловко просить| не умею просить| просить помощ| помощи попросить| помощь попросить/.test(r)) return 'ask-help';
+    if (/ отказать| сказать нет| не могу отказать| не умею отказывать| просит выйти| взвалил| навесил| подменить| замен/.test(r)) return th.has('friend') && !th.has('work') ? 'say-no-friend' : 'refuse-colleague';
+    if (th.has('family') && (/ границ| лезет | лезут | контролир| решает за| решают за| давит | давят | совет/.test(r))) return 'mom-boundaries';
+    if (th.has('partner') && / не хватает времени| мало времени| не слышит| не слышат| не понимает| хочу сказать| как сказать| поговорить/.test(r)) return 'partner-needs';
+    if (th.has('boss') || (th.has('work') && / критик| замечан| обратн| оценк| отчет/.test(r))) return 'boss-feedback';
+    if (/ границ /.test(r)) return th.has('family') ? 'mom-boundaries' : 'refuse-colleague';
+    return null;
+  }
+  function offerQuest() {
+    const id = questFor(); if (!id || D.noAdvice || D.questOffered === id) return false;
+    D.questOffered = id;
+    say('Похоже, это про ' + QUEST_NAME[id] + '. Могу предложить потренировать этот разговор на модели или собрать своё первое предложение.');
+    choices([['Потренировать разговор', 'cmd:quest:' + id], ['Собрать свою фразу', 'cmd:need:prepare'], ['Продолжу рассказывать', 'cmd:more']]);
+    return true;
+  }
   function askNeed() {
     setPhase('need');
     const opts = [['Выговориться', 'cmd:need:talk'], ['Разобраться, что делать', 'cmd:need:clarity']];
@@ -260,8 +288,10 @@
     const convo = D.themes.has('boss') || D.themes.has('family') || D.themes.has('partner') || D.themes.has('friend') || D.themes.has('work');
     if (convo) opts.push(['Подготовить разговор', 'cmd:need:prepare']);
     if (profileIdeas()) opts.push(['Куда сходить или что поесть', 'cmd:need:go']);
-    let lead = 'Что сейчас нужнее?';
-    if (D.intense && D.emo.has('fear') && !D.noPractice) lead = 'Если сейчас слишком накрывает, можно начать с короткого шага на успокоение. Что нужнее?';
+    D.needAsked = (D.needAsked || 0) + 1;
+    let lead = D.needAsked === 1 ? 'Что сейчас нужнее?' : pickFresh(['Давай выберем направление. С чего удобнее?', 'Можно продолжить рассказ, а можно перейти к шагу. Как тебе сейчас лучше?', 'Подскажи, что сейчас было бы полезнее.'], 'needlead');
+    const qid = questFor(); if (qid && !D.noAdvice) opts.splice(Math.min(2, opts.length), 0, ['Потренировать разговор', 'cmd:quest:' + qid]);
+    if (D.intense && D.emo.has('fear') && !D.noPractice && D.needAsked === 1) lead = 'Если сейчас слишком накрывает, можно начать с короткого шага на успокоение. Что нужнее?';
     say(lead);
     choices(opts.slice(0, 6));
   }
@@ -307,7 +337,7 @@
     const h = p.list('help').slice(-2), sp = p.list('spend').slice(-1);
     const bits = h.concat(sp); if (!bits.length) return;
     D.nudged = true;
-    say('Ты рассказывал, что тебе помогает: ' + bits.join(', ') + '. Если сейчас есть возможность, можно начать с этого.');
+    say('В «Обо мне» записано, что тебе помогает: ' + bits.join(', ') + '. Если сейчас есть возможность, можно начать с этого.');
   }
   function goFlow() {
     const id = profileIdeas(); setPhase('listen');
@@ -318,7 +348,7 @@
     const parts = [];
     if (id.food.length) parts.push('поесть — ' + id.food.join(' или '));
     const be = [].concat(id.place, id.spend); if (be.length) parts.push('побыть — ' + be.join(' или '));
-    let t = 'Из того, что ты рассказывал: ' + parts.join('; ') + '.';
+    let t = 'Из того, что записано в «Обо мне»: ' + parts.join('; ') + '.';
     if (id.avoid.length) t += ' Лучше без: ' + id.avoid.join(', ') + '.';
     say(t + ' Что-то из этого подходит сегодня, с учётом сил?');
     choices([['Да, подходит', 'cmd:goyes'], ['Хочу другое', 'cmd:know:start'], ['Показать места рядом', 'cmd:places'], ['Пока достаточно', 'cmd:finish']]);
@@ -386,9 +416,13 @@
   /* ---------- разбор свободного текста по фазам ---------- */
   function intentOf(raw) {
     const s = N(raw);
-    if (/ спасибо | хватит | закончим | заканчиваем | до свидания | пока пока | на сегодня все /.test(s) && s.length < 80) return 'finish';
+    if (/ хватит | закончим | заканчиваем | до свидания | пока пока | на сегодня все /.test(s) && s.length < 80) return 'finish';
+    if (/ спасибо /.test(s) && s.length < 40) return D.listenTurns >= 3 || ['suggest', 'followup', 'afterPractice', 'prep_done', 'wrap'].includes(phase()) ? 'finish' : 'thanks';
     if (/ не хочу (практик|упражнени|совет|дыхани)| без совет| без практик| просто послушай| просто выслушай| не надо совет| не нужны совет/.test(s)) return 'noadvice';
+    if (/ (что|куда|где) (бы )?(мне )?(поесть|покушать|съесть|пойти|сходить|погулять|выйти|провести время)| куда (бы )?(пойти|сходить|выбраться)| где (бы )?(поесть|посидеть|погулять)| что поесть| хочу (куда нибудь )?выйти| хочется выйти| хочу пообщаться с людьми| куда сегодня /.test(s)) return 'go';
     if (/ что (мне )?делать | посоветуй| подскажи что| дай совет| что посоветуешь/.test(s)) return 'advice';
+    if (/ расскажи (что нибудь|что то|о себе)| поболтаем| поговорим о чем нибудь| мне скучно| давай поболтаем/.test(s)) return 'chitchat';
+    if (s.trim().split(' ').length <= 2 && /^ (ок|окей|ладно|ага|угу|понятно|ясно|хорошо|ну ок) $/.test(s)) return 'ack';
     if (/ бесполезно| не помогает| не работает| ерунда | глупо /.test(s) && s.length < 90) return 'doubt';
     if (/ не знаю что сказать| не знаю с чего начать| сложно сказать| не могу объяснить| трудно объяснить| не знаю как сказать/.test(s)) return 'cant';
     return null;
@@ -409,15 +443,20 @@
       return;
     }
 
+    if (intent === 'go' && !/ не хочу куда| никуда не хочу/.test(N(raw))) { understand(raw); return goFlow(); }
+    if (intent === 'chitchat') { setPhase('listen'); say('Могу просто побыть рядом и послушать, подобрать небольшой шаг или подсказать, куда сходить и что поесть. С чего начнём?'); choices([['Просто поговорим', 'cmd:need:talk'], ['Небольшой шаг', 'cmd:need:step'], ['Куда сходить или что поесть', 'cmd:need:go']]); return; }
+    if (intent === 'ack' && !['open', 'open2', 'confirm', 'correct', 'positive', 'prep_fact', 'prep_goal', 'riskcheck', 'safety'].includes(p) && !p.startsWith('know')) { say(pickFresh(['Хорошо. Я рядом.', 'Понятно. Можно не торопиться.', 'Ясно. Если захочется, продолжим с того места, где остановились.'], 'ackw')); choices([['Продолжу рассказывать', 'cmd:more'], ['Небольшой шаг', 'cmd:need:step'], ['Пока достаточно', 'cmd:finish']]); return; }
+    if (intent === 'thanks') { say('Пожалуйста. Я рядом. Хочешь продолжить или остановиться на этом?'); choices([['Продолжу рассказывать', 'cmd:more'], ['Подобрать небольшой шаг', 'cmd:need:step'], ['Пока достаточно', 'cmd:finish']]); return; }
     if (intent === 'finish') return wrapUp();
     if (intent === 'noadvice') { D.noAdvice = true; D.noPractice = true; return startListen('Хорошо, без советов и практик — просто слушаю. Что дальше?'); }
     if (intent === 'doubt') { say('Если это не помогает — так бывает, и это важная информация. Что именно не подошло?'); setPhase('listen'); return; }
     if (intent === 'cant') return cantFlow();
-    if (intent === 'advice' && p !== 'prep_fact' && p !== 'prep_goal') { understand(raw); return askNeed(); }
+    if (intent === 'advice' && p !== 'prep_fact' && p !== 'prep_goal') { understand(raw); if (p === 'need') return onCommand('cmd:need:clarity'); if (offerQuest()) return; return askNeed(); }
 
     switch (p) {
       case 'open': case 'open2': case 'end': case 'wrap': {
         if (p === 'end' || p === 'wrap') { D = fresh(); setPhase('open'); }
+        if (prefTurn(raw)) return;
         const found = understand(raw);
         if (found.emo.length === 1 && found.emo[0] === 'good' && !D.cues.length) { D.positive = true; return positiveFlow(); }
         if (!D.quotes.length && !found.emo.length && !found.cues.length && String(raw).length < 25) {
@@ -427,9 +466,12 @@
         return confirmStep(found);
       }
       case 'confirm': {
+        const t0 = String(raw).toLowerCase().trim();
+        if (/^(да|ага|угу|верно|точно|именно|примерно|так и есть)\b/.test(t0) && t0.length < 40) return askNeed();
+        if (/^(нет|не совсем|не то|не так)\b/.test(t0) && t0.length < 25) return onCommand('cmd:no');
         D.corrections++;
         const found = understand(raw, 2);
-        say(found.emo.length || found.cues.length ? 'Спасибо, поправка принята. ' + reflection(found) : 'Спасибо, это добавлю к услышанному.');
+        say(found.emo.length || found.cues.length ? 'Принято, добавляю. ' + reflection(found) : 'Хорошо, это тоже учту.');
         return askNeed();
       }
       case 'correct': {
@@ -444,6 +486,7 @@
         return wrapUp();
       }
       case 'need': case 'suggest': case 'feedback': case 'followup': case 'afterPractice': case 'listen': case 'listen2': {
+        if (prefTurn(raw)) return;
         const found = understand(raw);
         D.listenTurns++;
         if (p === 'need') {
@@ -463,11 +506,13 @@
         else reply = pickFresh(ACK, 'ack');
         say(reply + ' ' + nextQuestion());
         setPhase('listen');
+        if (offerQuest()) return;
         if (D.listenTurns >= 2 && D.listenTurns % 2 === 0 && !D.noAdvice) {
           choices([['Подобрать небольшой шаг', 'cmd:need:step'], ['Продолжу рассказывать', 'cmd:more'], ['Пока достаточно', 'cmd:finish']]);
         }
         return;
       }
+      case 'pref': { D.prefBack = null; setPhase('listen'); return onText(raw); }
       case 'know_food': case 'know_place': case 'know_help': {
         const p2 = PR(); const parts = String(raw).split(/[,;\n]| и /).map(x => x.trim()).filter(x => x.length > 1).slice(0, 3);
         if (p2) parts.forEach(x => p2.add(p.slice(5), x, 'chat'));
@@ -503,6 +548,16 @@
     }
   }
 
+  // Сообщение о вкусах («люблю плов и тихие кафе») без эмоций: сразу предложить запомнить и вернуться.
+  function prefTurn(raw) {
+    const pr = PR(); if (!pr || !profileOn() || !D.pCand || !D.pCand.length) return false;
+    const s = N(raw);
+    if (EMO.some(e => e.k !== 'good' && e.re.test(s)) || CUES.some(c => !c.weak && c.re.test(s))) return false;
+    const all = D.pCand.slice(0, 3); D.prefBack = checkin.phase;
+    say('Звучит приятно: ' + all.map(c => '«' + c.text + '»').join(', ') + '. Запомнить, чтобы потом подсказывать, куда сходить и что поесть? Это видно в «Обо мне» и удаляется.');
+    choices([['Запомнить', 'cmd:pm:y'], ['Не запоминать', 'cmd:pm:n']]); setPhase('pref');
+    return true;
+  }
   function positiveFlow() {
     setPhase('positive');
     say('Хорошо слышать. Что сегодня помогло, чтобы так было? Можно одной фразой.');
@@ -580,6 +635,11 @@
         return;
       }
       case 'save': saveMood(b); return endChat('Отметка «' + (MOOD_LABEL[b] || b).toLowerCase() + '» добавлена в дневник. Можно вернуться в любой момент.');
+      case 'quest': {
+        say('Открываю тренажёр. Вернуться к разговору можно в любой момент.'); choices([['Вернуться к разговору', 'cmd:more']]);
+        if (typeof view === 'function') view('games');
+        setTimeout(() => { if (window.RyadomQuest) window.RyadomQuest.open(b); }, 60); return;
+      }
       case 'know': {
         if (b === 'start') { if (!profileOn()) { say('Сейчас запись о тебе выключена. Включить её можно в разделе «Обо мне» — после этого вернёмся к знакомству.'); choices([['Расскажу, что на душе', 'cmd:more']]); setPhase('listen'); return; } return knowAsk(0); }
         return knowAsk((D.know || 0) + 1);
@@ -591,8 +651,15 @@
         choices([['Расскажу, что на душе', 'cmd:more'], ['Пока достаточно', 'cmd:finish']]); return;
       }
       case 'pm': {
-        const x = (D.pCand || []).shift(); const p = PR();
-        if (b === 'y' && x && p) p.add(x.cat, x.text, 'chat');
+        const p = PR(); const x = (D.pCand || []).shift();
+        if (D.prefBack) { const rest = (D.pCand || []).splice(0, 3); const list = [x].concat(rest).filter(Boolean); if (b === 'y' && p) list.forEach(c => p.add(c.cat, c.text, 'chat')); }
+        else if (b === 'y' && x && p) p.add(x.cat, x.text, 'chat');
+        if (D.prefBack) {
+          D.prefBack = null; setPhase('listen');
+          say(b === 'y' ? 'Записано. Хочешь, подберу идею на сегодня под это, или продолжим разговор?' : 'Хорошо, не записываю. Продолжим?');
+          choices(b === 'y' ? [['Куда сходить или что поесть', 'cmd:need:go'], ['Продолжу рассказывать', 'cmd:more'], ['Пока достаточно', 'cmd:finish']] : [['Продолжу рассказывать', 'cmd:more'], ['Пока достаточно', 'cmd:finish']]);
+          return;
+        }
         return wrapUp();
       }
       case 'nosave': return endChat('Хорошо, ничего не сохраняю в отметки. Можно вернуться в любой момент.');
@@ -685,7 +752,7 @@
       choices([[practices[pid].title + ' · ' + practices[pid].duration, 'practice:' + pid], ['Продолжу рассказывать', 'cmd:more'], ['Пока достаточно', 'cmd:finish']]);
     }
   }
-  window.RyadomDialogue = { riskOf, understand: raw => { D = fresh(); return understand(raw); }, _state: () => D };
+  window.RyadomDialogue = { riskOf, questFor: raw => { D = fresh(); understand(raw); return questFor(); }, understand: raw => { D = fresh(); return understand(raw); }, _state: () => D };
 
   /* ---------- подмена прежнего потока ---------- */
   respond = respondV2;
