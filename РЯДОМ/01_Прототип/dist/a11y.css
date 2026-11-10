@@ -31,3 +31,4 @@ body{padding-top:env(safe-area-inset-top,0)}
 .inline-confirm p{margin:0 0 10px}.inline-confirm-row{display:flex;gap:8px;flex-wrap:wrap}
 .inline-confirm-yes{background:#9a4a3b;color:#fff;border:0;border-radius:12px;padding:10px 16px;font-weight:700}
 .inline-confirm-no{background:transparent;color:#315f4c;border:1px solid #b9cdbf;border-radius:12px;padding:10px 16px;font-weight:700}
+input[type=checkbox],input[type=radio]{accent-color:#315f4c}
