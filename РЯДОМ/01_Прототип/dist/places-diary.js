@@ -27,11 +27,11 @@ function renderPlacesForDay(panel,day){
     if(row.feeling||row.note){const line=placeElement('p','diary-place-memory',[row.feeling,row.note].filter(Boolean).join(' · '));card.append(line)}
     const actions=placeElement('div','diary-place-actions');
     const edit=placeElement('button','', 'Изменить');edit.type='button';edit.onclick=()=>showPlaceForm(section,day,row);
-    const remove=placeElement('button','', 'Удалить');remove.type='button';remove.onclick=()=>{if(confirm('Удалить «'+row.name+'» из этого дня?'))savePlaceVisits(placeVisits().filter(x=>x.id!==row.id))};
+    const remove=placeElement('button','', 'Удалить');remove.type='button';remove.onclick=()=>askConfirm('Удалить «'+row.name+'» из этого дня?',remove,()=>savePlaceVisits(placeVisits().filter(x=>x.id!==row.id)));
     actions.append(edit,remove);card.append(actions);section.append(card)
   });
   const add=placeElement('button','add-place-button','＋ Добавить место');add.type='button';add.onclick=()=>showPlaceForm(section,day);section.append(add);
-  section.append(placeElement('p','place-privacy','Места записываешь только ты. Они остаются в этом браузере прототипа и не привязаны к игровому прогрессу.'));
+  section.append(placeElement('p','place-privacy','Места записываешь только ты. Они остаются на этом устройстве и не привязаны к игровому прогрессу.'));
   panel.append(section)
 }
 function showPlaceForm(section,day,existing){
