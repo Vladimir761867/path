@@ -79,9 +79,14 @@
 
     row.append(btn('Сохранить копию файлом', 'ghost', () => {
       const json = exportJson();
+      const fname = 'ryadom-dannye-' + new Date().toISOString().slice(0, 10) + '.json';
+      if (window.RyadomNative && window.RyadomNative.shareFile) {
+        window.RyadomNative.shareFile(fname, json).then(() => say('Выбери, куда сохранить: «Файлы», облако, почта или мессенджер себе.'), () => say('Не получилось открыть «Поделиться». Воспользуйся кнопкой «Скопировать текст».', true));
+        return;
+      }
       try {
         const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([json], { type: 'application/json' }));
-        a.download = 'ryadom-dannye-' + new Date().toISOString().slice(0, 10) + '.json'; document.body.append(a); a.click(); a.remove();
+        a.download = fname; document.body.append(a); a.click(); a.remove();
         say('Файл сохраняется. Если ничего не произошло — воспользуйся кнопкой «Скопировать текст».');
       } catch { say('Не получилось сохранить файл. Воспользуйся кнопкой «Скопировать текст».', true); }
     }));
@@ -103,7 +108,7 @@
     const danger = $('div', 'pv-row');
     const del = btn('Удалить все мои данные', 'danger', () => {
       danger.replaceChildren($('p', 'pv-msg err', 'Будут удалены дневник, разговоры, «Обо мне», места и прогресс игр на этом устройстве. Вернуть их будет нельзя, если нет копии.'),
-        btn('Да, удалить всё', 'danger', () => { wipe(); danger.replaceChildren($('p', 'pv-msg', 'Всё удалено. Обновляю приложение…')); setTimeout(() => location.reload(), 800); }),
+        btn('Да, удалить всё', 'danger', () => { wipe(); danger.replaceChildren($('p', 'pv-msg', 'Всё удалено. Обновляю приложение…')); const done = () => setTimeout(() => location.reload(), 500); if (window.RyadomNative && window.RyadomNative.clearBackup) window.RyadomNative.clearBackup().then(done, done); else done(); }),
         btn('Отмена', 'ghost', () => { danger.replaceChildren(del); }));
     });
     danger.append(del); card.append(danger);

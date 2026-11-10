@@ -1,0 +1,12 @@
+/* Только для приложения: отступы под вырез и системные панели, без выделения текста на кнопках, без «синей вспышки» при нажатии */
+html.native body{padding-top:env(safe-area-inset-top,0)}
+html.native .mobile-nav{padding-bottom:max(8px,env(safe-area-inset-bottom,0))}
+html.native button,html.native .choice,html.native .mobile-nav{-webkit-user-select:none;user-select:none}
+html.native *{-webkit-tap-highlight-color:transparent}
+html.native .composer{padding-bottom:max(15px,env(safe-area-inset-bottom,0))}
+.nt-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.nt-switch{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:650}
+.nt-row input[type=time]{min-height:44px;border:1px solid #dce5db;border-radius:12px;padding:6px 10px;font:inherit;background:#fafbf7;color:inherit}
+
+html.native-booting body{visibility:hidden}
+input[type=checkbox]{accent-color:#315f4c}

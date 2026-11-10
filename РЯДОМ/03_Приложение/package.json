@@ -1,0 +1,33 @@
+{
+  "name": "ryadom-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "«Рядом» — мобильное приложение (Capacitor) на основе веб-версии из 01_Прототип/dist",
+  "scripts": {
+    "web": "node scripts/build-web.js",
+    "sync": "npm run web && npx cap sync",
+    "android": "npm run sync && npx cap open android",
+    "ios": "npm run sync && npx cap open ios",
+    "apk": "npm run sync && cd android && ./gradlew assembleDebug",
+    "bundle": "npm run sync && cd android && ./gradlew bundleRelease",
+    "icons": "npx @capacitor/assets generate --iconBackgroundColor '#315f4c' --iconBackgroundColorDark '#1d3a2e' --splashBackgroundColor '#f5f3ed' --splashBackgroundColorDark '#18241f'"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.6.0",
+    "@capacitor/filesystem": "^8.1.5",
+    "@capacitor/haptics": "^8.0.2",
+    "@capacitor/ios": "^8.6.0",
+    "@capacitor/keyboard": "^8.0.6",
+    "@capacitor/local-notifications": "^8.3.1",
+    "@capacitor/preferences": "^8.0.1",
+    "@capacitor/share": "^8.0.3",
+    "@capacitor/splash-screen": "^8.0.2",
+    "@capacitor/status-bar": "^8.0.4"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^4.0.0",
+    "@capacitor/cli": "^8.6.0"
+  }
+}
