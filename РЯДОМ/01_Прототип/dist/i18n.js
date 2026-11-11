@@ -227,7 +227,11 @@
   }
   onBody(() => setTimeout(mountPickers, 0));
 
+  // Языки, на которые переведены квесты и сюжетные истории (папки quests/<код>/ и stories/<код>/)
+  const CONTENT = ['ru', 'en'];
+  const contentPath = (dir, id) => (lang !== 'ru' && CONTENT.includes(lang) ? dir + '/' + lang + '/' : dir + '/') + id + '.json';
   window.RyadomI18n = {
+    content: CONTENT, contentPath, hasContent: () => CONTENT.includes(lang),
     lang, langs: LANGS, locale: meta[2], dir: root.dir, t, setLang, picker, missing,
     get ready() { return ready; },
     get lex() { return (store[lang] && store[lang].lex) || null; },

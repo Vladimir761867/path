@@ -1,0 +1,493 @@
+{
+ "id": "partner-needs",
+ "title": "Say what you need",
+ "kicker": "QUEST · CONVERSATION TRAINER",
+ "tag": "QUEST · 5 STEPS · 2 STYLES",
+ "intro": {
+  "title": "Say what you need",
+  "paragraphs": [
+   "For the last few weeks you and your partner have barely spent time together. You want to change that, but the talk could turn into reproaches.",
+   "You try to talk about your need, not about their fault.",
+   "Choose what to say. If an answer doesn’t work, you stay where you are, see the reaction and understand why."
+  ],
+  "note": "The other person’s styles are patterns of behaviour, not types of people: the same person acts differently on different days. Real people react differently, so this is practice with wording, not a prediction.",
+  "disclaimer": "A learning simulation. The material draws on well-known communication methods (sources are given at each step), but it has not yet been reviewed by a psychologist."
+ },
+ "pick": "Who are you talking to?",
+ "variants": [
+  {
+   "id": "direct",
+   "name": "Tired and closed off",
+   "desc": "Comes home drained, answers briefly, wants things “to the point”.",
+   "boss": {
+    "name": "Andrey",
+    "look": {
+     "style": "short",
+     "skin": "#d9a882",
+     "hair": "#3a2f27",
+     "top": "#5a6e8a",
+     "pants": "#2f3844"
+    },
+    "expr": {
+     "fail": "impatient",
+     "good": "listening",
+     "soft": "softened",
+     "smile": "smile"
+    }
+   }
+  },
+  {
+   "id": "evasive",
+   "name": "Touchy",
+   "desc": "Quickly hears blame and gets upset.",
+   "boss": {
+    "name": "Alina",
+    "look": {
+     "style": "bun",
+     "skin": "#e8bf9c",
+     "hair": "#6b4a3a",
+     "top": "#b5807a",
+     "pants": "#3b3440"
+    },
+    "expr": {
+     "fail": "tense",
+     "good": "listening",
+     "soft": "softened",
+     "smile": "smile"
+    }
+   }
+  }
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "stage": "kitchen",
+   "pos": 0,
+   "heroExpr": "tense",
+   "narr": "Late evening at home. For the last few weeks you’ve barely spent time together, and it has become hard. You want to say so.",
+   "ask": "How do you start?",
+   "options": [
+    {
+     "id": "soft",
+     "text": "I’d like to talk about us, without reproaches. When suits you: ten minutes tonight or at the weekend?",
+     "quality": "good",
+     "why": "A soft start with a choice of time reduces the feeling of being attacked. You’re not accusing, you’re inviting a conversation.",
+     "react": {
+      "direct": {
+       "say": "Let’s do the weekend, I have no energy today. Thanks for not making it tonight."
+      },
+      "evasive": {
+       "say": "OK, let’s do the weekend. I need to prepare."
+      }
+     }
+    },
+    {
+     "id": "accuse",
+     "text": "You don’t care about me at all!",
+     "quality": "bad",
+     "why": "The sentence starts with “you” and sounds like an accusation. The other person defends themselves, and the topic of your need gets lost.",
+     "react": {
+      "direct": {
+       "say": "That’s unfair, I’m working myself to death."
+      },
+      "evasive": {
+       "say": "So I’m bad? That’s it, I don’t want to hear this."
+      }
+     }
+    },
+    {
+     "id": "hint",
+     "text": "Nothing, I just wanted to sit together.",
+     "quality": "bad",
+     "why": "The need is named too vaguely and without a reason. The other person doesn’t understand what the talk is about.",
+     "react": {
+      "direct": {
+       "say": "OK, let’s sit. Did something happen?"
+      },
+      "evasive": {
+       "say": "Let’s sit… is something wrong?"
+      }
+     }
+    },
+    {
+     "id": "later",
+     "text": "Oh, nothing, some other time.",
+     "quality": "bad",
+     "why": "Postponing without a date means bottling it up. What’s unsaid will grow and burst out at an awkward moment.",
+     "react": {
+      "direct": {
+       "say": "OK, as you like."
+      },
+      "evasive": {
+       "say": "Well, OK."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "A soft start",
+    "src": "Gottman & Silver, 1999",
+    "text": "Start with a description and an invitation, not with criticism and “you always…”."
+   },
+   "hint": "How to invite a conversation without opening it as a complaint?",
+   "boss": {
+    "direct": {
+     "say": "I’m very tired today. Is it urgent?",
+     "expr": "impatient"
+    },
+    "evasive": {
+     "say": "Do you need to discuss something? Sounds serious…",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "iam",
+   "stage": "kitchen",
+   "pos": 1,
+   "heroExpr": "calm",
+   "narr": "The other person agreed to listen.",
+   "ask": "How do you talk about what you feel?",
+   "options": [
+    {
+     "id": "nvc",
+     "text": "For the last few weeks we’ve barely seen each other in the evenings, and I miss it. I’d like us to spend at least a couple of hours a week together.",
+     "quality": "good",
+     "why": "The structure: observation, feeling, need, request. You talk about yourself and name something specific instead of blaming.",
+     "react": {
+      "direct": {
+       "say": "I see. I really didn’t notice how rarely."
+      },
+      "evasive": {
+       "say": "OK. It matters to me that you’re saying this."
+      }
+     }
+    },
+    {
+     "id": "always",
+     "text": "You never have time, you never think about me.",
+     "quality": "bad",
+     "why": "Words like “always” and “never” are generalisations. The other person hears blame and starts listing exceptions.",
+     "react": {
+      "direct": {
+       "say": "Not true. Last week we went to the cinema."
+      },
+      "evasive": {
+       "say": "Right now it hurts to hear “never”."
+      }
+     }
+    },
+    {
+     "id": "silent",
+     "text": "I’m just sad, that’s all.",
+     "quality": "bad",
+     "why": "Describing a feeling without an observation and a request leaves the other person guessing. They don’t know what to do.",
+     "react": {
+      "direct": {
+       "say": "So what am I supposed to do now?"
+      },
+      "evasive": {
+       "say": "I’m sad too… but what do we do about it?"
+      }
+     }
+    },
+    {
+     "id": "compare",
+     "text": "Other couples are together all the time.",
+     "quality": "bad",
+     "why": "Comparing with others makes people feel inadequate and leads to an argument.",
+     "react": {
+      "direct": {
+       "say": "Then go live with those others."
+      },
+      "evasive": {
+       "say": "OK, so I’m worse than others."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Observation, feeling, need, request",
+    "src": "Rosenberg, «Nonviolent Communication», 1999",
+    "text": "Talk about what you see and feel and ask for a specific action."
+   },
+   "hint": "How to talk about your need without blaming?",
+   "boss": {
+    "direct": {
+     "say": "Go on then. Just to the point.",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "OK… I’m listening.",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "hear",
+   "stage": "kitchen",
+   "pos": 2,
+   "heroExpr": "calm",
+   "narr": "The other person answers, and you can hear tiredness in it.",
+   "ask": "What do you answer?",
+   "options": [
+    {
+     "id": "valid",
+     "text": "You get really tired, and you need quiet after work. That makes sense. I want to find a way that works for both of us.",
+     "quality": "good",
+     "why": "Validation shows you heard and accepted the other person’s position. The solution is looked for together.",
+     "react": {
+      "direct": {
+       "say": "Thanks for understanding. Let’s figure something out."
+      },
+      "evasive": {
+       "say": "It’s easier for me when you say it like that. Let’s figure something out."
+      }
+     }
+    },
+    {
+     "id": "ignore",
+     "text": "But I get tired too, and I still find the energy.",
+     "quality": "bad",
+     "why": "Comparing tiredness devalues the other person’s experience and starts a “who has it harder” argument.",
+     "react": {
+      "direct": {
+       "say": "Don’t compare, it’s unfair."
+      },
+      "evasive": {
+       "say": "So I’m weak."
+      }
+     }
+    },
+    {
+     "id": "retreat",
+     "text": "OK, forget it, this talk was pointless.",
+     "quality": "bad",
+     "why": "Backing off at the first objection shuts down your need and leaves resentment.",
+     "react": {
+      "direct": {
+       "say": "OK, forgotten."
+      },
+      "evasive": {
+       "say": "Fine, forgotten, as you say."
+      }
+     }
+    },
+    {
+     "id": "fix",
+     "text": "Just go to bed earlier, that’s all.",
+     "quality": "bad",
+     "why": "Unrequested advice comes across as brushing off feelings.",
+     "react": {
+      "direct": {
+       "say": "Thanks for the advice."
+      },
+      "evasive": {
+       "say": "I don’t need advice."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Validation",
+    "src": "Linehan, «Skills Training Manual», 1993; Rogers, 1957",
+    "text": "Show that you understand the other person’s feelings and reasons, without agreeing with everything or arguing."
+   },
+   "hint": "How to show you heard their tiredness?",
+   "boss": {
+    "direct": {
+     "say": "I really am worn out. After work I need some quiet.",
+     "expr": "tense"
+    },
+    "evasive": {
+     "say": "I’m trying. And you’re complaining on top of it…",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "ask",
+   "stage": "kitchen",
+   "pos": 3,
+   "heroExpr": "calm",
+   "narr": "The tension has eased. Time to suggest something specific.",
+   "ask": "What do you suggest?",
+   "options": [
+    {
+     "id": "small",
+     "text": "Let’s try this: two evenings a week, an hour each without phones, and leave the other evenings as they are. Does that work?",
+     "quality": "good",
+     "why": "A small realistic experiment is easier to accept than “always together”. You ask for something specific and leave a choice.",
+     "react": {
+      "direct": {
+       "say": "Two evenings, an hour each… that’s doable. Let’s try."
+      },
+      "evasive": {
+       "say": "OK, an hour on two evenings. That’s not scary."
+      }
+     }
+    },
+    {
+     "id": "huge",
+     "text": "I want us to spend every evening together.",
+     "quality": "bad",
+     "why": "A request that’s too big causes resistance. The other person feels they won’t manage.",
+     "react": {
+      "direct": {
+       "say": "Every evening? That’s impossible."
+      },
+      "evasive": {
+       "say": "Every evening? I’ll suffocate."
+      }
+     }
+    },
+    {
+     "id": "vague",
+     "text": "Well, somehow more time.",
+     "quality": "bad",
+     "why": "A vague request makes it impossible to agree and check whether it’s been done.",
+     "react": {
+      "direct": {
+       "say": "More — how much is that?"
+      },
+      "evasive": {
+       "say": "Somehow… that’s nothing."
+      }
+     }
+    },
+    {
+     "id": "deal",
+     "text": "Either this, or I’ll understand you don’t need this relationship.",
+     "quality": "bad",
+     "why": "An ultimatum plays on fear and closes the dialogue.",
+     "react": {
+      "direct": {
+       "say": "Don’t blackmail me."
+      },
+      "evasive": {
+       "say": "You can’t do that, you’re scaring me."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "A small specific request",
+    "src": "Linehan, 1993 (DEAR MAN, «Ask»); Gollwitzer, 1999",
+    "text": "Ask for a specific action of a clear size: when, how long, how often."
+   },
+   "hint": "What request is easy to do and easy to check?",
+   "boss": {
+    "direct": {
+     "say": "So what do you want?",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "OK. What exactly are you suggesting?",
+     "expr": "neutral"
+    }
+   }
+  },
+  {
+   "id": "end",
+   "stage": "kitchen",
+   "pos": 4,
+   "heroExpr": "calm",
+   "narr": "An agreement is close. It’s important to end warmly.",
+   "ask": "How do you finish?",
+   "options": [
+    {
+     "id": "warm",
+     "text": "Thank you for listening and looking for a solution. It means a lot to me. Let’s check in two weeks how it’s going.",
+     "quality": "good",
+     "why": "Thanks for something specific and a promise to check after a set time turn the agreement into a living process. You value the effort, not just the result.",
+     "react": {
+      "direct": {
+       "say": "Yes, let’s. It matters to me too."
+      },
+      "evasive": {
+       "say": "OK, we’ll check. Thank you."
+      }
+     }
+    },
+    {
+     "id": "done",
+     "text": "You see, nothing terrible.",
+     "quality": "bad",
+     "why": "A triumphant tone devalues the other person’s feelings and sounds like “I told you so”.",
+     "react": {
+      "direct": {
+       "say": "Don’t overdo it, OK?"
+      },
+      "evasive": {
+       "say": "I didn’t say it was terrible."
+      }
+     }
+    },
+    {
+     "id": "promise",
+     "text": "I know everything will be fine with us.",
+     "quality": "bad",
+     "why": "A general reassurance without a plan sounds empty and doesn’t ease anxiety.",
+     "react": {
+      "direct": {
+       "say": "I hope so."
+      },
+      "evasive": {
+       "say": "I hope so…"
+      }
+     }
+    },
+    {
+     "id": "quiet",
+     "text": "OK.",
+     "quality": "bad",
+     "why": "A short agreement without thanks or a date leaves the feeling the conversation isn’t finished.",
+     "react": {
+      "direct": {
+       "say": "Well, OK."
+      },
+      "evasive": {
+       "say": "OK…"
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Thanks and a check-in",
+    "src": "Gottman & Silver, 1999; Algoe, 2012",
+    "text": "Thank them for a specific effort and set a date to check the result."
+   },
+   "hint": "How to finish so you support the effort and lock in the agreement?",
+   "boss": {
+    "direct": {
+     "say": "OK. Let’s try.",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "Fine. We’ll try.",
+     "expr": "neutral"
+    }
+   }
+  }
+ ],
+ "finale": {
+  "boss": {
+   "direct": {
+    "say": "OK. Let’s check in two weeks.",
+    "expr": "smile"
+   },
+   "evasive": {
+    "say": "OK. Thanks for talking about this.",
+    "expr": "smile"
+   }
+  },
+  "title": "Speak and be heard",
+  "lead": "The need was named, the tiredness was heard, a small plan was found. Here’s what it relied on:",
+  "carry": [
+   "Starting with an invitation, not a reproach.",
+   "Talking about yourself: what I see, what I feel, what I ask.",
+   "Asking for something small and specific; thanking them for the effort."
+  ],
+  "prompt": "What do you need from someone close to you? Write it as one sentence: “I’d like…”."
+ }
+}

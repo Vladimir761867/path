@@ -23,7 +23,9 @@
 
   function loadQuest(id) {
     if (cache[id]) return Promise.resolve(cache[id]);
-    return fetch('quests/' + id + '.json').then(r => { if (!r.ok) throw new Error('http'); return r.json(); }).then(j => (cache[id] = j));
+    const ru = 'quests/' + id + '.json', p = window.RyadomI18n ? window.RyadomI18n.contentPath('quests', id) : ru;
+    const get = u => fetch(u).then(r => { if (!r.ok) throw new Error('http'); return r.json(); });
+    return get(p).catch(e => { if (p !== ru) return get(ru); throw e; }).then(j => (cache[id] = j));
   }
   const readDone = id => { try { const x = JSON.parse(localStorage.getItem(KEY(id)) || '{}'); return Array.isArray(x.done) ? x.done : []; } catch { return []; } };
   function markDone(id, variant) { try { const d = readDone(id); if (!d.includes(variant)) d.push(variant); localStorage.setItem(KEY(id), JSON.stringify({ done: d })); } catch { /* */ } renderCards(); }
@@ -314,7 +316,7 @@
   function open(id) { loadQuest(id).then(q => { Q = q; S = null; renderIntro(); }).catch(() => { const r = root(); r.replaceChildren(); topBar(r); r.append(h('p', 'qz-note', 'Не удалось загрузить квест. Проверь соединение и попробуй ещё раз.')); }); }
   function mount() {
     const grid = $('#gameGrid'); if (!grid) return;
-    const sec = h('section', 'qz-section'); sec.append(h('h2', null, 'Тренажёры разговоров'), h('p', 'qz-sub', 'Квесты, где выбор слов меняет ход разговора. Опираются на известные методики общения.')); if (window.RyadomI18n && window.RyadomI18n.lang !== 'ru') sec.append(h('p', 'qz-sub qz-lang-note', 'Квесты и сюжетные игры пока доступны только на русском языке. Перевод появится в следующих версиях.')); const cards = h('div', 'qz-cards'); cards.id = 'qzCards'; sec.append(cards);
+    const sec = h('section', 'qz-section'); sec.append(h('h2', null, 'Тренажёры разговоров'), h('p', 'qz-sub', 'Квесты, где выбор слов меняет ход разговора. Опираются на известные методики общения.')); if (window.RyadomI18n && !window.RyadomI18n.hasContent()) sec.append(h('p', 'qz-sub qz-lang-note', 'Квесты и сюжетные игры пока доступны только на русском языке. Перевод появится в следующих версиях.')); const cards = h('div', 'qz-cards'); cards.id = 'qzCards'; sec.append(cards);
     const anchor = grid.closest('details') || grid; anchor.before(sec); renderCards();
   }
   window.RyadomQuest = { open, _state: () => S, _quest: () => Q };

@@ -1,0 +1,2397 @@
+{
+ "id": "tihiy-gorod",
+ "label": "QUIET TOWN · A WEEK OF DECISIONS",
+ "hero": {
+  "defaultName": "Sasha"
+ },
+ "energy": 5,
+ "nextDayEnergy": 1,
+ "days": [
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday"
+ ],
+ "dayAbbr": [
+  "Tue",
+  "Wed",
+  "Thu",
+  "Fri"
+ ],
+ "slots": [
+  "day",
+  "evening"
+ ],
+ "opener": "letter",
+ "openerWhen": "Monday, morning",
+ "openerShort": "Mon · morning",
+ "deadline": "Answer to the employer — on Sunday, by 12:00",
+ "ui": {
+  "afterOpener": "To the week →",
+  "toFinal": "Sunday arrives →",
+  "toEpilogue": "What happened next →",
+  "weekLabel": "WEEK · {n} OF {total} DAYS",
+  "hubLead": "Choose how to spend this slot. There isn’t time for everything.",
+  "hubTip": "There are more meetings in the week than slots: each one you live closes off another, and what you skip leaves a mark too."
+ },
+ "intro": {
+  "kicker": "INTERACTIVE STORY",
+  "title": "A week before the answer",
+  "paragraphs": [
+   "On Monday a letter arrives: a job in another city. The answer is needed by Sunday noon. You have a week — eight time slots and five units of energy.",
+   "Talk to Mum, Dad, a friend, count the money or just go for a walk — there isn’t enough for everything. There’s no right ending here: every choice has its price."
+  ],
+  "disclaimer": "A fictional story. Choices in the game send nothing to your loved ones and don’t judge your real relationships."
+ },
+ "npcs": {
+  "mom": {
+   "name": "Mum",
+   "ink": "#b5876d",
+   "words": [
+    "hurt",
+    "tense",
+    "even",
+    "warmer"
+   ]
+  },
+  "dad": {
+   "name": "Dad",
+   "ink": "#5f7f9a",
+   "words": [
+    "closed off",
+    "worried",
+    "even",
+    "calmer"
+   ]
+  },
+  "nika": {
+   "name": "Nika",
+   "ink": "#7c6aa8",
+   "words": [
+    "hurt",
+    "drifted apart",
+    "in touch",
+    "close"
+   ]
+  },
+  "rita": {
+   "name": "Rita",
+   "ink": "#4f8a76",
+   "words": [
+    "—",
+    "—",
+    "in touch",
+    "in touch"
+   ],
+   "fixedWord": "in touch",
+   "showIf": {
+    "flag": "rita_contact"
+   }
+  }
+ },
+ "clues": {
+  "offer": "The letter: a salary higher than your current one and a note, “start conditions can be discussed”. Answer by Sunday, 12:00.",
+  "deadline": "Answer to the employer — on Sunday, by 12:00. A delay is better asked for in advance.",
+  "rent": "Rita: rent in Ozyorsk is almost half the salary.",
+  "lonely": "Rita: the first three months there are lonely; a sports club and the neighbours on the stairs help.",
+  "photo_sea": "A photo by the sea: Dad looks younger and calmer in it.",
+  "napkin": "Nika’s napkin: on the left “what they expect”, on the right “what I want”. The right column is empty.",
+  "dad_notebook": "Dad’s notebook: expenses and addresses. Behind the worry — a wish to help.",
+  "city_map": "Rita sent a map: everything you need is ten minutes’ walk away."
+ },
+ "scenes": [
+  {
+   "id": "letter",
+   "who": [
+    "mom"
+   ],
+   "title": "A letter on the table",
+   "place": "Kitchen",
+   "bg": "kitchen",
+   "icon": "✉",
+   "when": "Monday, morning",
+   "cost": 0,
+   "intro": "On the kitchen table lies a letter: you’re offered a job in Ozyorsk. The answer is needed by Sunday, 12:00. Mum puts a cup in front of you and notices the envelope.",
+   "line": {
+    "npc": "mom",
+    "text": "Are you really thinking of leaving? I’m used to you being here on Sundays."
+   },
+   "objects": [
+    {
+     "id": "letter",
+     "icon": "✉",
+     "label": "Letter",
+     "text": "A position, a salary higher than your current one and a note: “start conditions can be discussed”. Answer by Sunday, 12:00.",
+     "fx": [
+      {
+       "clue": "offer"
+      },
+      {
+       "clue": "deadline"
+      }
+     ]
+    },
+    {
+     "id": "cup",
+     "icon": "☕",
+     "label": "Cup",
+     "text": "Mum remembers what tea you like. The care here is real — and so are the expectations.",
+     "fx": [
+      {
+       "flag": "care"
+      }
+     ]
+    }
+   ],
+   "choices": [
+    {
+     "id": "listen",
+     "text": "“I’m still thinking. It matters to me that you hear me out.”",
+     "cost": 1,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        6
+       ]
+      },
+      {
+       "clarity": 1
+      },
+      {
+       "flag": "asked_listen"
+      }
+     ],
+     "result": "Mum looks into her cup for a long time. “I’m scared you’ll drift away. But go on — I’m listening.” For the first half-minute she really is quiet.",
+     "trace": "Mum heard the request to listen."
+    },
+    {
+     "id": "harsh",
+     "text": "“It’s my life. Don’t interfere.”",
+     "cost": 2,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        -10
+       ]
+      },
+      {
+       "clarity": 1
+      },
+      {
+       "flag": "harsh"
+      }
+     ],
+     "result": "Mum turns to the window. “Fine.” The boundary was stated, the conversation is closed. Behind the wall a door creaks — Dad heard.",
+     "trace": "The morning’s sharpness stayed between you."
+    },
+    {
+     "id": "hide",
+     "text": "Put the letter in your pocket and change the subject.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        1
+       ]
+      },
+      {
+       "flag": "hid_letter"
+      }
+     ],
+     "result": "The letter ends up in your pocket. The talk about the weather goes smoothly — and strangely empty.",
+     "trace": "The letter is hidden. For now."
+    },
+    {
+     "id": "read",
+     "text": "Put the letter on the table and read it together with Mum.",
+     "cost": 1,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        5
+       ]
+      },
+      {
+       "clarity": 1
+      },
+      {
+       "flag": "mom_read_letter"
+      }
+     ],
+     "result": "Mum reads the letter twice. “And housing? And who will you have there?” Her fear turns into a list of questions — that’s easier to work with than fear.",
+     "trace": "Mum read the letter herself.",
+     "req": {
+      "clue": "offer"
+     }
+    },
+    {
+     "id": "thanks",
+     "text": "“Thanks for the tea. I need time — and for you not to rush me.”",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        4
+       ]
+      },
+      {
+       "energy": 1
+      },
+      {
+       "flag": "thanked"
+      }
+     ],
+     "result": "Mum smiles awkwardly. “I’m not rushing you. I’m just afraid of not having enough time.”",
+     "trace": "Mum heard the request for time.",
+     "req": {
+      "flag": "care"
+     }
+    }
+   ]
+  },
+  {
+   "id": "dad_backpack",
+   "who": [
+    "dad"
+   ],
+   "title": "The old backpack",
+   "place": "Room",
+   "bg": "room",
+   "slots": "eve",
+   "cost": 1,
+   "icon": "🎒",
+   "teaser": "Dad noticed the open backpack.",
+   "intro": [
+    "Evening. The backpack lies open on the bed — you’re checking the zips, having decided nothing yet. Dad knocks and, without asking about the city, first asks about the lock.",
+    {
+     "if": {
+      "flag": "harsh"
+     },
+     "text": "He heard the morning conversation through the wall, so he moves more quietly than usual."
+    },
+    {
+     "if": {
+      "flag": "hid_letter"
+     },
+     "text": "He adds: “Mum says you’re hiding something. I’m not asking what.”"
+    }
+   ],
+   "line": {
+    "npc": "dad",
+    "text": "If you decide to go — let’s at least check everything. I worry when you rush."
+   },
+   "objects": [
+    {
+     "id": "lock",
+     "icon": "🎒",
+     "label": "Zip",
+     "text": "The zip sticks. Dad fixes it silently and with concentration — that’s his way of saying “I’m here”.",
+     "fx": [
+      {
+       "flag": "dad_fixes"
+      }
+     ]
+    },
+    {
+     "id": "photo",
+     "icon": "▣",
+     "label": "A photo by the sea",
+     "text": "A photo by the sea: the three of you. Dad looks younger and calmer in it than usual.",
+     "fx": [
+      {
+       "clue": "photo_sea"
+      }
+     ]
+    }
+   ],
+   "choices": [
+    {
+     "id": "plan",
+     "text": "Ask Dad to help with a travel plan.",
+     "cost": 1,
+     "fx": [
+      {
+       "trust": [
+        "dad",
+        8
+       ]
+      },
+      {
+       "clarity": 1
+      },
+      {
+       "flag": "dad_plan"
+      }
+     ],
+     "result": "He takes out a notebook. For the first time you discuss not “whether” but “how”.",
+     "trace": "Dad helps make a plan."
+    },
+    {
+     "id": "time",
+     "text": "Say you need time to think.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "dad",
+        3
+       ]
+      }
+     ],
+     "result": "Dad nods: “OK. Just don’t stay silent until Sunday — that’s harder than any answer.”",
+     "trace": "Dad gave you time but is waiting for words."
+    },
+    {
+     "id": "stay",
+     "text": "Say there won’t be any move.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "dad",
+        4
+       ]
+      },
+      {
+       "clarity": -1
+      },
+      {
+       "flag": "promised_stay"
+      }
+     ],
+     "result": "Dad smiles with relief and closes the backpack. You feel uneasy: the words came before the decision.",
+     "trace": "Dad heard: “I’m not going anywhere.”"
+    },
+    {
+     "id": "story",
+     "text": "Ask Dad how he once left home himself.",
+     "cost": 1,
+     "fx": [
+      {
+       "trust": [
+        "dad",
+        8
+       ]
+      },
+      {
+       "flag": "dad_story"
+      }
+     ],
+     "result": "“With one suitcase,” he laughs. “Grandpa didn’t speak to me for a week. For a long time afterwards I was afraid of doing the same to you — staying silent.”",
+     "trace": "Dad told you about his suitcase.",
+     "req": {
+      "clue": "photo_sea"
+     }
+    }
+   ]
+  },
+  {
+   "id": "nika_cafe",
+   "who": [
+    "nika"
+   ],
+   "title": "Talking to Nika",
+   "place": "Café",
+   "bg": "cafe",
+   "slots": "day",
+   "cost": 0,
+   "icon": "☼",
+   "teaser": "Nika invites you to lunch.",
+   "intro": "Nika invites you to lunch. There are two napkins on the table: on one she draws a house, on the other a road.",
+   "line": {
+    "npc": "nika",
+    "cases": [
+     {
+      "if": {
+       "clarity": [
+        ">=",
+        3
+       ]
+      },
+      "text": "You seem more together. Has something become clear — or are you just pretending?"
+     },
+     {
+      "text": "Listen, you have the face of someone hiding a cat. Spill it. And then: what do you want — not Mum, not Dad, not me?"
+     }
+    ]
+   },
+   "objects": [
+    {
+     "id": "napkin",
+     "icon": "🧻",
+     "label": "Napkin",
+     "text": "Nika drew two columns: “what they expect” and “what I want”. The right one is still empty.",
+     "fx": [
+      {
+       "clue": "napkin"
+      }
+     ]
+    },
+    {
+     "id": "phone",
+     "icon": "📱",
+     "label": "Nika’s phone",
+     "text": "Nika scrolls through photos: “Rita from our old team has been in Ozyorsk for two years. Call her — she’ll tell you what it’s really like.”",
+     "fx": [
+      {
+       "flag": "rita_contact"
+      }
+     ]
+    }
+   ],
+   "choices": [
+    {
+     "id": "want",
+     "text": "Tell her what genuinely excites you about the offer.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "nika",
+        6
+       ]
+      },
+      {
+       "clarity": 2
+      },
+      {
+       "flag": "said_want"
+      }
+     ],
+     "result": "Nika slides over a clean napkin: “Write it down. Let your wish be on the table too.” You write three words — and are surprised by what they are.",
+     "trace": "The wish was said out loud."
+    },
+    {
+     "id": "fear",
+     "text": "Admit you’re afraid of upsetting Mum.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "nika",
+        5
+       ]
+      },
+      {
+       "clarity": 1
+      }
+     ],
+     "result": "“Fear of upsetting someone is about love, not weakness,” says Nika. “But if you decide only because of it, later you’ll resent everyone.”",
+     "trace": "Nika heard the fear."
+    },
+    {
+     "id": "skip",
+     "text": "Ask not to discuss it for now.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "nika",
+        -2
+       ]
+      },
+      {
+       "energy": 1
+      }
+     ],
+     "result": "Nika puts the napkins away and tells a story about a neighbour and a parrot. You laugh for the first time in three days. The topic hasn’t gone anywhere, though.",
+     "trace": "A breather without the conversation."
+    },
+    {
+     "id": "full",
+     "text": "Fill in the right column of the napkin completely.",
+     "cost": 1,
+     "fx": [
+      {
+       "trust": [
+        "nika",
+        3
+       ]
+      },
+      {
+       "clarity": 2
+      },
+      {
+       "flag": "napkin_full"
+      }
+     ],
+     "result": "Six lines come out. Two surprise you, one scares you. Nika folds the napkin neatly: “Keep it.”",
+     "trace": "The napkin of wishes stayed with you.",
+     "req": {
+      "clue": "napkin"
+     }
+    }
+   ]
+  },
+  {
+   "id": "rita_call",
+   "who": [
+    "rita"
+   ],
+   "title": "Calling Rita",
+   "place": "Phone",
+   "bg": "room",
+   "slots": "both",
+   "cost": 0,
+   "icon": "☎",
+   "avail": {
+    "flag": "rita_contact"
+   },
+   "teaser": "Rita from the old team lives in Ozyorsk.",
+   "intro": "Rita picks up on the second ring. You can hear a tram — it’s evening in Ozyorsk.",
+   "line": {
+    "npc": "rita",
+    "text": "Oh, it’s you. Nika wrote that you’re thinking about moving. Ask anything — no sugar coating."
+   },
+   "objects": [
+    {
+     "id": "map",
+     "icon": "🗺",
+     "label": "Map",
+     "text": "Rita sends a map: her home, the office, the park. Ten minutes’ walk to everything — that’s true.",
+     "fx": [
+      {
+       "clue": "city_map"
+      }
+     ]
+    },
+    {
+     "id": "list",
+     "icon": "📒",
+     "label": "Rita’s notes",
+     "text": "Rita has a list of first-month mistakes. Item three: “didn’t calculate the cost of living”.",
+     "fx": [
+      {
+       "flag": "rita_list"
+      }
+     ]
+    }
+   ],
+   "choices": [
+    {
+     "id": "money",
+     "text": "Ask how much it really costs to live there.",
+     "cost": 0,
+     "fx": [
+      {
+       "clarity": 1
+      },
+      {
+       "clue": "rent"
+      }
+     ],
+     "result": "Rita names the figures: rent is almost half the salary, a studio near the metro costs more. “But without this number you can’t decide honestly.”",
+     "trace": "Real figures appeared."
+    },
+    {
+     "id": "lonely",
+     "text": "Ask what the first months there are like.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "rita",
+        6
+       ]
+      },
+      {
+       "clarity": 1
+      },
+      {
+       "clue": "lonely"
+      }
+     ],
+     "result": "“Lonely. For three months, almost every evening. Then a climbing club and the neighbour on my stairs.” She doesn’t try to convince you.",
+     "trace": "Rita told you about the loneliness."
+    },
+    {
+     "id": "advice",
+     "text": "Ask directly: “Is it worth going?”",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "rita",
+        2
+       ]
+      }
+     ],
+     "result": "Rita laughs: “I’ll tell you how it was for me. The choice is yours.” There’s no answer, but a hint appears about what else to ask.",
+     "trace": "The decision stayed with you."
+    },
+    {
+     "id": "mistakes",
+     "text": "Ask her to send the list of first-month mistakes.",
+     "cost": 0,
+     "fx": [
+      {
+       "clarity": 2
+      },
+      {
+       "flag": "budget_hint"
+      }
+     ],
+     "result": "A minute later the list arrives. You read it twice: half the mistakes can be predicted in advance.",
+     "trace": "You have a list of someone else’s mistakes.",
+     "req": {
+      "flag": "rita_list"
+     }
+    }
+   ]
+  },
+  {
+   "id": "work_email",
+   "who": [],
+   "title": "A letter to the employer",
+   "place": "Desk",
+   "bg": "room",
+   "slots": "both",
+   "cost": 1,
+   "icon": "✎",
+   "teaser": {
+    "cases": [
+     {
+      "if": {
+       "clue": "offer"
+      },
+      "text": "There’s something to clarify in the note."
+     },
+     {
+      "text": "The letter is unanswered."
+     }
+    ]
+   },
+   "intro": {
+    "cases": [
+     {
+      "if": {
+       "clue": "offer"
+      },
+      "text": "The letter is open on the screen. The note about “start conditions” is right there — now you need to decide what to do with it."
+     },
+     {
+      "text": "The offer letter sits in your inbox. You read it on the run — the details slip away. The cursor blinks in an empty reply field."
+     }
+    ]
+   },
+   "objects": [
+    {
+     "id": "cal",
+     "icon": "🗓",
+     "label": "Calendar",
+     "text": "Until Sunday, 12:00 — four days. A delay is possible, but it’s better to ask for it in advance.",
+     "fx": [
+      {
+       "clue": "deadline"
+      }
+     ]
+    },
+    {
+     "id": "note",
+     "icon": "📄",
+     "label": "The note",
+     "text": "At the end of the letter: “start conditions and the format of the first weeks are negotiable”.",
+     "fx": [
+      {
+       "clue": "offer"
+      }
+     ]
+    }
+   ],
+   "choices": [
+    {
+     "id": "cond",
+     "text": "Clarify the start date, the format of the first weeks and the answer deadline.",
+     "cost": 1,
+     "fx": [
+      {
+       "clarity": 2
+      },
+      {
+       "flag": "asked_conditions"
+      },
+      {
+       "flag": "remote_start"
+      }
+     ],
+     "result": "An hour later the answer comes: the first three weeks can be remote, the start date is moved by a month. The answer deadline stays the same.",
+     "trace": "A remote start is agreed.",
+     "req": {
+      "clue": "offer"
+     }
+    },
+    {
+     "id": "time",
+     "text": "Ask for an extra week to think.",
+     "cost": 1,
+     "fx": [
+      {
+       "clarity": 1
+      },
+      {
+       "flag": "extra_time"
+      }
+     ],
+     "result": "“We can wait until next Friday,” the recruiter writes. A delay isn’t a gift but an agreement, and now it’s on record.",
+     "trace": "The delay is agreed.",
+     "req": {
+      "clue": "deadline"
+     }
+    },
+    {
+     "id": "thanks",
+     "text": "Reply with a general “thanks, I’m thinking it over”.",
+     "cost": 0,
+     "fx": [],
+     "result": "The letter goes. Nothing has changed — but at least the question of whether you replied at all isn’t hanging.",
+     "trace": "A polite reply was sent."
+    }
+   ]
+  },
+  {
+   "id": "mom_call",
+   "who": [
+    "mom"
+   ],
+   "title": "A call from Mum",
+   "place": "Balcony",
+   "bg": "street",
+   "slots": "eve",
+   "cost": 1,
+   "icon": "▣",
+   "avail": {
+    "any": [
+     {
+      "day": [
+       ">=",
+       1
+      ]
+     },
+     {
+      "flag": "harsh"
+     },
+     {
+      "flag": "hid_letter"
+     }
+    ]
+   },
+   "urgent": {
+    "any": [
+     {
+      "flag": "harsh"
+     },
+     {
+      "flag": "hid_letter"
+     }
+    ]
+   },
+   "teaser": {
+    "cases": [
+     {
+      "if": {
+       "flag": "hid_letter"
+      },
+      "text": "Mum learned about the backpack from Dad."
+     },
+     {
+      "if": {
+       "flag": "harsh"
+      },
+      "text": "Mum calls after the morning conversation."
+     },
+     {
+      "text": "Mum called twice."
+     }
+    ]
+   },
+   "intro": "The phone screen says “Mum”. Outside it’s a quiet evening. You can answer now or text that you’ll call later.",
+   "line": {
+    "npc": "mom",
+    "cases": [
+     {
+      "if": {
+       "flag": "hid_letter"
+      },
+      "text": "Dad said you’re packing a backpack. Why do I hear about this from him?"
+     },
+     {
+      "if": {
+       "flag": "harsh"
+      },
+      "text": "It hurt this morning. But I don’t want us to stop talking."
+     },
+     {
+      "if": {
+       "any": [
+        {
+         "flag": "mom_read_letter"
+        },
+        {
+         "trust": [
+          "mom",
+          ">=",
+          57
+         ]
+        }
+       ]
+      },
+      "text": "I thought about our conversation. I’m still worried, but I want to understand your plan."
+     },
+     {
+      "text": "You rarely tell me what’s going on with you. I worry."
+     }
+    ]
+   },
+   "objects": [
+    {
+     "id": "phone",
+     "icon": "▣",
+     "label": "Phone",
+     "text": "Two missed calls. Mum doesn’t call for no reason — she usually texts first.",
+     "fx": []
+    },
+    {
+     "id": "geranium",
+     "icon": "✳",
+     "label": "Geraniums",
+     "text": "Mum’s geraniums on the balcony: she repots them every spring. A minute of quiet brings your breath back.",
+     "fx": [
+      {
+       "energy": 1
+      },
+      {
+       "flag": "balcony_pause"
+      }
+     ]
+    }
+   ],
+   "choices": [
+    {
+     "id": "honest",
+     "text": "Tell it as it is: there’s no decision, you’re gathering information.",
+     "cost": 1,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        7
+       ]
+      },
+      {
+       "trust": [
+        "mom",
+        4
+       ],
+       "if": {
+        "flag": "hid_letter"
+       }
+      },
+      {
+       "clarity": 1
+      },
+      {
+       "flag": "repaired",
+       "if": {
+        "flag": "hid_letter"
+       }
+      }
+     ],
+     "result": {
+      "cases": [
+       {
+        "if": {
+         "flag": "hid_letter"
+        },
+        "text": "Mum is silent, then: “Thank you for telling me. Even if not right away.” There’s hurt in her voice — and relief."
+       },
+       {
+        "text": "Mum asks a lot of questions, but now you decide which of them to answer."
+       }
+      ]
+     },
+     "trace": "Mum knows there’s no decision yet."
+    },
+    {
+     "id": "later",
+     "text": "Text: “I’ll call tomorrow, right now I want to rest.”",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        1
+       ]
+      },
+      {
+       "energy": 1
+      },
+      {
+       "flag": "delayed_mom"
+      }
+     ],
+     "result": "Mum replies with a short “OK”. The conversation is postponed, the connection remains.",
+     "trace": "The conversation with Mum is postponed."
+    },
+    {
+     "id": "silent",
+     "text": "Don’t answer.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        -6
+       ]
+      },
+      {
+       "trust": [
+        "dad",
+        -2
+       ]
+      },
+      {
+       "energy": 1
+      },
+      {
+       "flag": "ignored_mom"
+      }
+     ],
+     "result": "Silence helps for the evening. But the missed calls pile up — Mum will surely tell Dad about them.",
+     "trace": "The call went unanswered."
+    },
+    {
+     "id": "afraid",
+     "text": "Ask: “Were you scared back then?”",
+     "cost": 1,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        9
+       ]
+      },
+      {
+       "flag": "mom_opened"
+      }
+     ],
+     "result": "A pause. “Every day,” says Mum. “I just didn’t tell anyone.” You hear her talk about herself for the first time, not about you.",
+     "trace": "Mum told you about her fear.",
+     "req": {
+      "flag": "mom_story"
+     }
+    }
+   ]
+  },
+  {
+   "id": "mom_errands",
+   "who": [
+    "mom"
+   ],
+   "title": "The market with Mum",
+   "place": "Market",
+   "bg": "street",
+   "slots": "day",
+   "cost": 1,
+   "icon": "🧺",
+   "teaser": "Mum asked for help with the shopping. No big talks.",
+   "intro": "Mum has long asked you to go to the market with her. No talk about the city — just being together: bags, the queue, tomatoes.",
+   "line": {
+    "npc": "mom",
+    "text": "Take this basket. And don’t look at the prices, I’ve written everything down."
+   },
+   "objects": [
+    {
+     "id": "list",
+     "icon": "🧺",
+     "label": "List",
+     "text": "The list is in Mum’s handwriting; it has things you love. The care here is literal.",
+     "fx": [
+      {
+       "flag": "mom_love"
+      }
+     ]
+    },
+    {
+     "id": "stall",
+     "icon": "🍎",
+     "label": "Stall",
+     "text": "The seller asks whether you’re home for long. Mum silently rearranges the apples.",
+     "fx": []
+    }
+   ],
+   "choices": [
+    {
+     "id": "help",
+     "text": "Just help and don’t raise the topic.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        6
+       ]
+      },
+      {
+       "flag": "time_together"
+      }
+     ],
+     "result": "You carry the bags and laugh at the prices. Mum seems to breathe out. The conversation is postponed, but the warmth stays.",
+     "trace": "A day with Mum without talking about the city."
+    },
+    {
+     "id": "say",
+     "text": "On the way, say: “Let’s talk about the letter after the market.”",
+     "cost": 1,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        3
+       ]
+      },
+      {
+       "clarity": 1
+      }
+     ],
+     "result": "Mum nods: “OK. After the market.” She answers more briefly than usual but doesn’t walk away.",
+     "trace": "Agreed to talk after the market."
+    },
+    {
+     "id": "phone",
+     "text": "Keep looking at your phone the whole time.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        -4
+       ]
+      }
+     ],
+     "result": "Mum notices and says nothing. You return home each lost in your own thoughts.",
+     "trace": "The day was spent side by side, but not together."
+    },
+    {
+     "id": "album",
+     "text": "Ask about the old album: “Shall we get it out tonight?”",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        5
+       ]
+      },
+      {
+       "flag": "album_offer"
+      }
+     ],
+     "result": "Mum freezes for a second. “It’s on the top shelf. Let’s get it.”",
+     "trace": "Mum agreed to get the album out.",
+     "req": {
+      "flag": "mom_love"
+     }
+    }
+   ]
+  },
+  {
+   "id": "mom_photos",
+   "who": [
+    "mom"
+   ],
+   "title": "The old album",
+   "place": "Parents’ home",
+   "bg": "kitchen",
+   "slots": "eve",
+   "cost": 1,
+   "icon": "▤",
+   "avail": {
+    "any": [
+     {
+      "flag": "album_offer"
+     },
+     {
+      "all": [
+       {
+        "done": "mom_errands"
+       },
+       {
+        "trust": [
+         "mom",
+         ">=",
+         55
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "teaser": "The album from the top shelf.",
+   "intro": "Evening. The album smells of dust and glue. Mum turns the pages as if looking for one in particular.",
+   "line": {
+    "npc": "mom",
+    "text": "Here. I’m twenty-two. I left home with one suitcase."
+   },
+   "objects": [
+    {
+     "id": "photo",
+     "icon": "▣",
+     "label": "Photo",
+     "text": "Young Mum at the station, with a suitcase and a defiant look. Behind her is a woman who isn’t smiling.",
+     "fx": [
+      {
+       "flag": "photo_mom"
+      }
+     ]
+    },
+    {
+     "id": "sign",
+     "icon": "✎",
+     "label": "Caption",
+     "text": "On the back: “Left. Mum didn’t see me off.”",
+     "fx": [
+      {
+       "flag": "mom_hurt_note"
+      }
+     ]
+    }
+   ],
+   "choices": [
+    {
+     "id": "afraid",
+     "text": "Say: “You were scared back then. And now too.”",
+     "cost": 1,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        9
+       ]
+      },
+      {
+       "flag": "mom_story"
+      }
+     ],
+     "result": "Mum looks at the photo for a long time. “I’m scared now too,” she says. “Only now it’s for you.”",
+     "trace": "Mum told you the story of her leaving."
+    },
+    {
+     "id": "ask",
+     "text": "Ask what she would have wanted to hear back then — from her own mum.",
+     "cost": 1,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        7
+       ]
+      },
+      {
+       "clarity": 1
+      },
+      {
+       "flag": "mom_story"
+      }
+     ],
+     "result": "“That I would manage. That I wasn’t betraying anyone,” Mum answers. “Well, now I know what to tell you.” She smiles through tears.",
+     "trace": "Mum realised what she wants to tell you."
+    },
+    {
+     "id": "listen",
+     "text": "Listen without saying anything.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        5
+       ]
+      },
+      {
+       "flag": "mom_story"
+      }
+     ],
+     "result": "She talks for a long time: about the station, about her first rented room. You remember not the words but how her voice changes.",
+     "trace": "Mum’s story was heard to the end."
+    },
+    {
+     "id": "joke",
+     "text": "Joke: “So I take after you.”",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "mom",
+        1
+       ]
+      }
+     ],
+     "result": "Mum laughs, but a little stiffly. The moment closed before it could open.",
+     "trace": "A joke replaced the conversation."
+    }
+   ]
+  },
+  {
+   "id": "dad_dinner",
+   "who": [
+    "dad"
+   ],
+   "title": "Family dinner",
+   "place": "Parents’ home",
+   "bg": "kitchen",
+   "slots": "eve",
+   "cost": 2,
+   "icon": "⌂",
+   "avail": {
+    "any": [
+     {
+      "day": [
+       ">=",
+       2
+      ]
+     },
+     {
+      "done": "dad_backpack"
+     }
+    ]
+   },
+   "teaser": "Dad invites you to dinner: “Let’s discuss money and housing.”",
+   "intro": "You come to dinner. Dad sets out the plates and carefully starts talking about money, housing and the new job.",
+   "line": {
+    "npc": "dad",
+    "cases": [
+     {
+      "if": {
+       "flag": "dad_plan"
+      },
+      "text": "I looked up the route. If needed, I’ll help with the move. Do you already know what you want?"
+     },
+     {
+      "if": {
+       "flag": "promised_stay"
+      },
+      "text": "You said you’re not going anywhere. It seemed to me that’s not the whole truth."
+     },
+     {
+      "if": {
+       "flag": "dad_story"
+      },
+      "text": "I remembered my suitcase. If you decide to go — just say it properly, not through the wall."
+     },
+     {
+      "text": "I’m not sure it will all work out there. How will you cope?"
+     }
+    ]
+   },
+   "objects": [
+    {
+     "id": "keys",
+     "icon": "⌂",
+     "label": "Keys",
+     "text": "The keys to your parents’ house are in your pocket. You can keep them in any city.",
+     "fx": [
+      {
+       "flag": "keys"
+      }
+     ]
+    },
+    {
+     "id": "notebook",
+     "icon": "▤",
+     "label": "Dad’s notebook",
+     "text": "Dad wrote down expenses and addresses — neatly, as always. Behind the worry — a wish to help.",
+     "fx": [
+      {
+       "clue": "dad_notebook"
+      }
+     ]
+    }
+   ],
+   "choices": [
+    {
+     "id": "practical",
+     "text": "Discuss the practical questions without handing the decision to Dad.",
+     "cost": 1,
+     "fx": [
+      {
+       "trust": [
+        "dad",
+        8
+       ]
+      },
+      {
+       "trust": [
+        "dad",
+        4
+       ],
+       "if": {
+        "flag": "budget"
+       }
+      },
+      {
+       "clarity": 1
+      }
+     ],
+     "result": {
+      "cases": [
+       {
+        "if": {
+         "flag": "budget"
+        },
+        "text": "You come with figures, and for the first time that evening Dad doesn’t interrupt. “That’s… reasonable,” he admits."
+       },
+       {
+        "text": "You argue about the budget, then find two useful points. Dad feels heard."
+       }
+      ]
+     },
+     "trace": "The practical questions were discussed."
+    },
+    {
+     "id": "other",
+     "text": "Ask to talk about something else tonight.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "dad",
+        1
+       ]
+      }
+     ],
+     "result": "Dad puts the notebook away. Dinner goes on; you can come back to the plan later — but later keeps getting shorter.",
+     "trace": "The talk about the plan was postponed."
+    },
+    {
+     "id": "fold",
+     "text": "Agree with every worry and give up your plans.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "dad",
+        6
+       ]
+      },
+      {
+       "clarity": -2
+      },
+      {
+       "flag": "folded"
+      }
+     ],
+     "result": "Dad relaxes. And something tightens inside you: your words agreed, but you didn’t.",
+     "trace": "All of Dad’s worries were accepted without objection."
+    },
+    {
+     "id": "notebook",
+     "text": "Take the notebook and check the budget together.",
+     "cost": 1,
+     "fx": [
+      {
+       "trust": [
+        "dad",
+        9
+       ]
+      },
+      {
+       "clarity": 1
+      },
+      {
+       "flag": "dad_budget"
+      }
+     ],
+     "result": "You lean over the page as if over a map. Dad finds a mistake in the calculations and for the first time is glad to be listened to.",
+     "trace": "The budget was checked with Dad.",
+     "req": {
+      "clue": "dad_notebook"
+     }
+    },
+    {
+     "id": "suitcase",
+     "text": "Say: “You talked about the suitcase. I need you to believe in me, not to play it safe for me.”",
+     "cost": 2,
+     "fx": [
+      {
+       "trust": [
+        "dad",
+        10
+       ]
+      },
+      {
+       "flag": "dad_opened"
+      }
+     ],
+     "result": "Dad is silent. Then: “Grandpa didn’t say that to me back then. I’ll try.” He wipes his hands on a towel, though they’re dry.",
+     "trace": "Dad heard the request to believe in you.",
+     "req": {
+      "flag": "dad_story"
+     }
+    }
+   ]
+  },
+  {
+   "id": "budget_night",
+   "who": [],
+   "title": "Night calculations",
+   "place": "Room",
+   "bg": "room",
+   "slots": "eve",
+   "cost": 1,
+   "icon": "💻",
+   "avail": {
+    "day": [
+     ">=",
+     1
+    ]
+   },
+   "teaser": "A spreadsheet that needs filling in.",
+   "intro": "Late evening. The laptop glows. The spreadsheet is still empty: the salary in one cell, the unknown in all the others.",
+   "objects": [
+    {
+     "id": "table",
+     "icon": "💻",
+     "label": "Spreadsheet",
+     "text": {
+      "cases": [
+       {
+        "if": {
+         "clue": "rent"
+        },
+        "text": "The salary is higher than now, but rent is almost half. Add travel and a first month without a cushion, and it’s tight."
+       },
+       {
+        "text": "The salary is higher than now. The other cells are empty — there’s too much you don’t know yet (it would be good to ask someone who lives there)."
+       }
+      ]
+     },
+     "fx": []
+    }
+   ],
+   "choices": [
+    {
+     "id": "honest",
+     "text": "Calculate honestly, with a margin for the unexpected.",
+     "cost": 0,
+     "fx": [
+      {
+       "clarity": 2
+      },
+      {
+       "clarity": 1,
+       "if": {
+        "flag": "budget_hint"
+       }
+      },
+      {
+       "flag": "budget"
+      }
+     ],
+     "result": {
+      "cases": [
+       {
+        "if": {
+         "clue": "rent"
+        },
+        "text": "By the middle of the night the spreadsheet comes together. It’s tight, but with a margin for the first two months. Anxiety becomes a number — you can work with that."
+       },
+       {
+        "text": "The spreadsheet takes shape, but half the rows are guesses. You mark them yellow: these are questions for people who live there."
+       }
+      ]
+     },
+     "trace": "The budget was calculated honestly."
+    },
+    {
+     "id": "rosy",
+     "text": "Count only the pluses — for inspiration.",
+     "cost": 0,
+     "fx": [
+      {
+       "energy": 1
+      },
+      {
+       "flag": "rosy_budget"
+      }
+     ],
+     "result": "The numbers shine. You close the laptop feeling light, but at the edge of your mind a question remains: what about the minuses?",
+     "trace": "The budget was calculated with pluses only."
+    },
+    {
+     "id": "close",
+     "text": "Close the laptop and go to sleep.",
+     "cost": 0,
+     "fx": [
+      {
+       "energy": 2
+      }
+     ],
+     "result": "The calculations can wait. Sleep is part of the decision too, and tonight it matters more than the spreadsheet.",
+     "trace": "Sleep turned out more important than the spreadsheet."
+    }
+   ]
+  },
+  {
+   "id": "walk_alone",
+   "who": [],
+   "title": "A walk without the phone",
+   "place": "City",
+   "bg": "street",
+   "slots": "both",
+   "cost": 0,
+   "icon": "↗",
+   "teaser": "Go out without a route. Energy will return.",
+   "intro": "You leave your phone at home and go out without a route. You know the street down to its cracks, but today walking feels different.",
+   "objects": [
+    {
+     "id": "sign",
+     "icon": "↗",
+     "label": "Signpost",
+     "text": "One arrow points to the station, the other to the river. Neither marks the right way.",
+     "fx": []
+    }
+   ],
+   "choices": [
+    {
+     "id": "river",
+     "text": "To the river.",
+     "cost": 0,
+     "fx": [
+      {
+       "energy": 2
+      },
+      {
+       "clarity": 1
+      },
+      {
+       "flag": "walked_river"
+      }
+     ],
+     "result": "By the water, thoughts slow down. The question “what do I want” doesn’t sound scary — just like a question.",
+     "trace": "A walk by the river."
+    },
+    {
+     "id": "station",
+     "text": "To the station.",
+     "cost": 0,
+     "fx": [
+      {
+       "energy": 1
+      },
+      {
+       "clarity": 1
+      },
+      {
+       "flag": "knows_trains"
+      }
+     ],
+     "result": "The timetable on the board. Ozyorsk is four hours away. That’s not infinity. A one-way ticket and a return ticket differ by one word.",
+     "trace": "Now you know the train timetable."
+    },
+    {
+     "id": "school",
+     "text": "Past the school and the old courtyard.",
+     "cost": 0,
+     "fx": [
+      {
+       "energy": 2
+      }
+     ],
+     "result": "The courtyard seems smaller than you remember — which means life has grown wider over the years.",
+     "trace": "A walk through the old courtyard."
+    }
+   ]
+  },
+  {
+   "id": "nika_hurt",
+   "who": [
+    "nika"
+   ],
+   "title": "Nika writes",
+   "place": "Phone",
+   "bg": "street",
+   "slots": "both",
+   "cost": 1,
+   "icon": "📱",
+   "avail": {
+    "all": [
+     {
+      "not": {
+       "done": "nika_cafe"
+      }
+     },
+     {
+      "day": [
+       ">=",
+       2
+      ]
+     }
+    ]
+   },
+   "urgent": true,
+   "teaser": "Nika hasn’t heard from you for several days.",
+   "intro": "Your phone: “Are you OK? For three days I’ve only heard about you from your mum.” Nika isn’t blaming you — she’s just writing.",
+   "line": {
+    "npc": "nika",
+    "text": "You don’t have to answer in detail. But answer something."
+   },
+   "objects": [
+    {
+     "id": "msgs",
+     "icon": "📱",
+     "label": "Messages",
+     "text": "Nika sent three — each shorter than the last. The last one: “Just say you’re there.”",
+     "fx": []
+    }
+   ],
+   "choices": [
+    {
+     "id": "call",
+     "text": "Call right now.",
+     "cost": 1,
+     "fx": [
+      {
+       "trust": [
+        "nika",
+        8
+       ]
+      },
+      {
+       "clarity": 1
+      },
+      {
+       "flag": "nika_repaired"
+      },
+      {
+       "flag": "rita_contact"
+      }
+     ],
+     "result": "Nika answers on the first ring: “Finally.” Ten minutes later you’re laughing, and twenty minutes after that she mentions Rita from the old team: “Call her, she’s in Ozyorsk.”",
+     "trace": "Back in touch with Nika."
+    },
+    {
+     "id": "text",
+     "text": "Text: “Everything’s fine, just a lot going on. I’ll tell you.”",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "nika",
+        3
+       ]
+      }
+     ],
+     "result": "Nika sends a smiley and “waiting”. The bridge is built, but nobody has crossed it yet.",
+     "trace": "A short message was sent to Nika."
+    },
+    {
+     "id": "ignore",
+     "text": "Don’t answer.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "nika",
+        -6
+       ]
+      },
+      {
+       "energy": 1
+      }
+     ],
+     "result": "The screen goes dark. The silence feels like rest — until you remember there’s a person on the other end too.",
+     "trace": "Nika got no answer."
+    }
+   ]
+  }
+ ],
+ "final": {
+  "when": "Sunday, 11:20",
+  "dayLabel": "Sunday",
+  "title": "Your own route",
+  "place": "Station",
+  "subtitle": "the answer is needed by 12:00",
+  "bg": "station",
+  "ask": "What do you answer?",
+  "onEnter": [
+   {
+    "trust": [
+     "mom",
+     -6
+    ],
+    "if": {
+     "not": {
+      "done": "mom_call"
+     }
+    }
+   },
+   {
+    "flag": "mom_missed",
+    "if": {
+     "not": {
+      "done": "mom_call"
+     }
+    }
+   },
+   {
+    "trust": [
+     "nika",
+     -8
+    ],
+    "if": {
+     "all": [
+      {
+       "not": {
+        "done": "nika_cafe"
+       }
+      },
+      {
+       "not": {
+        "done": "nika_hurt"
+       }
+      }
+     ]
+    }
+   },
+   {
+    "flag": "nika_missed",
+    "if": {
+     "all": [
+      {
+       "not": {
+        "done": "nika_cafe"
+       }
+      },
+      {
+       "not": {
+        "done": "nika_hurt"
+       }
+      }
+     ]
+    }
+   }
+  ],
+  "present": [
+   {
+    "npc": "mom",
+    "if": {
+     "trust": [
+      "mom",
+      ">=",
+      45
+     ]
+    }
+   },
+   {
+    "npc": "dad",
+    "if": {
+     "any": [
+      {
+       "trust": [
+        "dad",
+        ">=",
+        50
+       ]
+      },
+      {
+       "flag": "dad_plan"
+      }
+     ]
+    }
+   },
+   {
+    "npc": "nika",
+    "if": {
+     "trust": [
+      "nika",
+      ">=",
+      55
+     ]
+    }
+   }
+  ],
+  "intro": [
+   "Sunday, 11:20. The station, platform two. Forty minutes until noon.",
+   {
+    "cases": [
+     {
+      "if": {
+       "trust": [
+        "mom",
+        ">=",
+        45
+       ]
+      },
+      "text": "Mum stands by a pillar with a thermos — she came, though she didn’t promise to."
+     },
+     {
+      "text": "Mum isn’t on the platform. On your phone: “Call me later.”"
+     }
+    ]
+   },
+   {
+    "cases": [
+     {
+      "if": {
+       "any": [
+        {
+         "trust": [
+          "dad",
+          ">=",
+          50
+         ]
+        },
+        {
+         "flag": "dad_plan"
+        }
+       ]
+      },
+      "text": "Dad checks the lock on the backpack for the hundredth time."
+     },
+     {
+      "text": "Dad sent a message: “Whatever you decide — tell me straight.”"
+     }
+    ]
+   },
+   {
+    "if": {
+     "trust": [
+      "nika",
+      ">=",
+      55
+     ]
+    },
+    "text": "Nika waves from the other side of the platform with a paper cup."
+   }
+  ],
+  "lines": [
+   {
+    "if": {
+     "all": [
+      {
+       "trust": [
+        "mom",
+        ">=",
+        45
+       ]
+      },
+      {
+       "flag": "mom_opened"
+      }
+     ]
+    },
+    "npc": "mom",
+    "text": "I was scared back then too. Tell me what you decide — and I’ll try to listen to the end."
+   },
+   {
+    "if": {
+     "trust": [
+      "mom",
+      ">=",
+      55
+     ]
+    },
+    "npc": "mom",
+    "text": "I’ll still miss you. But tell me what you’re deciding for yourself."
+   },
+   {
+    "if": {
+     "trust": [
+      "mom",
+      ">=",
+      45
+     ]
+    },
+    "npc": "mom",
+    "text": "I don’t understand why change a familiar life. But I want to hear your answer."
+   }
+  ],
+  "options": [
+   {
+    "id": "explore",
+    "route": "explore",
+    "text": "Go and see Ozyorsk and come back with a decision.",
+    "lock": [],
+    "fx": [
+     {
+      "trust": [
+       "mom",
+       2
+      ]
+     }
+    ],
+    "result": {
+     "cases": [
+      {
+       "if": {
+        "flag": "knows_trains"
+       },
+       "text": "You already know the timetable — and you buy a return ticket for Saturday. It’s not a contract, it’s reconnaissance."
+      },
+      {
+       "text": "You get a return ticket for Saturday. It’s not a contract, it’s reconnaissance."
+      }
+     ]
+    }
+   },
+   {
+    "id": "move",
+    "route": "move",
+    "text": {
+     "cases": [
+      {
+       "if": {
+        "flag": "remote_start"
+       },
+       "text": "Accept the offer with a remote start."
+      },
+      {
+       "text": "Accept the offer and start preparing the move."
+      }
+     ]
+    },
+    "lock": [
+     {
+      "when": {
+       "clarity": [
+        "<",
+        2
+       ]
+      },
+      "reason": "There isn’t enough clarity yet: talk, calculate or take a walk — and come back to this choice another time."
+     }
+    ],
+    "fx": [
+     {
+      "trust": [
+       "dad",
+       -12
+      ],
+      "if": {
+       "flag": "promised_stay"
+      }
+     },
+     {
+      "energy": -1,
+      "if": {
+       "flag": "folded"
+      }
+     },
+     {
+      "trust": [
+       "mom",
+       1
+      ],
+      "if": {
+       "flag": "remote_start"
+      }
+     },
+     {
+      "trust": [
+       "mom",
+       -2
+      ],
+      "if": {
+       "not": {
+        "flag": "remote_start"
+       }
+      }
+     },
+     {
+      "trust": [
+       "dad",
+       3
+      ],
+      "if": {
+       "flag": "remote_start"
+      }
+     }
+    ],
+    "result": "You send your acceptance. Your hands tremble slightly, but inside there’s the quiet after words finally said out loud."
+   },
+   {
+    "id": "stay",
+    "route": "stay",
+    "text": "Stay and take up your own project.",
+    "lock": [
+     {
+      "when": {
+       "not": {
+        "any": [
+         {
+          "flag": "said_want"
+         },
+         {
+          "flag": "napkin_full"
+         },
+         {
+          "clarity": [
+           ">=",
+           3
+          ]
+         }
+        ]
+       }
+      },
+      "reason": "Staying can truly be your own decision when you know what you want: talk to Nika, fill in the napkin, take a walk."
+     }
+    ],
+    "fx": [
+     {
+      "trust": [
+       "mom",
+       5
+      ]
+     },
+     {
+      "trust": [
+       "dad",
+       3
+      ],
+      "if": {
+       "not": {
+        "flag": "folded"
+       }
+      }
+     }
+    ],
+    "result": "You write “thank you, no” and immediately open the notes on your own project. It’s not giving up on life, but a decision in its favour."
+   },
+   {
+    "id": "wait",
+    "route": "wait",
+    "text": "Ask for more time.",
+    "lock": [
+     {
+      "when": {
+       "not": {
+        "flag": "extra_time"
+       }
+      },
+      "reason": "A delay needed to be agreed in advance. On Sunday it’s already too late."
+     }
+    ],
+    "fx": [
+     {
+      "trust": [
+       "mom",
+       1
+      ]
+     },
+     {
+      "clarity": 1
+     }
+    ],
+    "result": "The deadline is Friday next week. Time doesn’t run away from a decision if you use it."
+   }
+  ]
+ },
+ "epilogue": {
+  "kicker": "A MONTH LATER",
+  "again": "Live the week differently →",
+  "recapMissed": [
+   "nika_cafe",
+   "mom_call",
+   "dad_dinner",
+   "work_email",
+   "budget_night",
+   "mom_photos"
+  ],
+  "title": {
+   "cases": [
+    {
+     "if": {
+      "route": "move"
+     },
+     "text": "A new address, the same connection"
+    },
+    {
+     "if": {
+      "route": "stay"
+     },
+     "text": "Stay and choose your own"
+    },
+    {
+     "if": {
+      "route": "wait"
+     },
+     "text": "Time that was used well"
+    },
+    {
+     "text": "A road you can think along"
+    }
+   ]
+  },
+  "paragraphs": [
+   {
+    "cases": [
+     {
+      "if": {
+       "route": "explore"
+      },
+      "text": "A month has passed. The trip to Ozyorsk gave you facts: streets, flats, prices, people. There’s no decision yet — but the questions have become more precise. Mum sends a photo of the cat: “How’s the city?”"
+     },
+     {
+      "if": [
+       {
+        "route": "move"
+       },
+       {
+        "flag": "remote_start"
+       }
+      ],
+      "text": "A month has passed. For the first three weeks you work remotely from your room and pack, and then you move to Ozyorsk. Mum sends a photo of the cat: “We miss you, but keep telling us.”"
+     },
+     {
+      "if": {
+       "route": "move"
+      },
+      "text": "A month has passed. You live in Ozyorsk: the boxes are half unpacked, the neighbours in the building nod hello. Mum sends a photo of the cat."
+     },
+     {
+      "if": {
+       "route": "stay"
+      },
+      "text": "A month has passed. You stay in your city and work on your own project. On Sundays you and Mum still see each other — only now it’s a choice, not a habit."
+     },
+     {
+      "text": "A month has passed. The delay gave you time to visit Ozyorsk, talk to people who live there and reach an answer without rushing. The answer has been sent — you know which one and why."
+     }
+    ]
+   },
+   [
+    {
+     "cases": [
+      {
+       "if": {
+        "flag": "mom_opened"
+       },
+       "text": "Talks with Mum have become longer and calmer. She still sighs into the phone, but now she asks: “And how are you?” — and waits for the answer."
+      },
+      {
+       "if": {
+        "trust": [
+         "mom",
+         ">=",
+         66
+        ]
+       },
+       "text": "It has become easier to talk about plans with Mum, even when you disagree."
+      },
+      {
+       "if": {
+        "trust": [
+         "mom",
+         ">=",
+         45
+        ]
+       },
+       "text": "Things with Mum are even: you call on Sundays, she’s still getting used to it."
+      },
+      {
+       "text": "Things with Mum are still tense. You write briefly. But the door to a conversation isn’t closed — either of you can take the next step."
+      }
+     ]
+    },
+    {
+     "if": {
+      "flag": "mom_missed"
+     },
+     "text": "She still remembers the missed call that week."
+    }
+   ],
+   {
+    "cases": [
+     {
+      "if": {
+       "flag": "dad_opened"
+      },
+      "text": "Dad sent a spreadsheet of expenses and a list of repairmen — his way of being there. And for the first time he wrote: “I believe in you.”"
+     },
+     {
+      "if": {
+       "any": [
+        {
+         "flag": "dad_budget"
+        },
+        {
+         "flag": "dad_plan"
+        }
+       ]
+      },
+      "text": "Dad sent a spreadsheet of expenses and a list of repairmen — that’s his way of being there."
+     },
+     {
+      "if": {
+       "all": [
+        {
+         "flag": "promised_stay"
+        },
+        {
+         "any": [
+          {
+           "route": "move"
+          },
+          {
+           "route": "explore"
+          }
+         ]
+        }
+       ]
+      },
+      "text": "Dad remembers the words “I’m not going anywhere” and carefully asks what changed. That’s a conversation still to come."
+     },
+     {
+      "if": {
+       "trust": [
+        "dad",
+        ">=",
+        55
+       ]
+      },
+      "text": "Things with Dad are calm: worry more often turns into practical help."
+     },
+     {
+      "text": "It’s still hard for Dad not to decide for you. Specific agreements help."
+     }
+    ]
+   },
+   {
+    "cases": [
+     {
+      "if": {
+       "all": [
+        {
+         "any": [
+          {
+           "flag": "nika_repaired"
+          },
+          {
+           "done": "nika_cafe"
+          }
+         ]
+        },
+        {
+         "trust": [
+          "nika",
+          ">=",
+          55
+         ]
+        },
+        {
+         "flag": "napkin_full"
+        }
+       ]
+      },
+      "text": "Nika framed the napkin with the right column — “so you don’t forget what you want”."
+     },
+     {
+      "if": {
+       "all": [
+        {
+         "any": [
+          {
+           "flag": "nika_repaired"
+          },
+          {
+           "done": "nika_cafe"
+          }
+         ]
+        },
+        {
+         "trust": [
+          "nika",
+          ">=",
+          55
+         ]
+        }
+       ]
+      },
+      "text": "You and Nika are in touch: she’s still the first to ask how you really are."
+     },
+     {
+      "if": {
+       "any": [
+        {
+         "flag": "nika_repaired"
+        },
+        {
+         "done": "nika_cafe"
+        }
+       ]
+      },
+      "text": "You and Nika are in touch, though less often than you’d like."
+     },
+     {
+      "text": "You and Nika have barely talked since that week. The phone lies nearby, and the first step hasn’t been taken yet."
+     }
+    ]
+   },
+   {
+    "if": {
+     "any": [
+      {
+       "route": "move"
+      },
+      {
+       "route": "explore"
+      }
+     ]
+    },
+    "text": {
+     "cases": [
+      {
+       "if": [
+        {
+         "flag": "rosy_budget"
+        },
+        {
+         "not": {
+          "flag": "budget"
+         }
+        }
+       ],
+       "text": "The first month turns out more expensive than in the spreadsheet. Not a disaster, but now it’s clear why people calculate with a margin."
+      },
+      {
+       "if": {
+        "flag": "budget"
+       },
+       "text": "The expenses fit: the margin you set aside that night came in handy."
+      }
+     ]
+    }
+   },
+   {
+    "cases": [
+     {
+      "if": {
+       "clarity": [
+        ">=",
+        4
+       ]
+      },
+      "text": "You understand well what you wanted from this week, and it shows in the little things."
+     },
+     {
+      "if": {
+       "clarity": [
+        ">=",
+        2
+       ]
+      },
+      "text": "Some questions became clearer, some remained. That’s a normal result for one week."
+     },
+     {
+      "text": "Sometimes you come back to the question of what you really want. The answer doesn’t have to come within a week."
+     }
+    ]
+   }
+  ]
+ }
+}

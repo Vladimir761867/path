@@ -1,0 +1,493 @@
+{
+ "id": "say-no-friend",
+ "title": "Saying no to a friend",
+ "kicker": "QUEST · CONVERSATION TRAINER",
+ "tag": "QUEST · 5 STEPS · 2 STYLES",
+ "intro": {
+  "title": "Saying no without hurt feelings",
+  "paragraphs": [
+   "A friend invites you out of town for the weekend, but you need rest. You want to say no in a way that doesn’t hurt the friendship.",
+   "You try to say “no” warmly and clearly.",
+   "Choose what to say. If an answer doesn’t work, you stay where you are, see the reaction and understand why."
+  ],
+  "note": "The other person’s styles are patterns of behaviour, not types of people: the same person acts differently on different days. Real people react differently, so this is practice with wording, not a prediction.",
+  "disclaimer": "A learning simulation. The material draws on well-known communication methods (sources are given at each step), but it has not yet been reviewed by a psychologist."
+ },
+ "pick": "Which friend?",
+ "variants": [
+  {
+   "id": "direct",
+   "name": "Pushy",
+   "desc": "Presses, jokes, doesn’t accept “no” the first time.",
+   "boss": {
+    "name": "Max",
+    "look": {
+     "style": "short",
+     "skin": "#d9a882",
+     "hair": "#5b4636",
+     "top": "#7a8a5c",
+     "pants": "#3b4350"
+    },
+    "expr": {
+     "fail": "impatient",
+     "good": "listening",
+     "soft": "softened",
+     "smile": "smile"
+    }
+   }
+  },
+  {
+   "id": "evasive",
+   "name": "Touchy",
+   "desc": "Gets upset and fears you’re avoiding them.",
+   "boss": {
+    "name": "Katya",
+    "look": {
+     "style": "bun",
+     "skin": "#e2b894",
+     "hair": "#8a5a3c",
+     "top": "#c27a6a",
+     "pants": "#3b3440"
+    },
+    "expr": {
+     "fail": "tense",
+     "good": "listening",
+     "soft": "softened",
+     "smile": "smile"
+    }
+   }
+  }
+ ],
+ "nodes": [
+  {
+   "id": "ask",
+   "stage": "cafe",
+   "pos": 0,
+   "heroExpr": "tense",
+   "narr": "A friend invites you out of town for the weekend with a big group. Your week has been hard, and you want to rest at home.",
+   "ask": "What do you answer?",
+   "options": [
+    {
+     "id": "pause",
+     "text": "Thanks for the invitation. Give me an evening to think — I’ll answer tomorrow.",
+     "quality": "good",
+     "why": "A pause gives you time to weigh what you want and how much energy you have. Thanking them for the invitation shows the relationship matters.",
+     "react": {
+      "direct": {
+       "say": "OK, till tomorrow. I really want you to come."
+      },
+      "evasive": {
+       "say": "Fine. I’ll wait for your answer tomorrow."
+      }
+     }
+    },
+    {
+     "id": "yes",
+     "text": "Fine, I’ll go.",
+     "quality": "bad",
+     "why": "Agreeing out of awkwardness will turn the weekend into a heavy obligation. You already know you want to rest.",
+     "react": {
+      "direct": {
+       "say": "Great! I knew it."
+      },
+      "evasive": {
+       "say": "Yay! I’ll tell everyone."
+      }
+     }
+    },
+    {
+     "id": "lie",
+     "text": "I can’t, I have work.",
+     "quality": "bad",
+     "why": "A made-up reason will need more made-up reasons, and the truth will be harder to find later. Saying no doesn’t require excuses.",
+     "react": {
+      "direct": {
+       "say": "On Saturday? I thought you were off."
+      },
+      "evasive": {
+       "say": "On Saturday? Strange, I thought you were off."
+      }
+     }
+    },
+    {
+     "id": "ghost",
+     "text": "Say nothing and hope it gets forgotten.",
+     "quality": "bad",
+     "why": "Silence feels like being ignored and hurts more than a clear no.",
+     "react": {
+      "direct": {
+       "say": "Hey, are you there? I need an answer."
+      },
+      "evasive": {
+       "say": "You’re quiet… I feel like you’re avoiding me."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Pause and gratitude",
+    "src": "Ury, «The Power of a Positive No», 2007",
+    "text": "Don’t answer right away if you’re unsure; start by appreciating the invitation."
+   },
+   "hint": "How to buy time without hurting them?",
+   "boss": {
+    "direct": {
+     "say": "So, are we going on Saturday? It won’t be the same without you!",
+     "expr": "impatient"
+    },
+    "evasive": {
+     "say": "You’re coming, right? I already told everyone you’re with us…",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "no",
+   "stage": "cafe",
+   "pos": 1,
+   "heroExpr": "calm",
+   "narr": "Decision made: you’re staying home this weekend.",
+   "ask": "How do you say “no”?",
+   "options": [
+    {
+     "id": "posno",
+     "text": "Thanks for the invitation. This weekend I’m staying home: I need rest. Our friendship matters to me.",
+     "quality": "good",
+     "why": "A positive “no”: appreciation, decision and reason in one short sentence, without guilt or self-justification.",
+     "react": {
+      "direct": {
+       "say": "Got it. Shame, but I get it."
+      },
+      "evasive": {
+       "say": "Oh… well, OK. Shame."
+      }
+     }
+    },
+    {
+     "id": "excuse",
+     "text": "I have so much to do, and the cat is sick, and I have no money anyway…",
+     "quality": "bad",
+     "why": "Lots of reasons make it sound like you’re making excuses. Each one can be argued with.",
+     "react": {
+      "direct": {
+       "say": "That’s all fixable. Let’s go."
+      },
+      "evasive": {
+       "say": "But all that can be sorted out…"
+      }
+     }
+    },
+    {
+     "id": "blame",
+     "text": "You always invite me when I’m running on empty!",
+     "quality": "bad",
+     "why": "An accusation turns a refusal into a quarrel. The other person will hear blame, not a decision.",
+     "react": {
+      "direct": {
+       "say": "Hey, I didn’t do it on purpose."
+      },
+      "evasive": {
+       "say": "Are you blaming me?"
+      }
+     }
+    },
+    {
+     "id": "maybe",
+     "text": "I don’t know, maybe… we’ll see.",
+     "quality": "bad",
+     "why": "Uncertainty keeps hope alive and drags out the pressure. Your friend will keep asking.",
+     "react": {
+      "direct": {
+       "say": "So are we going or not?"
+      },
+      "evasive": {
+       "say": "Well? Just tell me."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "A positive “no”",
+    "src": "Ury, 2007",
+    "text": "Say “no” to the request and “yes” to the relationship: short, warm, no excuses."
+   },
+   "hint": "How to say no briefly and warmly?",
+   "boss": {
+    "direct": {
+     "say": "So, what’s your answer?",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "So, are you coming? Just tell me.",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "press",
+   "stage": "cafe",
+   "pos": 2,
+   "heroExpr": "calm",
+   "narr": "Your friend insists: they feel hurt.",
+   "ask": "How do you hold your decision?",
+   "options": [
+    {
+     "id": "record",
+     "text": "I’m glad you invite me, but this weekend I’m staying home. It’s not about you.",
+     "quality": "good",
+     "why": "Repeating the decision in a calm tone (the “broken record”) plus reassurance that it isn’t about the person. You acknowledge feelings and don’t change your answer.",
+     "react": {
+      "direct": {
+       "say": "Got it… OK, it’s not about me."
+      },
+      "evasive": {
+       "say": "Oh. Thanks for saying it’s not because of me."
+      }
+     }
+    },
+    {
+     "id": "fold",
+     "text": "OK, OK, I’ll go. Just don’t be upset.",
+     "quality": "bad",
+     "why": "Giving in after pressure teaches that pressure works. The decision and the rest are lost.",
+     "react": {
+      "direct": {
+       "say": "Atta friend!"
+      },
+      "evasive": {
+       "say": "Yay! Thanks for being with me."
+      }
+     }
+    },
+    {
+     "id": "fight",
+     "text": "Stop pushing, my answer is no!",
+     "quality": "bad",
+     "why": "Harshness damages the relationship, and the message boils down to “leave me alone”. Calm repetition works better.",
+     "react": {
+      "direct": {
+       "say": "I only invited you!"
+      },
+      "evasive": {
+       "say": "Why so rude…"
+      }
+     }
+    },
+    {
+     "id": "guilt",
+     "text": "You’re better off without me, I’ll just spoil the mood.",
+     "quality": "bad",
+     "why": "Self-blame is a guilt manipulation and an invitation to comfort you. The conversation drifts off topic.",
+     "react": {
+      "direct": {
+       "say": "Come on, it’s not the same without you, let’s go!"
+      },
+      "evasive": {
+       "say": "Oh come on, it’s not the same without you! Let’s go?"
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "The “broken record”",
+    "src": "Smith, «When I Say No, I Feel Guilty», 1975",
+    "text": "Calmly repeat the decision in the same tone and add reassurance that it isn’t about the person."
+   },
+   "hint": "How to repeat a decision without arguing or giving in?",
+   "boss": {
+    "direct": {
+     "say": "Come on, it’ll be boring without you. Let’s go!",
+     "expr": "impatient"
+    },
+    "evasive": {
+     "say": "I was so hoping… you’re avoiding me, aren’t you?",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "alt",
+   "stage": "cafe",
+   "pos": 3,
+   "heroExpr": "calm",
+   "narr": "The tension eased. The friendship stays.",
+   "ask": "What do you suggest?",
+   "options": [
+    {
+     "id": "alt",
+     "text": "Let’s meet next week for a couple of hours: coffee or a walk. I’d like to see you.",
+     "quality": "good",
+     "why": "An alternative keeps the contact and shows the refusal isn’t about the friendship. The offer is specific and doable.",
+     "react": {
+      "direct": {
+       "say": "Sure. A walk on Wednesday?"
+      },
+      "evasive": {
+       "say": "Sure! I’ll text you on Monday."
+      }
+     }
+    },
+    {
+     "id": "nothing",
+     "text": "You suggest nothing and just finish your tea.",
+     "quality": "bad",
+     "why": "Without an alternative, the refusal looks like distancing. Your friend may decide you’re pushing them away.",
+     "react": {
+      "direct": {
+       "say": "I see. OK."
+      },
+      "evasive": {
+       "say": "I see… finish your tea."
+      }
+     }
+    },
+    {
+     "id": "vague",
+     "text": "Let’s meet sometime later.",
+     "quality": "bad",
+     "why": "“Sometime” commits to nothing and doesn’t reassure. A specific step is needed.",
+     "react": {
+      "direct": {
+       "say": "“Sometime” — when is that?"
+      },
+      "evasive": {
+       "say": "“Sometime”… I see."
+      }
+     }
+    },
+    {
+     "id": "big",
+     "text": "I’ll come for a whole week next time.",
+     "quality": "bad",
+     "why": "A promise too big, made out of guilt, can turn into new pressure on yourself.",
+     "react": {
+      "direct": {
+       "say": "Wow, a week? Deal!"
+      },
+      "evasive": {
+       "say": "Great! I’ll remember that."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Offer an alternative",
+    "src": "Fisher & Ury, 1981",
+    "text": "Help meet the other person’s interests another way: keep the contact without giving up your boundary."
+   },
+   "hint": "What to offer to keep the connection?",
+   "boss": {
+    "direct": {
+     "say": "Shame. So what now?",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "Shame. Maybe we could meet separately?",
+     "expr": "neutral"
+    }
+   }
+  },
+  {
+   "id": "end",
+   "stage": "cafe",
+   "pos": 4,
+   "heroExpr": "calm",
+   "narr": "All that’s left is to finish kindly.",
+   "ask": "How do you finish?",
+   "options": [
+    {
+     "id": "warm",
+     "text": "Thanks for the talk. See you on Wednesday.",
+     "quality": "good",
+     "why": "A warm ending and a specific meeting strengthen the relationship. You show the refusal was about the weekend, not the friendship.",
+     "react": {
+      "direct": {
+       "say": "See you. Good talk."
+      },
+      "evasive": {
+       "say": "See you, bye!"
+      }
+     }
+    },
+    {
+     "id": "sorry",
+     "text": "Sorry, sorry, I feel so awkward…",
+     "quality": "bad",
+     "why": "Repeated apologies devalue the decision and bring the conversation back to guilt.",
+     "react": {
+      "direct": {
+       "say": "Come on, it’s all fine."
+      },
+      "evasive": {
+       "say": "Oh, stop apologising…"
+      }
+     }
+    },
+    {
+     "id": "dontoffend",
+     "text": "Just don’t be upset, OK?",
+     "quality": "bad",
+     "why": "Asking someone “not to be upset” shifts responsibility for their feelings. They have the right to be disappointed.",
+     "react": {
+      "direct": {
+       "say": "I’ll try."
+      },
+      "evasive": {
+       "say": "I’ll try…"
+      }
+     }
+    },
+    {
+     "id": "go",
+     "text": "Right, I have to go.",
+     "quality": "bad",
+     "why": "Leaving abruptly after a hard conversation leaves a chill.",
+     "react": {
+      "direct": {
+       "say": "Bye."
+      },
+      "evasive": {
+       "say": "Well, bye."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "A warm ending",
+    "src": "Ury, 2007; Gottman & Silver, 1999",
+    "text": "End the refusal with a step closer: thank them and set a meeting."
+   },
+   "hint": "How to finish so the friendship doesn’t suffer?",
+   "boss": {
+    "direct": {
+     "say": "OK. It’s all fine.",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "Good. Thanks for talking.",
+     "expr": "neutral"
+    }
+   }
+  }
+ ],
+ "finale": {
+  "boss": {
+   "direct": {
+    "say": "See you on Wednesday. I’m glad you said it honestly.",
+    "expr": "smile"
+   },
+   "evasive": {
+    "say": "See you on Wednesday. Thanks for talking.",
+    "expr": "smile"
+   }
+  },
+  "title": "Saying no without hurt feelings",
+  "lead": "The refusal sounded warm and clear, and the friendship stayed intact. Here’s what it relied on:",
+  "carry": [
+   "Taking a pause and thanking them for the invitation.",
+   "Saying “no” briefly and repeating it calmly.",
+   "Offering an alternative to keep the connection."
+  ],
+  "prompt": "Who is it hard for you to say no to, and about what? Write down the first sentence."
+ }
+}

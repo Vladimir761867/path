@@ -1,0 +1,1191 @@
+{
+ "id": "granitsy",
+ "label": "BOUNDARIES WITHOUT A QUARREL · TWO DAYS BEFORE THE MOVE",
+ "hero": {
+  "defaultName": "Sasha"
+ },
+ "energy": 5,
+ "nextDayEnergy": 1,
+ "days": [
+  "Thursday",
+  "Friday"
+ ],
+ "dayAbbr": [
+  "Thu",
+  "Fri"
+ ],
+ "slots": [
+  "day",
+  "evening"
+ ],
+ "opener": "ask",
+ "openerWhen": "Wednesday, evening",
+ "openerShort": "Wed · evening",
+ "deadline": "Answer to Anya — on Saturday morning",
+ "ui": {
+  "afterOpener": "To the two days →",
+  "toFinal": "Saturday arrives →",
+  "toEpilogue": "What happened next →",
+  "weekLabel": "BEFORE THE MOVE · {n} OF {total} DAYS",
+  "hubLead": "Choose how to spend this slot. You can’t do everything.",
+  "hubTip": "There are more meetings than slots: each one closes off another, and what you skip leaves a mark too."
+ },
+ "intro": {
+  "kicker": "INTERACTIVE STORY",
+  "title": "Boundaries without a quarrel",
+  "paragraphs": [
+   "Your friend Anya is moving on Saturday and asks you to help all day. You have a deadline on Monday, and your energy is running out.",
+   "How do you say “I can do this, but not everything” without losing someone close? There’s no right ending; every answer has its price."
+  ],
+  "disclaimer": "A fictional story. Choices in the game send nothing to anyone and don’t judge your real relationships."
+ },
+ "npcs": {
+  "anya": {
+   "name": "Anya",
+   "ink": "#c2765a",
+   "words": [
+    "hurt",
+    "tense",
+    "even",
+    "close"
+   ]
+  },
+  "dima": {
+   "name": "Dima",
+   "ink": "#5f7f9a",
+   "words": [
+    "cold",
+    "unsure",
+    "even",
+    "friendly"
+   ],
+   "showIf": {
+    "clue": "helpers"
+   }
+  }
+ },
+ "clues": {
+  "own_deadline": "The report is due on Monday: about six hours of solid work.",
+  "anya_needs": "Anya: thirty boxes, a wardrobe and a bike. The heaviest part is the wardrobe and loading.",
+  "real_need": "Anya: “The wardrobe and loading are the heaviest.” The rest can be done without you.",
+  "helpers": "Dima and two more friends are already coming; the van is rented until two in the afternoon."
+ },
+ "scenes": [
+  {
+   "id": "ask",
+   "who": [
+    "anya"
+   ],
+   "title": "A message from Anya",
+   "place": "Sofa",
+   "bg": "room",
+   "icon": "☎",
+   "when": "Wednesday, evening",
+   "cost": 0,
+   "intro": "Wednesday evening. You’ve barely sat down after work when a voice message from Anya arrives: she’s moving on Saturday and really asks for help — “at least for the day”. And on Monday your report is due, which you haven’t started.",
+   "line": {
+    "npc": "anya",
+    "text": "I wouldn’t ask anyone, but I have deadlines: I hand over the keys on Sunday. You’ll come, right?"
+   },
+   "objects": [
+    {
+     "id": "plan",
+     "icon": "📋",
+     "label": "Your own plans",
+     "text": "In your notes: Saturday — “finish the report”. Next to it: “rest before I snap”.",
+     "fx": [
+      {
+       "clue": "own_deadline"
+      }
+     ]
+    },
+    {
+     "id": "voice",
+     "icon": "🎧",
+     "label": "Voice message",
+     "text": "Anya sounds tired, she talks fast and jokes between sentences. It’s clear asking isn’t easy for her.",
+     "fx": [
+      {
+       "flag": "anya_tired"
+      }
+     ]
+    }
+   ],
+   "choices": [
+    {
+     "id": "yes_all",
+     "text": "“Of course, I’ll come for the whole day.”",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "anya",
+        6
+       ]
+      },
+      {
+       "clarity": -1
+      },
+      {
+       "flag": "promised_all"
+      }
+     ],
+     "result": "Anya exhales: “Thank you, you’re the best.” It feels good — and immediately heavy: Saturday is now fully taken.",
+     "trace": "Promised the whole day."
+    },
+    {
+     "id": "wait",
+     "text": "“I need to think, I’ll answer tomorrow.”",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "anya",
+        1
+       ]
+      },
+      {
+       "clarity": 1
+      },
+      {
+       "flag": "asked_time"
+      }
+     ],
+     "result": "Anya answers faster than you expect: “OK. Just don’t disappear, alright?”",
+     "trace": "Asked for time until tomorrow."
+    },
+    {
+     "id": "limit",
+     "text": "“I want to help, but I have a deadline on Monday. Let’s work out what exactly is needed.”",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "anya",
+        4
+       ]
+      },
+      {
+       "clarity": 2
+      },
+      {
+       "flag": "said_limit"
+      }
+     ],
+     "result": "A pause. “Oh, I didn’t know about the deadline. Let’s work it out — what matters more is not being left alone.”",
+     "trace": "Named the limit and the wish to help.",
+     "req": {
+      "clue": "own_deadline"
+     }
+    },
+    {
+     "id": "avoid",
+     "text": "Read it and don’t answer.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "anya",
+        -4
+       ]
+      },
+      {
+       "energy": 1
+      },
+      {
+       "flag": "left_read"
+      }
+     ],
+     "result": "The message is marked as read. Silence buys you the evening — and drags awkwardness along with it.",
+     "trace": "The message went unanswered."
+    }
+   ]
+  },
+  {
+   "id": "own_plan",
+   "who": [],
+   "title": "Your own tasks",
+   "place": "Desk",
+   "bg": "room",
+   "slots": "both",
+   "cost": 0,
+   "icon": "📋",
+   "teaser": "See what’s really needed for Monday.",
+   "intro": "You open the report and calculate how many hours it really needs and when you have them.",
+   "objects": [
+    {
+     "id": "calc",
+     "icon": "🧮",
+     "label": "Calculation",
+     "text": "About six hours of solid work. If you skip Saturday, they fit into Sunday, but with no margin.",
+     "fx": [
+      {
+       "clue": "own_deadline"
+      }
+     ]
+    },
+    {
+     "id": "cal",
+     "icon": "🗓",
+     "label": "Calendar",
+     "text": "Saturday is an empty box, Sunday too. Nothing is protected yet.",
+     "fx": []
+    }
+   ],
+   "choices": [
+    {
+     "id": "block",
+     "text": "Block three hours on Sunday in the calendar for the report.",
+     "cost": 0,
+     "fx": [
+      {
+       "clarity": 2
+      },
+      {
+       "flag": "own_time"
+      }
+     ],
+     "result": "The box in the calendar is coloured in. Now it’s not “if there’s time left” but an agreement with yourself.",
+     "trace": "Report time is protected."
+    },
+    {
+     "id": "rush",
+     "text": "Start the report right now, with a tired head.",
+     "cost": 1,
+     "fx": [
+      {
+       "energy": -1
+      },
+      {
+       "clarity": 1
+      }
+     ],
+     "result": "An hour later you have two paragraphs and red eyes. But the fear of “not even started” is gone.",
+     "trace": "Report started while exhausted."
+    },
+    {
+     "id": "skip",
+     "text": "Close the laptop: not now.",
+     "cost": 0,
+     "fx": [
+      {
+       "energy": 1
+      }
+     ],
+     "result": "The relief is short. The deadline hasn’t gone anywhere — it will just wait for you on Monday.",
+     "trace": "Tasks put off."
+    }
+   ]
+  },
+  {
+   "id": "anya_call",
+   "who": [
+    "anya"
+   ],
+   "title": "Calling Anya",
+   "place": "Phone",
+   "bg": "room",
+   "slots": "eve",
+   "cost": 1,
+   "icon": "☎",
+   "teaser": {
+    "cases": [
+     {
+      "if": {
+       "flag": "left_read"
+      },
+      "text": "Anya called twice."
+     },
+     {
+      "text": "Find out what’s really needed."
+     }
+    ]
+   },
+   "intro": "Anya picks up right away. Boxes rustle in the background, tape snaps.",
+   "line": {
+    "npc": "anya",
+    "cases": [
+     {
+      "if": {
+       "flag": "promised_all"
+      },
+      "text": "I’m so glad you’re coming for the whole day! I made a plan for you…"
+     },
+     {
+      "if": {
+       "flag": "left_read"
+      },
+      "text": "You disappeared. I thought you were offended. What happened?"
+     },
+     {
+      "text": "I really don’t want to pressure you. I’m just afraid I won’t manage without people."
+     }
+    ]
+   },
+   "objects": [
+    {
+     "id": "boxes",
+     "icon": "📦",
+     "label": "Boxes",
+     "text": "Anya counts aloud: thirty boxes, a wardrobe, a bike. Most of it is already packed.",
+     "fx": [
+      {
+       "clue": "anya_needs"
+      }
+     ]
+    },
+    {
+     "id": "list",
+     "icon": "📝",
+     "label": "List",
+     "text": "Anya’s list: assembling the wardrobe and transport. The rest — “if we have time”.",
+     "fx": [
+      {
+       "clue": "real_need"
+      }
+     ]
+    }
+   ],
+   "choices": [
+    {
+     "id": "ask",
+     "text": "Ask: “What’s definitely needed, and what can be done without me?”",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "anya",
+        5
+       ]
+      },
+      {
+       "clarity": 2
+      },
+      {
+       "clue": "real_need"
+      }
+     ],
+     "result": "Anya thinks. “The wardrobe and loading are the heaviest. The rest I’ll manage myself, or Dima will help.”",
+     "trace": "It became clearer what exactly is needed."
+    },
+    {
+     "id": "listen",
+     "text": "Just listen to her: she hasn’t talked about all this out loud for a long time.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "anya",
+        7
+       ]
+      },
+      {
+       "clarity": 1
+      },
+      {
+       "flag": "she_stressed"
+      }
+     ],
+     "result": "She talks about the break-up, the rented flat, the fear of being alone. You barely speak, and she’s clearly feeling lighter.",
+     "trace": "Anya was heard."
+    },
+    {
+     "id": "promise",
+     "text": "Promise to come in the morning, the rest “depending on how it goes”.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "anya",
+        3
+       ]
+      },
+      {
+       "clarity": -1
+      },
+      {
+       "flag": "vague_promise"
+      }
+     ],
+     "result": "Anya calms down. But “depending on how it goes” tells neither of you when you’ll leave.",
+     "trace": "The agreement stayed vague."
+    }
+   ]
+  },
+  {
+   "id": "dima_chat",
+   "who": [
+    "dima"
+   ],
+   "title": "Dima with the car",
+   "place": "Street",
+   "bg": "street",
+   "slots": "day",
+   "cost": 1,
+   "icon": "🚐",
+   "teaser": "Anya’s brother is coming too.",
+   "intro": "You meet Dima at the metro — he’s carrying parts for the wardrobe and mentions in passing how they arranged things with Anya.",
+   "line": {
+    "npc": "dima",
+    "text": "We have a van for the morning and two more friends. Anya isn’t the type to ask for too much, she’s just shy about asking."
+   },
+   "objects": [
+    {
+     "id": "van",
+     "icon": "🚐",
+     "label": "Van",
+     "text": "The van is rented until two in the afternoon. There are already three movers, not counting you.",
+     "fx": [
+      {
+       "clue": "helpers"
+      }
+     ]
+    }
+   ],
+   "choices": [
+    {
+     "id": "ask",
+     "text": "Ask: “If I only come for the loading, will that help?”",
+     "cost": 1,
+     "fx": [
+      {
+       "trust": [
+        "dima",
+        6
+       ]
+      },
+      {
+       "clarity": 2
+      },
+      {
+       "flag": "hour_ok"
+      }
+     ],
+     "result": "“Loading is the most important part. After two we’ll manage on our own,” Dima answers. Sounds like a real plan.",
+     "trace": "It turned out a few hours would be enough."
+    },
+    {
+     "id": "chat",
+     "text": "Just chat without asking anything.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "dima",
+        3
+       ]
+      },
+      {
+       "energy": 1
+      }
+     ],
+     "result": "Dima talks about the neighbours and laughs at his own jokes. You part as friends, but nothing is clearer.",
+     "trace": "Talked without specifics."
+    },
+    {
+     "id": "offer",
+     "text": "Offer to go with them for the whole day — “just in case”.",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "dima",
+        4
+       ]
+      },
+      {
+       "clarity": -1
+      },
+      {
+       "flag": "over_offer"
+      }
+     ],
+     "result": "Dima nods: “Great, so you’re with us until evening.” The offer flew out faster than you could think.",
+     "trace": "Offered the whole day without thinking it through."
+    }
+   ]
+  },
+  {
+   "id": "anya_coffee",
+   "who": [
+    "anya"
+   ],
+   "title": "Coffee with Anya",
+   "place": "Café",
+   "bg": "cafe",
+   "slots": "day",
+   "cost": 1,
+   "icon": "☕",
+   "teaser": "Anya invites you for coffee before the move.",
+   "intro": "Anya arrives with red eyes and a bag of papers. It’s clear holding it together isn’t easy for her.",
+   "line": {
+    "npc": "anya",
+    "text": "I don’t want to look pathetic. It’s just that everything piled up at once."
+   },
+   "objects": [
+    {
+     "id": "papers",
+     "icon": "📄",
+     "label": "Papers",
+     "text": "The lease, the handover form, a list of things. Signatures in three places.",
+     "fx": [
+      {
+       "clue": "anya_needs"
+      }
+     ]
+    },
+    {
+     "id": "cup",
+     "icon": "☕",
+     "label": "Coffee",
+     "text": "Anya ordered your favourite before even asking. Care is in the little things.",
+     "fx": [
+      {
+       "flag": "anya_care"
+      }
+     ]
+    }
+   ],
+   "choices": [
+    {
+     "id": "hour",
+     "text": "Say: “I’ll come for a few hours and help with the loading.”",
+     "cost": 1,
+     "fx": [
+      {
+       "trust": [
+        "anya",
+        5
+       ]
+      },
+      {
+       "clarity": 1
+      },
+      {
+       "flag": "offered_hour"
+      }
+     ],
+     "result": "Anya nods and writes it in her notebook. “Loading is a lot.” It’s clear she expected less and is grateful anyway.",
+     "trace": "Offered a specific part of the help."
+    },
+    {
+     "id": "alt",
+     "text": "Say: “I can’t do the whole day, but on Sunday evening I’ll come with food and help you set up.”",
+     "cost": 1,
+     "fx": [
+      {
+       "trust": [
+        "anya",
+        4
+       ]
+      },
+      {
+       "clarity": 2
+      },
+      {
+       "flag": "offered_alt"
+      }
+     ],
+     "result": "Anya blinks: “I actually need that more — the first evening there will be empty.” The boundary doesn’t push her away; it moves the help somewhere else.",
+     "trace": "Offered help in a different way.",
+     "req": {
+      "clue": "own_deadline"
+     }
+    },
+    {
+     "id": "apologize",
+     "text": "Start apologising: “Sorry I can’t do more.”",
+     "cost": 0,
+     "fx": [
+      {
+       "trust": [
+        "anya",
+        1
+       ]
+      },
+      {
+       "clarity": -1
+      },
+      {
+       "flag": "overapologized"
+      }
+     ],
+     "result": "Anya waves it away: “Don’t be silly, don’t apologise.” But for the whole coffee you talk about your guilt, not her move.",
+     "trace": "The conversation turned into apologies."
+    }
+   ]
+  },
+  {
+   "id": "guilt",
+   "who": [],
+   "title": "Guilt",
+   "place": "Room",
+   "bg": "room",
+   "slots": "both",
+   "cost": 0,
+   "icon": "💭",
+   "teaser": "What’s really weighing on you.",
+   "intro": "You notice that all day you’ve been thinking not about the report or the move, but about “am I a good friend”.",
+   "objects": [
+    {
+     "id": "note",
+     "icon": "📝",
+     "label": "Note",
+     "text": "You write: “What do I owe? What do I want? What am I able to do?” Three columns, still empty.",
+     "fx": []
+    }
+   ],
+   "choices": [
+    {
+     "id": "write",
+     "text": "Fill in the three columns honestly.",
+     "cost": 0,
+     "fx": [
+      {
+       "clarity": 2
+      },
+      {
+       "flag": "wrote_limits"
+      }
+     ],
+     "result": "It comes out: owe — to be there, want — to help in my own way, able — a few hours. A steady formula you can lean on.",
+     "trace": "Wrote down your “owe / want / can”."
+    },
+    {
+     "id": "ignore",
+     "text": "Drown it out with a TV series.",
+     "cost": 0,
+     "fx": [
+      {
+       "energy": 1
+      }
+     ],
+     "result": "Two hours of lightness. Then the guilt returns, but quieter.",
+     "trace": "The guilt went unanswered."
+    }
+   ]
+  },
+  {
+   "id": "draft",
+   "who": [],
+   "title": "Answering Anya",
+   "place": "Table",
+   "bg": "room",
+   "slots": "eve",
+   "cost": 1,
+   "icon": "✎",
+   "avail": {
+    "any": [
+     {
+      "clue": "own_deadline"
+     },
+     {
+      "flag": "said_limit"
+     }
+    ]
+   },
+   "teaser": "Write a message so that it’s heard.",
+   "intro": "Late in the evening you open your chat with Anya and write a draft.",
+   "objects": [
+    {
+     "id": "draft",
+     "icon": "✎",
+     "label": "Draft",
+     "text": "Three versions: warm and clear, vague, and “we’ll decide later”. You need one.",
+     "fx": []
+    }
+   ],
+   "choices": [
+    {
+     "id": "warm",
+     "text": "Write: “I’ll help with the loading in the morning and come on Sunday evening. I can’t do the whole day — I have a report.”",
+     "cost": 1,
+     "fx": [
+      {
+       "clarity": 2
+      },
+      {
+       "flag": "drafted_limit"
+      },
+      {
+       "flag": "offered_hour"
+      }
+     ],
+     "result": "The message goes. A minute later: “Thanks for being honest.” Your hands stop shaking.",
+     "trace": "Sent a warm, clear message."
+    },
+    {
+     "id": "vague",
+     "text": "Write: “I’ll try, we’ll see.”",
+     "cost": 0,
+     "fx": [
+      {
+       "clarity": -1
+      },
+      {
+       "flag": "vague_promise"
+      }
+     ],
+     "result": "The message breaks nothing — and solves nothing. At night you catch yourself checking your phone.",
+     "trace": "Sent a vague answer."
+    },
+    {
+     "id": "flood",
+     "text": "Write a long apology with five excuses.",
+     "cost": 0,
+     "fx": [
+      {
+       "energy": -1
+      },
+      {
+       "flag": "overapologized"
+      }
+     ],
+     "result": "It comes out three screens long. Anya answers “ok” — and you only feel worse.",
+     "trace": "Explained too much."
+    }
+   ]
+  },
+  {
+   "id": "walk",
+   "who": [],
+   "title": "A walk",
+   "place": "City",
+   "bg": "street",
+   "slots": "both",
+   "cost": 0,
+   "icon": "↗",
+   "teaser": "Just go for a walk.",
+   "intro": "You go out without a goal. The wind is cold, the air is clean.",
+   "objects": [
+    {
+     "id": "bench",
+     "icon": "🪑",
+     "label": "Bench",
+     "text": "The bench is empty. You can sit down and decide nothing.",
+     "fx": []
+    }
+   ],
+   "choices": [
+    {
+     "id": "river",
+     "text": "Walk to the embankment.",
+     "cost": 0,
+     "fx": [
+      {
+       "energy": 2
+      },
+      {
+       "clarity": 1
+      }
+     ],
+     "result": "Over the water your head clears. “No” stops sounding like betrayal.",
+     "trace": "A walk by the water."
+    },
+    {
+     "id": "home",
+     "text": "Come back after one block.",
+     "cost": 0,
+     "fx": [
+      {
+       "energy": 1
+      }
+     ],
+     "result": "A short pause. Good to have somewhere to come back to.",
+     "trace": "A short walk."
+    }
+   ]
+  }
+ ],
+ "final": {
+  "when": "Saturday, 8:40",
+  "dayLabel": "Saturday",
+  "title": "Decision",
+  "place": "At Anya’s door",
+  "subtitle": "the movers arrive at nine",
+  "bg": "street",
+  "ask": "What do you say to Anya?",
+  "onEnter": [
+   {
+    "trust": [
+     "anya",
+     -6
+    ],
+    "if": {
+     "flag": "left_read"
+    }
+   }
+  ],
+  "present": [
+   {
+    "npc": "anya"
+   },
+   {
+    "npc": "dima",
+    "if": {
+     "trust": [
+      "dima",
+      ">=",
+      50
+     ]
+    }
+   }
+  ],
+  "intro": [
+   "Saturday, 8:40. The courtyard, the van, boxes by the entrance.",
+   {
+    "cases": [
+     {
+      "if": {
+       "flag": "promised_all"
+      },
+      "text": "You remember you promised the whole day. The report waits at home as a reminder."
+     },
+     {
+      "if": {
+       "flag": "offered_alt"
+      },
+      "text": "You mentioned Sunday — but now it needs to be said out loud."
+     },
+     {
+      "text": "Anya doesn’t know yet what you’ll decide, and it shows on her face."
+     }
+    ]
+   },
+   {
+    "if": {
+     "trust": [
+      "dima",
+      ">=",
+      50
+     ]
+    },
+    "text": "Dima nods to you from the cab — good that you talked in advance."
+   }
+  ],
+  "lines": [
+   {
+    "if": {
+     "flag": "promised_all"
+    },
+    "npc": "anya",
+    "text": "Can you really do the whole day? I don’t want you to be angry later."
+   },
+   {
+    "if": {
+     "any": [
+      {
+       "flag": "offered_hour"
+      },
+      {
+       "flag": "offered_alt"
+      }
+     ]
+    },
+    "npc": "anya",
+    "text": "Thanks for telling me in advance. Let’s see what works best."
+   },
+   {
+    "npc": "anya",
+    "text": "You came. That already means a lot to me."
+   }
+  ],
+  "options": [
+   {
+    "id": "full",
+    "route": "full",
+    "text": "Stay for the whole day, as promised.",
+    "lock": [],
+    "fx": [
+     {
+      "trust": [
+       "anya",
+       6
+      ]
+     },
+     {
+      "energy": -2
+     },
+     {
+      "trust": [
+       "dima",
+       3
+      ]
+     }
+    ],
+    "result": {
+     "cases": [
+      {
+       "if": {
+        "flag": "promised_all"
+       },
+       "text": "You pick up the first box. Your hands get used to it quickly, your head more slowly: it’s already counting the report hours."
+      },
+      {
+       "text": "You stay. It’s your own decision, but you catch yourself doing it out of “I have to”, not “I want to”."
+      }
+     ]
+    }
+   },
+   {
+    "id": "hour",
+    "route": "hour",
+    "text": "Help with the loading in the morning and leave after lunch.",
+    "lock": [
+     {
+      "when": {
+       "clarity": [
+        "<",
+        2
+       ]
+      },
+      "reason": "It’s still unclear what exactly you can do. A talk with Anya or Dima and a calculation of your own time would help."
+     }
+    ],
+    "fx": [
+     {
+      "trust": [
+       "anya",
+       4
+      ]
+     },
+     {
+      "trust": [
+       "dima",
+       3
+      ]
+     },
+     {
+      "energy": -1
+     }
+    ],
+    "result": "You name the time: “From nine to one.” Anya nods and immediately plans what to give you. Defined hours work better than a promise of “the whole day”."
+   },
+   {
+    "id": "alt",
+    "route": "alt",
+    "text": "Don’t go on Saturday, but come on Sunday evening with food.",
+    "lock": [
+     {
+      "when": {
+       "not": {
+        "any": [
+         {
+          "flag": "offered_alt"
+         },
+         {
+          "flag": "wrote_limits"
+         },
+         {
+          "flag": "own_time"
+         }
+        ]
+       }
+      },
+      "reason": "For a refusal to sound like care rather than escape, you need a plan of your own: at least your own time for the report or an honest talk with Anya."
+     }
+    ],
+    "fx": [
+     {
+      "trust": [
+       "anya",
+       3
+      ]
+     },
+     {
+      "clarity": 1
+     },
+     {
+      "energy": 1
+     }
+    ],
+    "result": "You say it straight: “I can’t do Saturday, I have a report. I’ll come on Sunday evening with food.” Anya is silent for a second and hugs you: “OK. I’m actually looking forward to that more.”"
+   },
+   {
+    "id": "later",
+    "route": "later",
+    "text": "Ask for another day: you’ll answer in the evening.",
+    "lock": [
+     {
+      "when": {
+       "not": {
+        "flag": "asked_time"
+       }
+      },
+      "reason": "Asking for a delay should have happened earlier — on the morning of the move it already lets people down."
+     }
+    ],
+    "fx": [
+     {
+      "trust": [
+       "anya",
+       1
+      ]
+     },
+     {
+      "clarity": 1
+     }
+    ],
+    "result": "Anya says: “If it’s before lunch — OK. But I need to know.” You get time, but it’s already limited."
+   }
+  ]
+ },
+ "epilogue": {
+  "kicker": "SUNDAY EVENING",
+  "again": "Live the two days differently →",
+  "recapMissed": [
+   "anya_call",
+   "dima_chat",
+   "anya_coffee",
+   "draft",
+   "own_plan",
+   "guilt"
+  ],
+  "title": {
+   "cases": [
+    {
+     "if": {
+      "route": "full"
+     },
+     "text": "The whole day — but not out of “I have to”"
+    },
+    {
+     "if": {
+      "route": "hour"
+     },
+     "text": "A few hours that are honest"
+    },
+    {
+     "if": {
+      "route": "alt"
+     },
+     "text": "No, but with a different “yes”"
+    },
+    {
+     "text": "Time that ran out anyway"
+    }
+   ]
+  },
+  "paragraphs": [
+   {
+    "cases": [
+     {
+      "if": {
+       "route": "full"
+      },
+      "text": "You spent the whole day on your feet, carried boxes until dark, and the report still lies untouched. Anya is grateful, though she sees you’re tired."
+     },
+     {
+      "if": {
+       "route": "hour"
+      },
+      "text": "You helped in the morning and left after lunch. The report on Sunday went calmly: three hours already protected in the calendar."
+     },
+     {
+      "if": {
+       "route": "alt"
+      },
+      "text": "You didn’t go on Saturday and wrote honestly why. On Sunday you came with food and helped arrange the books: Anya laughed that the first dinner in a new flat is the best one."
+     },
+     {
+      "text": "You answered late. Anya managed with Dima’s help, but you can tell she was counting on you more."
+     }
+    ]
+   },
+   {
+    "cases": [
+     {
+      "if": {
+       "all": [
+        {
+         "trust": [
+          "anya",
+          ">=",
+          60
+         ]
+        },
+        {
+         "flag": "drafted_limit"
+        }
+       ]
+      },
+      "text": "Anya said: “You taught me to ask more specifically.” Boundaries and friendship turned out to fit in one room."
+     },
+     {
+      "if": {
+       "trust": [
+        "anya",
+        ">=",
+        55
+       ]
+      },
+      "text": "Things with Anya are still warm. She knows you don’t disappear, even when you can’t come."
+     },
+     {
+      "if": {
+       "trust": [
+        "anya",
+        ">=",
+        45
+       ]
+      },
+      "text": "Things with Anya are even. A slight aftertaste remains, but the conversation isn’t closed."
+     },
+     {
+      "text": "There’s still tension with Anya. Nobody has taken the first step towards talking yet."
+     }
+    ]
+   },
+   {
+    "if": {
+     "any": [
+      {
+       "flag": "overapologized"
+      },
+      {
+       "flag": "vague_promise"
+      }
+     ]
+    },
+    "text": {
+     "cases": [
+      {
+       "if": {
+        "flag": "overapologized"
+       },
+       "text": "You noticed: when you apologise a lot, a conversation about a boundary turns into a conversation about guilt."
+      },
+      {
+       "text": "A vague “depending on how it goes” reassured no one: neither you nor Anya."
+      }
+     ]
+    }
+   },
+   {
+    "cases": [
+     {
+      "if": {
+       "clarity": [
+        ">=",
+        4
+       ]
+      },
+      "text": "You understand well where your boundary lies, and it shows in the little things."
+     },
+     {
+      "if": {
+       "clarity": [
+        ">=",
+        2
+       ]
+      },
+      "text": "Something became clearer: what you’re ready to share and in what form."
+     },
+     {
+      "text": "The boundary is still blurry. But the question “what can I actually do?” is already being asked."
+     }
+    ]
+   }
+  ]
+ }
+}
