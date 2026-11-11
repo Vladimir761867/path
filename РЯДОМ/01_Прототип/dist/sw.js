@@ -1,5 +1,5 @@
 /* Офлайн-оболочка: сначала сеть, при её отсутствии — копия из кэша. /api/ никогда не кэшируется. */
-const CACHE = 'ryadom-v5';
+const CACHE = 'ryadom-v6';
 self.addEventListener('install', e => { self.skipWaiting(); });
 self.addEventListener('activate', e => e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())));
 self.addEventListener('fetch', e => {

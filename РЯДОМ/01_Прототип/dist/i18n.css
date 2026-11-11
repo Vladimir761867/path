@@ -1,0 +1,23 @@
+/* Выбор языка и письмо справа налево */
+html.i18n-loading body{visibility:hidden}
+.lang-pick{display:inline-flex;align-items:center;gap:6px;min-height:44px;position:relative}
+.lang-pick select{min-height:44px;border:1px solid #cbdccf;border-radius:12px;background:#fffdf9;color:#315f4c;font:inherit;font-weight:650;padding:6px 30px 6px 10px;max-width:100%}
+.lang-pick.compact select{min-height:38px;padding:4px 26px 4px 8px;font-size:13px}
+.lang-pick .lang-ico{font-size:17px;line-height:1}
+.lang-pick.compact .lang-ico{display:none}
+.pv-sheet .lang-pick{margin:0 0 12px}
+.lang-card .lang-pick select{min-width:220px}
+/* RTL: зеркалим то, что не зеркалится само (абсолютные позиции, отступы с одной стороны) */
+[dir=rtl] body{font-family:"Segoe UI",Tahoma,"Noto Sans Arabic","Geeza Pro",system-ui,sans-serif}
+[dir=rtl] .bubble{border-radius:18px 18px 5px 18px}
+[dir=rtl] .bubble.me{border-radius:18px 18px 18px 5px}
+[dir=rtl] .close{right:auto;left:17px}
+[dir=rtl] aside{border-right:0;border-left:1px solid var(--line)}
+[dir=rtl] .nav button,[dir=rtl] .level-options button,[dir=rtl] .linkbtn{text-align:right}
+[dir=rtl] .level-reflection{border-left:0;border-right:3px solid #80aa86;border-radius:12px 0 0 12px}
+[dir=rtl] .note:after{right:auto;left:-14px}
+[dir=rtl] .send{transform:scaleX(-1)}
+[dir=rtl] .insight ul{padding-left:0;padding-right:18px}
+:lang(ja) body,:lang(zh) body{line-break:strict;word-break:normal}
+:lang(ka) .page-title,:lang(ka) .hero h1{letter-spacing:0}
+:lang(ja) .page-title,:lang(zh) .page-title,:lang(ja) .hero h1,:lang(zh) .hero h1,:lang(ar) .page-title,:lang(ar) .hero h1{letter-spacing:0}

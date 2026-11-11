@@ -10,7 +10,7 @@
   btn.onclick = () => { on = !on; try { localStorage.setItem(KEY, on ? '1' : '0'); } catch { /* */ } if (!on) speechSynthesis.cancel(); paint(); if (on) speak('Озвучка включена.'); };
   paint(); form.append(btn);
   function speak(t) {
-    try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(String(t).replace(/\s+/g, ' ').slice(0, 600)); u.lang = 'ru-RU'; u.rate = 0.95; speechSynthesis.speak(u); } catch { /* голос недоступен */ }
+    try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(String(t).replace(/\s+/g, ' ').slice(0, 600)); u.lang = (window.RYADOM_LOCALE || 'ru-RU'); u.rate = 0.95; speechSynthesis.speak(u); } catch { /* голос недоступен */ }
   }
   const orig = window.add;
   if (typeof orig === 'function') window.add = function (text, me) { const r = orig.apply(this, arguments); if (!me && on) speak(text); return r; };

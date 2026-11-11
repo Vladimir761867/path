@@ -20,7 +20,7 @@ let fail = 0;
     await ctx.close();
   }
   // переход к квесту после подтверждения
-  const ctx = await b.newContext({ ...devices['iPhone 13'] }); await ctx.addInitScript(() => { try { localStorage.setItem('ryadom-consent-v1', 'x'); } catch (e) {} });
+  const ctx = await b.newContext({ ...devices['iPhone 13'], locale: 'ru-RU' }); await ctx.addInitScript(() => { try { localStorage.setItem('ryadom-consent-v1', 'x'); } catch (e) {} });
   const p = await ctx.newPage(); await p.goto(URL); await p.waitForTimeout(300);
   const i = await p.$('#input'); await i.fill('начальник орёт на меня при всех'); await i.press('Enter'); await p.waitForTimeout(500);
   await p.click('.messages .choice:text-is("Да, примерно так")'); await p.waitForTimeout(500);

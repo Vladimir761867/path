@@ -314,7 +314,7 @@
   function open(id) { loadQuest(id).then(q => { Q = q; S = null; renderIntro(); }).catch(() => { const r = root(); r.replaceChildren(); topBar(r); r.append(h('p', 'qz-note', 'Не удалось загрузить квест. Проверь соединение и попробуй ещё раз.')); }); }
   function mount() {
     const grid = $('#gameGrid'); if (!grid) return;
-    const sec = h('section', 'qz-section'); sec.append(h('h2', null, 'Тренажёры разговоров'), h('p', 'qz-sub', 'Квесты, где выбор слов меняет ход разговора. Опираются на известные методики общения.')); const cards = h('div', 'qz-cards'); cards.id = 'qzCards'; sec.append(cards);
+    const sec = h('section', 'qz-section'); sec.append(h('h2', null, 'Тренажёры разговоров'), h('p', 'qz-sub', 'Квесты, где выбор слов меняет ход разговора. Опираются на известные методики общения.')); if (window.RyadomI18n && window.RyadomI18n.lang !== 'ru') sec.append(h('p', 'qz-sub qz-lang-note', 'Квесты и сюжетные игры пока доступны только на русском языке. Перевод появится в следующих версиях.')); const cards = h('div', 'qz-cards'); cards.id = 'qzCards'; sec.append(cards);
     const anchor = grid.closest('details') || grid; anchor.before(sec); renderCards();
   }
   window.RyadomQuest = { open, _state: () => S, _quest: () => Q };

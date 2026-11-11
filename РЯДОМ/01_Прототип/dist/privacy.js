@@ -56,6 +56,7 @@
     const ov = $('div', 'pv-overlay'); ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-labelledby', 'pvTitle');
     const sh = $('div', 'pv-sheet');
     const h = $('h2', null, 'Прежде чем начать'); h.id = 'pvTitle';
+    if (window.RyadomI18n) sh.append(window.RyadomI18n.picker());
     sh.append(h, $('p', null, 'Коротко о том, как устроено «Рядом».'), points());
     const ok = btn(reopen ? 'Закрыть' : 'Понятно, продолжить', '', () => { if (!reopen) safe(() => localStorage.setItem(CONSENT, new Date().toISOString())); ov.remove(); if (onDone) onDone(); });
     sh.append(ok); ov.append(sh); document.body.append(ov);

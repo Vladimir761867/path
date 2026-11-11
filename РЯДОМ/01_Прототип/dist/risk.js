@@ -15,7 +15,49 @@
   // «смысл» в чём-то конкретном (в этом совещании, в споре) — не про жизнь
   const MEANING_THING = /^ ?в (этом|этой|этих|этот|том|той|таком|такой|таких|данном|данной|нашем|наших|подобн|споре|разговор|совещан|встреч|проект|учеб|работ)/;
 
+  /* Другие языки: только явные формулировки (без тонкостей русского набора). Текст сравнивается как есть
+   * и без диакритики (fẹ́ → fe, não → nao). Набор проверяется tests/risk-intl.js. */
+  const INTL = {
+    self: [
+      /kill (my ?self|me)\b|suicid|end (my|it all|my own) life|end it all|take my (own )?life|want(ed)? to die|wanna die|wish i (was|were) dead|(don'?t|do not|no longer) want to (live|be alive)|better off dead|hurt(ing)? myself|self[- ]?harm|cut(ting)? myself|no reason to live/,
+      /matarme|quitarme la vida|quiero morir(me)?|ganas de morir|no quiero (seguir )?vivir|acabar con mi vida|hacerme dano|autolesi/,
+      /me tuer|me suicider|en finir avec (la vie|ma vie)|(je )?veux mourir|envie de mourir|(je )?ne veux plus vivre|me faire du mal|automutil/,
+      /suizid|selbstmord|mich umbringen|mich toten|(will|mochte) sterben|sterben will|nicht mehr leben|mir (etwas|was) antun|mich ritzen|selbstverletz/,
+      /me matar|tirar (a )?minha (propria )?vida|quero morrer|nao quero (mais )?viver|me machucar|automutila|acabar com (a )?minha vida/,
+      /intihar|kendimi oldur|olmek istiyorum|yasamak istemiyorum|can[iı]ma k[iı]y|kendime zarar/,
+      /өзімді өлтір|өлгім келеді|өмір сүргім келмейді|суицид|өз-өзіме қол сал|өзіме зиян/,
+      /თვითმკვლელ|თავის მოკვლა|თავი მოვიკლა|მინდა მოვკვდე|სიკვდილი მინდა|ცხოვრება აღარ მინდა|სიცოცხლე აღარ მინდა|თავს ზიანი/,
+      /انتحار|انتحر|أنتحر|اقتل نفسي|أقتل نفسي|اريد ان اموت|أريد أن أموت|اريد الموت|أريد الموت|لا اريد ان اعيش|لا أريد أن أعيش|اؤذي نفسي|أؤذي نفسي|ايذاء النفس|إيذاء النفس/,
+      /自杀|自殺|想死|不想活|结束(自己的)?生命|結束(自己的)?生命|伤害自己|傷害自己|自残|自殘|轻生|輕生/,
+      /死にたい|消えたい|生きていたくない|生きたくない|自傷|リスカ|命を絶|自分を傷つけ/,
+      /kashe kai ?na|ina (so|son) (in )?mutu|ina son mutuwa|ba na (so|son) (in yi )?rayuwa|kisan kai/,
+      /kujiua|nataka kufa|sitaki kuishi|kujidhuru|kujiumiza|nijiue|kujitoa uhai/,
+      /pa ara mi|mo fe ku|mo fe ki n ku|n ko fe gbe aye|ko wu mi lati wa laaye|se ara mi lese|para eni/
+    ],
+    others: [
+      /\b(i('m| am)? (going|gonna)|i want|i will) (to )?(kill|hurt|stab|beat) (him|her|them|someone|my )/,
+      /voy a matar(lo|la)|quiero matar(lo|la|le)|vou matar (ele|ela)|je vais (le|la) tuer|ich (werde|will) (ihn|sie) (umbringen|toten)/
+    ],
+    danger: [
+      /\b(he|she|they|someone|my (husband|wife|partner|father|mother|dad|mom|boyfriend|girlfriend)) (is |keeps )?(hitting|beating|hurting|choking) me|i('m| am) being (abused|beaten)|not safe at home|locked me (in|up)/,
+      /me (pega|golpea|maltrata)|me (frappe|bat) |schlagt mich|misshandelt mich|me (bate|agride)|beni dovuyor|bana siddet uyguluyor/
+    ]
+  };
+  const plain = t => String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[’`]/g, "'");
+  function riskIntl(text) {
+    const a = String(text || '').toLowerCase(), b = plain(text);
+    const hit = list => list.some(re => re.test(a) || re.test(b));
+    if (hit(INTL.self)) return 'self';
+    if (hit(INTL.others)) return 'others';
+    if (hit(INTL.danger)) return 'danger';
+    return null;
+  }
+
   function riskOf(text) {
+    const r = riskRu(text);
+    return r || riskIntl(text);
+  }
+  function riskRu(text) {
     const s = N(text);
 
     // 1. Явные формулировки о вреде себе / нежелании жить
@@ -36,5 +78,5 @@
     if (/ не хочу жить без /.test(s)) return 'check';
     return null;
   }
-  return { riskOf, N };
+  return { riskOf, riskIntl, N };
 });

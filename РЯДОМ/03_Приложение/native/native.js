@@ -20,6 +20,7 @@
   const isOurs = k => typeof k === 'string' && k.indexOf('ryadom-') === 0;
   const safe = fn => { try { return fn(); } catch (e) { return undefined; } };
 
+  const T = s => (window.RyadomI18n ? window.RyadomI18n.t(s) : s);
   /* ---------- 1. Хранилище ---------- */
   const ls = window.localStorage;
   const proto = Object.getPrototypeOf(ls);
@@ -96,7 +97,7 @@
   async function shareFile(name, text) {
     if (!P.Filesystem || !P.Share) throw new Error('no-share');
     const w = await P.Filesystem.writeFile({ path: name, data: text, directory: 'CACHE', encoding: 'utf8' });
-    await P.Share.share({ title: 'Данные «Рядом»', text: 'Копия данных приложения «Рядом». Храни её в надёжном месте.', files: [w.uri], dialogTitle: 'Сохранить копию' });
+    await P.Share.share({ title: T('Данные «Рядом»'), text: T('Копия данных приложения «Рядом». Храни её в надёжном месте.'), files: [w.uri], dialogTitle: T('Сохранить копию') });
     return true;
   }
 
@@ -113,7 +114,7 @@
     if (perm.display !== 'granted') perm = await LN.requestPermissions().catch(() => ({ display: 'denied' }));
     if (perm.display !== 'granted') return { ok: false, msg: 'Уведомления запрещены. Их можно разрешить в настройках телефона для приложения «Рядом».' };
     const [hh, mm] = r.time.split(':').map(Number);
-    await LN.schedule({ notifications: [{ id: 7101, title: 'Рядом', body: TEXTS[Math.floor(Math.random() * TEXTS.length)], schedule: { on: { hour: hh, minute: mm }, allowWhileIdle: true }, extra: { open: 'history' } }] });
+    await LN.schedule({ notifications: [{ id: 7101, title: T('Рядом'), body: T(TEXTS[Math.floor(Math.random() * TEXTS.length)]), schedule: { on: { hour: hh, minute: mm }, allowWhileIdle: true }, extra: { open: 'history' } }] });
     return { ok: true, msg: 'Готово: каждый день в ' + r.time + '. Пропускать можно — это просто приглашение.' };
   }
   function checkReminderLaunch() {
