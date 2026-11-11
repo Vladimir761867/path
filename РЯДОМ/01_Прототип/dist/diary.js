@@ -1,9 +1,10 @@
+const _tDiary=s=>(window.RyadomI18n?window.RyadomI18n.t(s):s);
 // Calendar of real check-ins and conversations. Game state is never read here.
 renderCalendar=function(){
   const year=calendarMonth.getFullYear(),month=calendarMonth.getMonth();
   const grid=document.querySelector('#calendarGrid');
   grid.replaceChildren();
-  document.querySelector('#monthTitle').textContent=new Intl.DateTimeFormat('ru-RU',{month:'long',year:'numeric'}).format(calendarMonth);
+  document.querySelector('#monthTitle').textContent=new Intl.DateTimeFormat((window.RYADOM_LOCALE||'ru-RU'),{month:'long',year:'numeric'}).format(calendarMonth);
   document.querySelector('#nextMonth').disabled=year===new Date().getFullYear()&&month===new Date().getMonth();
   const offset=(new Date(year,month,1).getDay()+6)%7;
   for(let i=0;i<offset;i++){const blank=document.createElement('span');blank.setAttribute('aria-hidden','true');grid.append(blank)}
@@ -17,7 +18,7 @@ renderCalendar=function(){
     const button=document.createElement('button');
     button.className='calendar-day'+(mood?' mood-'+mood.mood:'')+(check?' has-data':'')+(hasDialogue?' has-dialogue':'')+(hasPlace?' has-place':'')+(key===todayKey()?' today':'')+(key===selectedDay?' selected':'');
     button.disabled=key>todayKey();
-    button.setAttribute('aria-label',new Intl.DateTimeFormat('ru-RU',{weekday:'long',day:'numeric',month:'long'}).format(new Date(year,month,day))+(mood?', '+moodNames[mood.mood]:'')+(hasDialogue?', есть разговор':'')+(check?', есть отметка состояния':'')+(hasPlace?', есть посещённые места':''));
+    button.setAttribute('aria-label',new Intl.DateTimeFormat((window.RYADOM_LOCALE||'ru-RU'),{weekday:'long',day:'numeric',month:'long'}).format(new Date(year,month,day))+(mood?', '+_tDiary(moodNames[mood.mood]):'')+(hasDialogue?', '+_tDiary('есть разговор'):'')+(check?', '+_tDiary('есть отметка состояния'):'')+(hasPlace?', '+_tDiary('есть посещённые места'):''));
     const number=document.createElement('b');number.textContent=day;button.append(number);
     if(check||hasDialogue||hasPlace){
       const dots=document.createElement('span');dots.className='day-dots';
@@ -34,7 +35,7 @@ renderCalendar=function(){
 renderCalendarDetail=function(){
   const panel=document.querySelector('#calendarDetail');panel.replaceChildren();
   const title=document.createElement('h4');
-  title.textContent=new Intl.DateTimeFormat('ru-RU',{weekday:'long',day:'numeric',month:'long'}).format(new Date(selectedDay+'T12:00:00'));
+  title.textContent=new Intl.DateTimeFormat((window.RYADOM_LOCALE||'ru-RU'),{weekday:'long',day:'numeric',month:'long'}).format(new Date(selectedDay+'T12:00:00'));
   panel.append(title);
   const entries=history().filter(x=>x.day===selectedDay);
   const mood=[...entries].reverse().find(x=>x.mood);
@@ -58,7 +59,7 @@ renderCalendarDetail=function(){
     sessions.forEach(session=>{
       const block=document.createElement('div');block.className='archive-session';
       const time=document.createElement('div');time.className='archive-time';
-      time.textContent=new Intl.DateTimeFormat('ru-RU',{hour:'2-digit',minute:'2-digit'}).format(new Date(session.startedAt));
+      time.textContent=new Intl.DateTimeFormat((window.RYADOM_LOCALE||'ru-RU'),{hour:'2-digit',minute:'2-digit'}).format(new Date(session.startedAt));
       block.append(time);
       const messages=document.createElement('div');messages.className='archive-messages';
       (session.messages||[]).forEach(item=>{

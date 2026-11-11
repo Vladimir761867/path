@@ -74,9 +74,19 @@ function clean(body) {
     });
   }
   const recent = Array.isArray(c.recent) ? c.recent.slice(-6).filter(r => r && /^\d{4}-\d{2}-\d{2}$/.test(r.day) && /^[a-z_]{2,20}$/.test(r.mood || '')).map(r => ({ day: r.day, mood: r.mood })) : [];
-  return { messages: out, context: { noAdvice: !!c.noAdvice, noPractice: !!c.noPractice, practices, profile, recent } };
+  const lang = typeof c.lang === 'string' && /^[a-z]{2}$/.test(c.lang) ? c.lang : 'ru';
+  const langName = typeof c.langName === 'string' ? c.langName.slice(0, 30) : '';
+  return { messages: out, context: { noAdvice: !!c.noAdvice, noPractice: !!c.noPractice, practices, profile, recent, lang, langName } };
 }
 
+// Язык ответа: клиент передаёт context.lang (ru, en, ja, …). Для не-русского — отвечать на этом языке.
+const LANGS_OK = /^(ru|en|es|fr|de|pt|tr|kk|ka|ar|zh|ja|ha|sw|yo)$/;
+function langRule(ctx) {
+  const l = ctx && typeof ctx.lang === 'string' && LANGS_OK.test(ctx.lang) ? ctx.lang : 'ru';
+  if (l === 'ru') return '';
+  const name = String((ctx && ctx.langName) || l).replace(/[^\p{L} ()-]/gu, '').slice(0, 30);
+  return '\nВажно: пользователь выбрал язык ' + name + ' (' + l + '). Пиши reply и question только на этом языке, простыми словами. Не называй номера телефонов помощи — приложение покажет их само.';
+}
 async function callModel(req) {
   const ctrl = new AbortController(), timer = setTimeout(() => ctrl.abort(), 7000);
   try {
@@ -85,7 +95,7 @@ async function callModel(req) {
       headers: { 'content-type': 'application/json', 'x-api-key': KEY, 'anthropic-version': '2023-06-01' },
       body: JSON.stringify({
         model: MODEL, max_tokens: 500, temperature: 0.6,
-        system: SYSTEM + '\ncontext: ' + JSON.stringify(req.context),
+        system: SYSTEM + langRule(req.context) + '\ncontext: ' + JSON.stringify(req.context),
         tools: [TOOL], tool_choice: { type: 'tool', name: TOOL.name }, messages: req.messages
       })
     });

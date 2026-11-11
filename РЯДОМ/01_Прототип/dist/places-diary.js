@@ -3,7 +3,7 @@ const PLACE_VISITS_KEY='ryadom-place-visits-v1';
 const PLACE_FAVORITES_KEY='ryadom-place-favorites-v1';
 function placeVisits(){try{const value=JSON.parse(localStorage.getItem(PLACE_VISITS_KEY)||'[]');return Array.isArray(value)?value:[]}catch{return []}}
 function placeFavorites(){try{const value=JSON.parse(localStorage.getItem(PLACE_FAVORITES_KEY)||'[]');return Array.isArray(value)?value:[]}catch{return []}}
-function placeKey(name,area){return (name.trim()+'|'+area.trim()).toLocaleLowerCase('ru-RU')}
+function placeKey(name,area){return (name.trim()+'|'+area.trim()).toLocaleLowerCase((window.RYADOM_LOCALE||'ru-RU'))}
 function savePlaceVisits(rows){localStorage.setItem(PLACE_VISITS_KEY,JSON.stringify(rows.slice(-1000)));renderCalendar()}
 function placeElement(tag,className,text){const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node}
 function renderPlacesForDay(panel,day){
@@ -19,7 +19,7 @@ function renderPlacesForDay(panel,day){
     const top=placeElement('div','diary-place-top');
     const icon=placeElement('span','place-kind-icon',({cafe:'☕',park:'✿',walk:'↗',culture:'◇',other:'⌖'})[row.kind]||'⌖');
     const info=placeElement('div','diary-place-info');info.append(placeElement('strong','',row.name));
-    const meta=[row.time,row.area,({cafe:'Кафе',park:'Парк',walk:'Прогулка',culture:'Культура',other:'Другое'})[row.kind]].filter(Boolean).join(' · ');
+    const meta=[row.time,row.area,(k=>window.RyadomI18n?window.RyadomI18n.t(k):k)(({cafe:'Кафе',park:'Парк',walk:'Прогулка',culture:'Культура',other:'Другое'})[row.kind]||'')].filter(Boolean).join(' · ');
     info.append(placeElement('small','',meta));top.append(icon,info);
     const favorite=placeElement('button','place-favorite'+(placeFavorites().includes(placeKey(row.name,row.area||''))?' active':''),placeFavorites().includes(placeKey(row.name,row.area||''))?'♥':'♡');
     favorite.type='button';favorite.title='Любимое место';favorite.setAttribute('aria-label',placeFavorites().includes(placeKey(row.name,row.area||''))?'Убрать из любимых':'Добавить в любимые');

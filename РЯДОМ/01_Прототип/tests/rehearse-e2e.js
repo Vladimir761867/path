@@ -1,5 +1,5 @@
 const {chromium}=require('playwright');
-(async()=>{const b=await chromium.launch();const cx=await b.newContext({viewport:{width:390,height:800}});await cx.addInitScript(()=>{try{localStorage.setItem('ryadom-consent-v1','x')}catch(e){}});const pg=await cx.newPage();
+(async()=>{const b=await chromium.launch();const cx=await b.newContext({viewport:{width:390,height:800},locale:'ru-RU'});await cx.addInitScript(()=>{try{localStorage.setItem('ryadom-consent-v1','x')}catch(e){}});const pg=await cx.newPage();
 const errs=[];pg.on('pageerror',e=>errs.push(e.message));pg.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
 await pg.goto('http://localhost:8789/');await pg.evaluate(()=>view('games'));
 console.log('card:',await pg.$$eval('.qz-card',e=>e.map(x=>x.innerText.split('\n')[1])).then(a=>a[a.length-1]));
