@@ -1,0 +1,591 @@
+{
+ "id": "boss-feedback",
+ "title": "Talking to your manager",
+ "kicker": "QUEST · CONVERSATION TRAINER",
+ "intro": {
+  "title": "Difficult feedback",
+  "paragraphs": [
+   "Yesterday at the team meeting your report was picked apart in front of everyone. Today you have a one-to-one with your manager. You need to find out what to fix and keep your dignity.",
+   "In each scene, choose what to say. If an answer doesn’t work, you stay where you are, see the reaction and understand why. If it works, you move on and learn which technique it relies on."
+  ],
+  "note": "The manager’s styles are patterns of behaviour, not types of people: the same person acts differently on different days. Real people react differently, so this is practice with wording, not a prediction.",
+  "disclaimer": "A learning simulation. The material draws on well-known communication methods (sources are given at each step), but it has not yet been reviewed by a psychologist."
+ },
+ "variants": [
+  {
+   "id": "direct",
+   "name": "Busy and tough",
+   "desc": "Speaks briefly, interrupts, demands results and dislikes excuses.",
+   "boss": {
+    "name": "Victor",
+    "style": "short"
+   }
+  },
+  {
+   "id": "evasive",
+   "name": "Gentle but evasive",
+   "desc": "Dislikes conflict, answers vaguely and avoids specifics.",
+   "boss": {
+    "name": "Irina",
+    "style": "bun"
+   }
+  }
+ ],
+ "nodes": [
+  {
+   "id": "prep",
+   "stage": "corridor",
+   "who": "hero",
+   "heroExpr": "tense",
+   "narr": "In five minutes you talk to your manager. Yesterday your report was picked apart in front of everyone, and now it’s a one-to-one. Your heart is pounding, your head is full of ready-made excuses.",
+   "boss": null,
+   "ask": "What do you do before going in?",
+   "options": [
+    {
+     "id": "breath",
+     "text": "I take three slow breaths and choose one goal: to understand exactly what needs fixing.",
+     "quality": "good",
+     "why": "Slow breathing lowers physiological arousal, and one clear goal keeps the conversation from sliding into an argument. In this state it’s easier to listen and ask questions.",
+     "react": {
+      "narr": "Your pulse gradually settles. The goal is short: find out what to fix. Your hand on the door handle no longer shakes."
+     }
+    },
+    {
+     "id": "rehearse",
+     "text": "I go over my arguments again to prove the report is good.",
+     "quality": "bad",
+     "why": "Going in to “prove” something turns the meeting into an argument, and behind the arguments you lose what you actually need to hear. Anxiety from this kind of preparation usually only grows.",
+     "react": {
+      "narr": "The arguments line up, but with every round your pulse is higher. You reach the door with fists ready for a fight, not a conversation."
+     }
+    },
+    {
+     "id": "postpone",
+     "text": "I write that I feel unwell and postpone the meeting.",
+     "quality": "bad",
+     "why": "Avoidance relieves anxiety for an hour, but the conversation doesn’t disappear, and waiting makes it worse. If you really feel unwell, postponing is fine, but here it takes you away from the goal.",
+     "react": {
+      "narr": "The answer comes quickly: “Then tomorrow, same time.” The relief doesn’t last long; by evening the conversation weighs on you even more."
+     }
+    },
+    {
+     "id": "attack",
+     "text": "I decide to start right away by saying yesterday was unfair.",
+     "quality": "bad",
+     "why": "An accusation at the door switches on the other person’s defences. First you need facts and a question; a request about boundaries is better said later and calmly.",
+     "react": {
+      "narr": "With that opener you won’t be able to walk in calmly: your very first sentence will sound like a complaint, not a conversation."
+     }
+    }
+   ],
+   "tech": {
+    "name": "A pause and one goal",
+    "src": "Basic self-regulation techniques; a single meeting goal, as in negotiation preparation (Fisher & Ury, “Getting to Yes”, 1981)",
+    "text": "Before a difficult conversation: slow your breathing and set one task for the meeting."
+   },
+   "hint": "First help yourself calm down, then decide what exactly you want from this meeting."
+  },
+  {
+   "id": "open",
+   "stage": "office",
+   "pos": 1,
+   "heroExpr": "tense",
+   "narr": "The office. The report lies on the desk, with red marks in the margins.",
+   "boss": {
+    "direct": {
+     "say": "Sit down, {name}. The report is weak. Again not what I asked for.",
+     "expr": "stern"
+    },
+    "evasive": {
+     "say": "Come in, {name}. I looked at the report… well, it’s somehow not quite what I’d hoped.",
+     "expr": "neutral"
+    }
+   },
+   "ask": "What do you answer?",
+   "options": [
+    {
+     "id": "defend",
+     "text": "I spent a whole week on that report, this is unfair!",
+     "quality": "bad",
+     "why": "Defence and reproach immediately turn the conversation into a dispute about who’s right. You get no information about the comments this way.",
+     "react": {
+      "direct": {
+       "say": "I didn’t call you in to argue. The report needs fixing, not defending.",
+       "expr": "impatient"
+      },
+      "evasive": {
+       "say": "Oh, why so sharp… I just said it as it is.",
+       "expr": "neutral"
+      }
+     }
+    },
+    {
+     "id": "sorry",
+     "text": "Sorry, sorry, I’ll redo it all from scratch.",
+     "quality": "bad",
+     "why": "A hasty “I’ll redo everything” without questions clarifies nothing: you’ll take on extra work and may again miss expectations.",
+     "react": {
+      "direct": {
+       "say": "Not from scratch. Although… fine, redo it.",
+       "expr": "impatient"
+      },
+      "evasive": {
+       "say": "Well, not from scratch… probably. Although who knows.",
+       "expr": "neutral"
+      }
+     }
+    },
+    {
+     "id": "ask",
+     "text": "To fix it, I need to understand: which parts exactly didn’t work?",
+     "quality": "good",
+     "why": "A clarifying question shows readiness to work and moves the conversation from judgement to specifics. It’s the basis of active listening.",
+     "react": {
+      "direct": {
+       "say": "Hm. Good question. I’ll tell you.",
+       "expr": "listening"
+      },
+      "evasive": {
+       "say": "Well… let’s go through it. Let me find my notes.",
+       "expr": "listening"
+      }
+     }
+    },
+    {
+     "id": "always",
+     "text": "You’re always unhappy with me.",
+     "quality": "bad",
+     "why": "Words like “always” and “never” sound like accusations and trigger defensiveness. Generalising gets in the way of sorting out the specific problem.",
+     "react": {
+      "direct": {
+       "say": "Don’t be dramatic. I’m talking about the report.",
+       "expr": "stern"
+      },
+      "evasive": {
+       "say": "Oh no, that’s not true… it’s just not right this time.",
+       "expr": "neutral"
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "A clarifying question (active listening)",
+    "src": "Rogers & Farson, «Active Listening», 1957",
+    "text": "Instead of judging and defending, ask about specifics: what exactly, where, how it should look."
+   },
+   "hint": "You still don’t know what exactly was wrong. What will help you find out?"
+  },
+  {
+   "id": "vague",
+   "stage": "office",
+   "pos": 2,
+   "heroExpr": "tense",
+   "narr": "The answer is vague. To fix the report, you need precise comments.",
+   "boss": {
+    "direct": {
+     "say": "It didn’t work, that’s all. I don’t have time to go through every line.",
+     "expr": "impatient"
+    },
+    "evasive": {
+     "say": "Well… the structure overall, I suppose… Hard to say. Just improve it.",
+     "expr": "neutral"
+    }
+   },
+   "ask": "How do you get specifics?",
+   "options": [
+    {
+     "id": "record",
+     "text": "I understand time is short. Please name two or three main comments, that will be enough.",
+     "quality": "good",
+     "why": "Calmly repeating your request without arguing and respecting the other person’s time is the “broken record” technique. You don’t push and don’t lose your goal.",
+     "react": {
+      "direct": {
+       "say": "Two or three… OK. First, the quarterly figures; second, the conclusions are too long.",
+       "expr": "listening"
+      },
+      "evasive": {
+       "say": "OK, two comments… The figures, I suppose, and the conclusions are long.",
+       "expr": "listening"
+      }
+     }
+    },
+    {
+     "id": "quiz",
+     "text": "If it’s hard to explain, let’s do this: I’ll ask three short questions and you answer “yes” or “no”.",
+     "quality": "good",
+     "why": "Making the answer format easier helps people who find it hard to put things into words. You stay on your goal and remove the barrier.",
+     "react": {
+      "direct": {
+       "say": "Hm, that’s easier. Go ahead.",
+       "expr": "listening"
+      },
+      "evasive": {
+       "say": "Oh yes, that’s easier for me. Ask away.",
+       "expr": "listening"
+      }
+     }
+    },
+    {
+     "id": "guess",
+     "text": "OK, I’ll try to guess what to redo.",
+     "quality": "bad",
+     "why": "Guessing is another shot in the dark: the risk of missing expectations again and getting another “not right”.",
+     "react": {
+      "direct": {
+       "say": "No improvising. You should have asked.",
+       "expr": "impatient"
+      },
+      "evasive": {
+       "say": "Well… try, we’ll see.",
+       "expr": "neutral"
+      }
+     }
+    },
+    {
+     "id": "accuse",
+     "text": "You just don’t know what you want yourself.",
+     "quality": "bad",
+     "why": "Mind-reading and accusations trigger defensiveness. Even if it’s partly true, the conversation is over.",
+     "react": {
+      "direct": {
+       "say": "Do you realise who you’re talking to?",
+       "expr": "stern"
+      },
+      "evasive": {
+       "say": "Why like that… I’m trying to explain.",
+       "expr": "neutral"
+      }
+     }
+    },
+    {
+     "id": "passive",
+     "text": "Fine, then I’ll send the same thing with a few small edits.",
+     "quality": "bad",
+     "why": "This is passive aggression: you show disagreement through action without talking about it. The result is a new conflict at the next meeting.",
+     "react": {
+      "direct": {
+       "say": "Is that a challenge? No, that won’t do.",
+       "expr": "stern"
+      },
+      "evasive": {
+       "say": "Well… if you want.",
+       "expr": "neutral"
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "The “broken record”",
+    "src": "Smith, «When I Say No, I Feel Guilty», 1975",
+    "text": "Calmly repeat your request in the same tone, without excuses or accusations, until you get an answer."
+   },
+   "hint": "You need specifics. How to ask for them without arguing or giving in?"
+  },
+  {
+   "id": "public",
+   "stage": "office",
+   "pos": 3,
+   "heroExpr": "calm",
+   "narr": "You have the comments. What remains is that yesterday your report was picked apart in front of everyone.",
+   "boss": {
+    "direct": {
+     "say": "First, the figures; second, the conclusions. And don’t make a tragedy out of the meeting, it was an ordinary discussion.",
+     "expr": "stern"
+    },
+    "evasive": {
+     "say": "And, I suppose, there’s no need to be offended about the meeting. It’s a work discussion, we always do it that way.",
+     "expr": "neutral"
+    }
+   },
+   "ask": "How do you bring up yesterday?",
+   "options": [
+    {
+     "id": "desc",
+     "text": "Yesterday my mistakes were discussed in front of everyone. It’s hard for me to take in comments in that setting. Next time let’s discuss things like this one-to-one: that way I’ll fix them faster.",
+     "quality": "good",
+     "why": "The DESC structure: describe the fact, name your impression, make a specific request and name the benefit. You’re not accusing, you’re reaching an agreement.",
+     "react": {
+      "direct": {
+       "say": "Hm. One-to-one… That’s possible.",
+       "expr": "listening"
+      },
+      "evasive": {
+       "say": "Oh. I didn’t think it was like that… OK, let’s try.",
+       "expr": "softened"
+      }
+     }
+    },
+    {
+     "id": "shame",
+     "text": "You humiliated me in front of the whole department!",
+     "quality": "bad",
+     "why": "An evaluation (“humiliated”) sounds like an accusation and triggers defensiveness. A fact and your impression work better.",
+     "react": {
+      "direct": {
+       "say": "What’s that tone? I didn’t humiliate anyone.",
+       "expr": "stern"
+      },
+      "evasive": {
+       "say": "Oh no… I didn’t mean to humiliate anyone. Let’s not.",
+       "expr": "neutral"
+      }
+     }
+    },
+    {
+     "id": "silence",
+     "text": "It’s fine, no big deal.",
+     "quality": "bad",
+     "why": "If you don’t say what’s unacceptable, it will happen again. Polite silence doesn’t protect a boundary.",
+     "react": {
+      "direct": {
+       "say": "Good. Then let’s get to work.",
+       "expr": "neutral"
+      },
+      "evasive": {
+       "say": "Great. You see, everything’s fine.",
+       "expr": "neutral"
+      }
+     }
+    },
+    {
+     "id": "hint",
+     "text": "Some people don’t like being criticised in front of others.",
+     "quality": "bad",
+     "why": "A hint without a request is easy to ignore: the other person doesn’t have to guess what you need.",
+     "react": {
+      "direct": {
+       "say": "So what? You can’t please everyone.",
+       "expr": "impatient"
+      },
+      "evasive": {
+       "say": "Yes, maybe… well, who knows.",
+       "expr": "neutral"
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "DESC: describe, express, specify, consequences",
+    "src": "Bower & Bower, «Asserting Yourself», 1976",
+    "text": "A fact without judgement → my impression → a specific request → a benefit for both."
+   },
+   "hint": "Name the fact, share your impression and make a request — calmly, without accusations."
+  },
+  {
+   "id": "pushback",
+   "stage": "office",
+   "pos": 4,
+   "heroExpr": "calm",
+   "narr": "The manager resists. That’s normal: the request touches a habit.",
+   "boss": {
+    "direct": {
+     "say": "I manage the way I see fit. Get used to it.",
+     "expr": "impatient"
+    },
+    "evasive": {
+     "say": "Oh, I didn’t mean to upset you… But I always do it this way, with everyone.",
+     "expr": "neutral"
+    }
+   },
+   "ask": "How do you hold your request?",
+   "options": [
+    {
+     "id": "interest",
+     "text": "I understand it’s important for you to get comments across quickly. It’s important for me to hear them too: let’s discuss them in private, and at the meeting just the results.",
+     "quality": "good",
+     "why": "You acknowledge the other person’s interest and keep your request by offering a solution for both. This is the shift from positions to interests.",
+     "react": {
+      "direct": {
+       "say": "Results at the meeting, details separately… Reasonable. Agreed.",
+       "expr": "softened"
+      },
+      "evasive": {
+       "say": "Well, if so… yes, perhaps. Let’s try.",
+       "expr": "softened"
+      }
+     }
+    },
+    {
+     "id": "compromise",
+     "text": "I see. Then at least warn me in advance if you’re going to discuss my report at the meeting.",
+     "quality": "ok",
+     "why": "This is a workable compromise: you get predictability. You could go further: explain once more what you need and offer an option for both.",
+     "react": {
+      "direct": {
+       "say": "Warning in advance — that’s possible. OK.",
+       "expr": "neutral"
+      },
+      "evasive": {
+       "say": "Warn you — yes, that’s possible.",
+       "expr": "neutral"
+      }
+     }
+    },
+    {
+     "id": "rights",
+     "text": "No, you have no right to do that.",
+     "quality": "bad",
+     "why": "Arguing about rights turns into a power struggle where the manager has more leverage. A request for a specific format works better.",
+     "react": {
+      "direct": {
+       "say": "I have no right? You forget yourself.",
+       "expr": "stern"
+      },
+      "evasive": {
+       "say": "Why bring up rights straight away… let’s not.",
+       "expr": "neutral"
+      }
+     }
+    },
+    {
+     "id": "fold",
+     "text": "OK, as you say.",
+     "quality": "bad",
+     "why": "Giving in without an agreement changes nothing: the situation will repeat, and you’ll feel unheard.",
+     "react": {
+      "direct": {
+       "say": "Excellent. Go and get to work.",
+       "expr": "neutral"
+      },
+      "evasive": {
+       "say": "Good, let’s not quarrel.",
+       "expr": "neutral"
+      }
+     }
+    },
+    {
+     "id": "ultimatum",
+     "text": "If this continues, I’ll leave.",
+     "quality": "bad",
+     "why": "An ultimatum is justified only if you’re ready to follow through. Here it closes the negotiation and scares the other person.",
+     "react": {
+      "direct": {
+       "say": "Is that blackmail? The door is over there.",
+       "expr": "stern"
+      },
+      "evasive": {
+       "say": "Oh, don’t… let’s not be dramatic.",
+       "expr": "neutral"
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Interests, not positions",
+    "src": "Fisher & Ury, «Getting to Yes», 1981",
+    "text": "Acknowledge what matters to the other person and offer a solution in which what matters is kept for both."
+   },
+   "hint": "What matters to the manager? What matters to you? Can you offer an option that keeps both?"
+  },
+  {
+   "id": "close",
+   "stage": "office",
+   "pos": 5,
+   "heroExpr": "calm",
+   "narr": "The main thing has been said. Now don’t let the conversation dissolve.",
+   "boss": {
+    "direct": {
+     "say": "OK. Anything else?",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "Well, fine, agreed… somehow.",
+     "expr": "neutral"
+    }
+   },
+   "ask": "How do you end the conversation?",
+   "options": [
+    {
+     "id": "plan",
+     "text": "Let’s pin it down: I’ll send the edits to the figures and conclusions by 4 p.m. on Thursday, and ten minutes to review on Friday morning. Does that work?",
+     "quality": "good",
+     "why": "A specific deadline and format for the next step (“when, where and what exactly”) increase the chance the agreement is carried out. This is an implementation intention.",
+     "react": {
+      "direct": {
+       "say": "Thursday, Friday. Works. I’ll be waiting.",
+       "expr": "smile"
+      },
+      "evasive": {
+       "say": "Yes, let’s do that. Thursday, Friday. Agreed.",
+       "expr": "smile"
+      }
+     }
+    },
+    {
+     "id": "thanks",
+     "text": "OK, thanks, I’ll go.",
+     "quality": "bad",
+     "why": "Without a next step the conversation dissolves. In a week nobody will remember what was agreed.",
+     "react": {
+      "direct": {
+       "say": "Mm-hm. Go.",
+       "expr": "neutral"
+      },
+      "evasive": {
+       "say": "Well, OK. See you.",
+       "expr": "neutral"
+      }
+     }
+    },
+    {
+     "id": "later",
+     "text": "Then I’ll write later, when I can.",
+     "quality": "bad",
+     "why": "“Later” and “when I can” give no deadline: everyone will understand them differently, and the misunderstanding will arise again.",
+     "react": {
+      "direct": {
+       "say": "When is “later”? Fine, but by Thursday — no later.",
+       "expr": "impatient"
+      },
+      "evasive": {
+       "say": "Well, write… sometime.",
+       "expr": "neutral"
+      }
+     }
+    },
+    {
+     "id": "return",
+     "text": "Let’s go back to yesterday once more…",
+     "quality": "bad",
+     "why": "Returning to the argument after an agreement means undoing it. Better to lock in the result.",
+     "react": {
+      "direct": {
+       "say": "We’ve discussed everything. Let’s not go round in circles.",
+       "expr": "impatient"
+      },
+      "evasive": {
+       "say": "Oh, again… let’s not.",
+       "expr": "neutral"
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "A specific plan: when, where, what",
+    "src": "Gollwitzer, «Implementation intentions», American Psychologist, 1999",
+    "text": "Lock in the agreement: deadline, format, who does what. Simple “if–then” plans increase the chance of follow-through."
+   },
+   "hint": "So the conversation doesn’t dissolve, you need a deadline and format for the next step."
+  }
+ ],
+ "finale": {
+  "boss": {
+   "direct": {
+    "say": "Good. I’ll expect the edits on Thursday.",
+    "expr": "smile"
+   },
+   "evasive": {
+    "say": "Agreed. Send it on Thursday.",
+    "expr": "smile"
+   }
+  },
+  "title": "The conversation happened",
+  "lead": "The comments are clear, the boundary was named calmly, the agreement is locked in. Here’s what it relied on:",
+  "carry": [
+   "Before a difficult conversation: a pause and one goal.",
+   "Instead of judgement — a specific question or fact, without “always” and “never”.",
+   "At the end of the conversation — a deadline and format for the next step."
+  ],
+  "prompt": "How would this sound in your real situation? Write down your version to come back to before the conversation."
+ }
+}

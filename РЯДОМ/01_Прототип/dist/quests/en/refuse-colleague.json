@@ -1,0 +1,506 @@
+{
+ "id": "refuse-colleague",
+ "title": "Saying “no” to a colleague",
+ "kicker": "QUEST · CONVERSATION TRAINER",
+ "tag": "QUEST · 5 STEPS · 2 STYLES",
+ "intro": {
+  "title": "Saying no without a quarrel",
+  "paragraphs": [
+   "A colleague asks you to cover their shift on Saturday — your only day off in two weeks. You want both to help and to rest.",
+   "Choose what to say. If an answer doesn’t work, you stay where you are, see the reaction and understand why."
+  ],
+  "note": "The other person’s styles are patterns of behaviour, not types of people: the same person acts differently on different days. Real people react differently, so this is practice with wording, not a prediction.",
+  "disclaimer": "A learning simulation. The material draws on well-known communication methods (sources are given at each step), but it has not yet been reviewed by a psychologist."
+ },
+ "pick": "Who are you talking to?",
+ "variants": [
+  {
+   "id": "direct",
+   "name": "Pushy",
+   "desc": "Speaks briefly, presses and rushes you.",
+   "boss": {
+    "name": "Artyom",
+    "look": {
+     "style": "short",
+     "skin": "#d9a882",
+     "hair": "#2f2a26",
+     "top": "#4a6fa5",
+     "pants": "#2f3844"
+    },
+    "expr": {
+     "fail": "impatient",
+     "good": "listening",
+     "soft": "softened",
+     "smile": "smile"
+    }
+   }
+  },
+  {
+   "id": "evasive",
+   "name": "Plays on your pity",
+   "desc": "Asks gently, complains and expects you “won’t let them down”.",
+   "boss": {
+    "name": "Marina",
+    "look": {
+     "style": "bun",
+     "skin": "#e2b894",
+     "hair": "#8a5a3c",
+     "top": "#c2765a",
+     "pants": "#3b3440"
+    },
+    "expr": {
+     "fail": "tense",
+     "good": "listening",
+     "soft": "softened",
+     "smile": "smile"
+    }
+   }
+  }
+ ],
+ "nodes": [
+  {
+   "id": "ask",
+   "stage": "cafe",
+   "pos": 0,
+   "heroExpr": "tense",
+   "narr": "Lunch at a café near the office. Your colleague sits down opposite and gets straight to the point: they need someone to cover their shift on Saturday. Saturday is your only day off in two weeks.",
+   "ask": "What do you answer?",
+   "options": [
+    {
+     "id": "yes",
+     "text": "OK, I’ll do it.",
+     "quality": "bad",
+     "why": "Agreeing “on autopilot”, out of awkwardness or guilt, usually turns into tiredness and resentment. You haven’t decided yet, and you’ve already given away your day off.",
+     "react": {
+      "direct": {
+       "say": "Great! I knew I could count on you."
+      },
+      "evasive": {
+       "say": "Oh, thank you, thank you! I knew you wouldn’t say no."
+      }
+     }
+    },
+    {
+     "id": "pause",
+     "text": "Give me a minute to think. I’ll tell you as soon as I decide.",
+     "quality": "good",
+     "why": "You don’t have to answer instantly. A short pause protects you from agreeing under pressure and gives you time to put together a calm answer.",
+     "react": {
+      "direct": {
+       "say": "Go on then, just be quick."
+      },
+      "evasive": {
+       "say": "OK… it’s just that I really need to know."
+      }
+     }
+    },
+    {
+     "id": "rude",
+     "text": "No! How can you even ask that?",
+     "quality": "bad",
+     "why": "A sharp refusal with a reproach turns a request into a quarrel. You can say no calmly, without attacking.",
+     "react": {
+      "direct": {
+       "say": "Hey, easy. I was just asking."
+      },
+      "evasive": {
+       "say": "Why like that… I asked nicely."
+      }
+     }
+    },
+    {
+     "id": "lie",
+     "text": "My grandma is ill, I’m visiting her on Saturday.",
+     "quality": "bad",
+     "why": "A made-up reason is easy to check, and next time you’ll have to invent a new one. Saying no doesn’t need a “good excuse”.",
+     "react": {
+      "direct": {
+       "say": "Ah, OK then… Although people are usually free at weekends."
+      },
+      "evasive": {
+       "say": "Oh, what a shame… maybe the evening would work?"
+      }
+     }
+    },
+    {
+     "id": "vague",
+     "text": "Well… I don’t know… maybe…",
+     "quality": "bad",
+     "why": "A vague answer keeps hope alive and drags out the pressure: the other person will come back again and again.",
+     "react": {
+      "direct": {
+       "say": "So yes or no? I need to know."
+      },
+      "evasive": {
+       "say": "So, maybe? I’ll wait for now."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "A pause before answering",
+    "src": "Ury, «The Power of a Positive No», 2007",
+    "text": "Don’t answer a request right away under pressure: take a minute to understand what you actually want."
+   },
+   "hint": "You don’t have to answer immediately. What can you say to buy time?",
+   "boss": {
+    "direct": {
+     "say": "Cover my Saturday shift, would you? Your Saturday’s free anyway.",
+     "expr": "impatient"
+    },
+    "evasive": {
+     "say": "Oh, I’m in such trouble… I have a shift on Saturday and I just can’t. Will you help me out? There’s no one else to ask.",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "no",
+   "stage": "cafe",
+   "pos": 1,
+   "heroExpr": "calm",
+   "narr": "A minute has passed. Decision made: you’re not working on Saturday.",
+   "ask": "How do you say “no”?",
+   "options": [
+    {
+     "id": "posno",
+     "text": "Thanks for trusting me, but I can’t do Saturday.",
+     "quality": "good",
+     "why": "This is “yes” to the relationship and “no” to the request: you thank them and state the decision briefly, without excuses or blame.",
+     "react": {
+      "direct": {
+       "say": "You can’t… OK. But that’s unpleasant."
+      },
+      "evasive": {
+       "say": "You can’t… oh. I understand."
+      }
+     }
+    },
+    {
+     "id": "excuses",
+     "text": "You see, I have only one day off, I need rest, there’s the renovation, then relatives are coming, and anyway…",
+     "quality": "bad",
+     "why": "A list of reasons invites bargaining: each one can be argued with. A short decision is enough.",
+     "react": {
+      "direct": {
+       "say": "The renovation can wait, the relatives can wait. No excuses."
+      },
+      "evasive": {
+       "say": "But all that can be sorted out… maybe after all?"
+      }
+     }
+    },
+    {
+     "id": "always",
+     "text": "You always do this: you ask at the last minute!",
+     "quality": "bad",
+     "why": "The generalisation “always” sounds like an accusation and triggers defensiveness. Better to talk about this specific request.",
+     "react": {
+      "direct": {
+       "say": "Don’t nitpick. It happens to everyone."
+      },
+      "evasive": {
+       "say": "Why like that… I didn’t do it on purpose."
+      }
+     }
+    },
+    {
+     "id": "onceonly",
+     "text": "OK, but this is the last time.",
+     "quality": "bad",
+     "why": "This is agreement again, with a threat for the future. You work on Saturday and build up resentment.",
+     "react": {
+      "direct": {
+       "say": "Of course, the last time! Thanks."
+      },
+      "evasive": {
+       "say": "Of course, of course, the last time!"
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "A positive “no”",
+    "src": "Ury, «The Power of a Positive No», 2007",
+    "text": "A clear “no” to the request plus respect for the person: without excuses, reproaches or long explanations."
+   },
+   "hint": "You need a short refusal without excuses. How to say it politely?",
+   "boss": {
+    "direct": {
+     "say": "So, have you decided? What’s there to think about, it’s a five-minute thing.",
+     "expr": "impatient"
+    },
+    "evasive": {
+     "say": "So? I’d do it myself, but I have no energy at all… You’re my only hope.",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "press",
+   "stage": "cafe",
+   "pos": 2,
+   "heroExpr": "calm",
+   "narr": "The other person is pressing on your feelings. That’s expected: a refusal is usually not accepted the first time.",
+   "ask": "How do you hold your decision?",
+   "options": [
+    {
+     "id": "record",
+     "text": "I understand it’s unpleasant. I still can’t do Saturday.",
+     "quality": "good",
+     "why": "Calmly repeating the decision in the same tone, without new arguments, is the “broken record” technique. You acknowledge feelings but don’t change your answer.",
+     "react": {
+      "direct": {
+       "say": "Hm. OK. I won’t push any more."
+      },
+      "evasive": {
+       "say": "Well… OK. I guess I’ll have to manage on my own somehow."
+      }
+     }
+    },
+    {
+     "id": "giveup",
+     "text": "OK, sorry. I’ll do it.",
+     "quality": "bad",
+     "why": "Giving in after pressure convinces the other person that pressing is worth it. The decision is lost, and the resentment stays with you.",
+     "react": {
+      "direct": {
+       "say": "Atta colleague. I knew we’d work it out."
+      },
+      "evasive": {
+       "say": "Oh thank you! You’re really saving me."
+      }
+     }
+    },
+    {
+     "id": "attack",
+     "text": "This could have been planned in advance.",
+     "quality": "bad",
+     "why": "The accusation may be fair, but it closes the conversation and makes you the “bad one”. A request for help can be declined without a jab.",
+     "react": {
+      "direct": {
+       "say": "That’s uncalled for. I thought we were friends."
+      },
+      "evasive": {
+       "say": "Oh. I didn’t expect that from you."
+      }
+     }
+    },
+    {
+     "id": "debts",
+     "text": "Let’s remember who owes whom what.",
+     "quality": "bad",
+     "why": "Settling scores from the past turns the refusal into bargaining where whoever has the longer list wins. It has nothing to do with the request.",
+     "react": {
+      "direct": {
+       "say": "Don’t start keeping accounts with me."
+      },
+      "evasive": {
+       "say": "Oh, why count… I just asked."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "The “broken record”",
+    "src": "Smith, «When I Say No, I Feel Guilty», 1975",
+    "text": "Calmly repeat your decision in the same tone, without new excuses and without attacking."
+   },
+   "hint": "The decision has been said. What to do when they press on it?",
+   "boss": {
+    "direct": {
+     "say": "Seriously? After everything I’ve done for you?",
+     "expr": "stern"
+    },
+    "evasive": {
+     "say": "I see. So nobody will help me…",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "alt",
+   "stage": "cafe",
+   "pos": 3,
+   "heroExpr": "calm",
+   "narr": "The pressure eases. The other person still has a problem.",
+   "ask": "What do you suggest?",
+   "options": [
+    {
+     "id": "help",
+     "text": "I can help find a replacement: I’ll write in the team chat or tell you who to ask.",
+     "quality": "good",
+     "why": "You solve their problem without sacrificing your boundary: helping find a replacement doesn’t cost your day off. This is attention to both sides’ interests.",
+     "react": {
+      "direct": {
+       "say": "Hm… That’s useful. Let’s write in the chat."
+      },
+      "evasive": {
+       "say": "Oh yes, that could work! Thanks for that at least."
+      }
+     }
+    },
+    {
+     "id": "compromise",
+     "text": "I can take two hours in the evening, no more.",
+     "quality": "ok",
+     "why": "This is an acceptable compromise if you really want it. But be honest with yourself: such a “little piece” often eats up the day off too.",
+     "react": {
+      "direct": {
+       "say": "Two hours is something. Let’s do it."
+      },
+      "evasive": {
+       "say": "At least two hours… thank you."
+      }
+     }
+    },
+    {
+     "id": "problem",
+     "text": "That’s your problem, not mine.",
+     "quality": "bad",
+     "why": "Technically true, but this phrase closes the conversation and damages the relationship. You can help without sacrificing yourself.",
+     "react": {
+      "direct": {
+       "say": "Well, thanks for the support."
+      },
+      "evasive": {
+       "say": "So you’re that cold, it turns out."
+      }
+     }
+    },
+    {
+     "id": "leave",
+     "text": "You silently get up and leave.",
+     "quality": "bad",
+     "why": "Leaving without words leaves things unsaid and looks like resentment. You can end the conversation calmly.",
+     "react": {
+      "direct": {
+       "say": "Hey, where are you going? We’re not done."
+      },
+      "evasive": {
+       "say": "You’re leaving? Not even answering?"
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Solve their problem without sacrificing your boundary",
+    "src": "Fisher & Ury, «Getting to Yes», 1981",
+    "text": "Help doesn’t always mean “yes” to the request: you can offer something else that also solves the problem."
+   },
+   "hint": "What can you offer without giving up your day off?",
+   "boss": {
+    "direct": {
+     "say": "So what do I do now?",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "So what do I do… it’s all ruined.",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "close",
+   "stage": "cafe",
+   "pos": 4,
+   "heroExpr": "calm",
+   "narr": "One last step: don’t leave the conversation hanging.",
+   "ask": "How do you finish?",
+   "options": [
+    {
+     "id": "warm",
+     "text": "Thanks for understanding. If you write in the chat before Friday, I’ll help find a replacement.",
+     "quality": "good",
+     "why": "A warm ending with a deadline restores contact and shows the relationship matters. The refusal didn’t become a quarrel.",
+     "react": {
+      "direct": {
+       "say": "OK. I’ll write in the chat today."
+      },
+      "evasive": {
+       "say": "OK… I’ll write, thanks."
+      }
+     }
+    },
+    {
+     "id": "sorry",
+     "text": "Sorry, sorry, I feel so awkward…",
+     "quality": "bad",
+     "why": "Repeated apologies devalue the decision and bring the conversation back to guilt. You didn’t do anything wrong.",
+     "react": {
+      "direct": {
+       "say": "Oh, fine, fine… Forget it."
+      },
+      "evasive": {
+       "say": "Oh, it’s nothing, nothing…"
+      }
+     }
+    },
+    {
+     "id": "dontoffend",
+     "text": "Don’t be upset, OK?",
+     "quality": "bad",
+     "why": "Asking someone “not to be upset” shifts responsibility for their feelings onto them. They have the right to be disappointed and to cope with it.",
+     "react": {
+      "direct": {
+       "say": "I’ll try."
+      },
+      "evasive": {
+       "say": "Well… I’ll try."
+      }
+     }
+    },
+    {
+     "id": "slip",
+     "text": "OK, see you Monday.",
+     "quality": "bad",
+     "why": "Without an outcome the conversation dissolves. The next step will be new pressure.",
+     "react": {
+      "direct": {
+       "say": "Mm-hm. Bye."
+      },
+      "evasive": {
+       "say": "Well, bye…"
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "A warm ending: yes–no–yes",
+    "src": "Ury, «The Power of a Positive No», 2007",
+    "text": "End the refusal with a step closer: thanks, the decision, and an offer of what you can do."
+   },
+   "hint": "How to finish so the relationship doesn’t suffer?",
+   "boss": {
+    "direct": {
+     "say": "OK. We’ll see how it goes.",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "Well… fine. I’ll think of something.",
+     "expr": "neutral"
+    }
+   }
+  }
+ ],
+ "finale": {
+  "boss": {
+   "direct": {
+    "say": "OK. Thanks for that at least.",
+    "expr": "smile"
+   },
+   "evasive": {
+    "say": "OK. Good that there’s another option.",
+    "expr": "smile"
+   }
+  },
+  "title": "Saying no without a quarrel",
+  "lead": "The refusal was said calmly, other help was offered, and the conversation ended kindly. Here’s what it relied on:",
+  "carry": [
+   "Not answering right away if you’re being pressured.",
+   "Saying “no” briefly, without a list of reasons.",
+   "Offering what you really can, instead of sacrificing your boundary."
+  ],
+  "prompt": "How would your refusal sound in your real situation? Write down your version to come back to before the conversation."
+ }
+}

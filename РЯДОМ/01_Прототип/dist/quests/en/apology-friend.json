@@ -1,0 +1,492 @@
+{
+ "id": "apology-friend",
+ "title": "Apologise and make it right",
+ "kicker": "QUEST · CONVERSATION TRAINER",
+ "tag": "QUEST · 5 STEPS · 2 STYLES",
+ "intro": {
+  "title": "How to apologise for real",
+  "paragraphs": [
+   "You missed an event that mattered to your friend, and you didn’t warn them either. The hurt is understandable. You want to make up without arguing or making excuses.",
+   "Choose what to say. If an answer doesn’t work, you stay where you are, see the reaction and understand why."
+  ],
+  "note": "The other person’s styles are patterns of behaviour, not types of people: the same person acts differently on different days. Real people react differently, so this is practice with wording, not a prediction.",
+  "disclaimer": "A learning simulation. The material draws on well-known communication methods (sources are given at each step), but it has not yet been reviewed by a psychologist."
+ },
+ "pick": "Which friend?",
+ "variants": [
+  {
+   "id": "direct",
+   "name": "Hurt and quiet",
+   "desc": "Says little, holds feelings back, answers briefly.",
+   "boss": {
+    "name": "Lena",
+    "look": {
+     "style": "bun",
+     "skin": "#e8bf9c",
+     "hair": "#6b4a3a",
+     "top": "#7c6aa8",
+     "pants": "#3b3440"
+    },
+    "expr": {
+     "fail": "neutral",
+     "good": "listening",
+     "soft": "softened",
+     "smile": "smile"
+    }
+   }
+  },
+  {
+   "id": "evasive",
+   "name": "Angry and blaming",
+   "desc": "Speaks sharply, reproaches and expects a real acknowledgement.",
+   "boss": {
+    "name": "Igor",
+    "look": {
+     "style": "short",
+     "skin": "#d9a882",
+     "hair": "#4a3b2f",
+     "top": "#b5876d",
+     "pants": "#2f3844"
+    },
+    "expr": {
+     "fail": "stern",
+     "good": "listening",
+     "soft": "softened",
+     "smile": "smile"
+    }
+   }
+  }
+ ],
+ "nodes": [
+  {
+   "id": "open",
+   "stage": "cafe",
+   "pos": 0,
+   "heroExpr": "tense",
+   "narr": "A café. On Saturday you weren’t at your friend’s exhibition, and you didn’t warn them. Today you’ve met to talk.",
+   "ask": "How do you start?",
+   "options": [
+    {
+     "id": "own",
+     "text": "I want to apologise for Saturday. I wasn’t at your exhibition, and you didn’t hear a word from me.",
+     "quality": "good",
+     "why": "An effective apology names the specific action and takes responsibility, with no “but” and no excuses.",
+     "react": {
+      "direct": {
+       "say": "OK. I’m listening."
+      },
+      "evasive": {
+       "say": "Hm. Good that you said it. Go on."
+      }
+     }
+    },
+    {
+     "id": "vague",
+     "text": "Well, sorry, it just happened.",
+     "quality": "bad",
+     "why": "“It just happened” removes responsibility and sounds like a brush-off. The person hears that you didn’t understand what happened.",
+     "react": {
+      "direct": {
+       "say": "That’s it? “It just happened”?"
+      },
+      "evasive": {
+       "say": "So that’s the apology?"
+      }
+     }
+    },
+    {
+     "id": "drama",
+     "text": "Let’s not make a drama out of this.",
+     "quality": "bad",
+     "why": "Dismissing someone’s feelings turns an attempt to make up into a new hurt.",
+     "react": {
+      "direct": {
+       "say": "To you it’s drama, to me it was an important day."
+      },
+      "evasive": {
+       "say": "It mattered to me, and to you it’s drama?"
+      }
+     }
+    },
+    {
+     "id": "busy",
+     "text": "I had so much going on, you know how everything piled up.",
+     "quality": "bad",
+     "why": "An excuse instead of responsibility tells the person “your hurt is just circumstances”. Explanations fit later, and briefly.",
+     "react": {
+      "direct": {
+       "say": "So I wasn’t important?"
+      },
+      "evasive": {
+       "say": "It wasn’t easy for me either, but I found the time."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "A specific admission",
+    "src": "Lewicki, Polin & Lount, Negotiation and Conflict Management Research, 2016",
+    "text": "An effective apology names exactly what happened and admits responsibility without excuses."
+   },
+   "hint": "How to start an apology so it sounds real?",
+   "boss": {
+    "direct": {
+     "say": "Hi. I’m listening.",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "Well, I’m listening. What is it this time?",
+     "expr": "stern"
+    }
+   }
+  },
+  {
+   "id": "listen",
+   "stage": "cafe",
+   "pos": 1,
+   "heroExpr": "calm",
+   "narr": "Your friend starts talking about how it was for them.",
+   "ask": "What do you do?",
+   "options": [
+    {
+     "id": "invite",
+     "text": "Tell me how it was for you. I’m listening.",
+     "quality": "good",
+     "why": "Inviting them to talk about their feelings shows you care about understanding the consequences. Listening is part of apologising.",
+     "react": {
+      "direct": {
+       "say": "Well… I came and saw an empty spot. It hurt."
+      },
+      "evasive": {
+       "say": "OK. It was lonely, to be honest."
+      }
+     }
+    },
+    {
+     "id": "but",
+     "text": "Yes, but you had other guests.",
+     "quality": "bad",
+     "why": "The word “but” erases the admission: the apology turns into an argument about whether the hurt is justified.",
+     "react": {
+      "direct": {
+       "say": "So what? I was waiting for you."
+      },
+      "evasive": {
+       "say": "It’s not about the others. It’s about you."
+      }
+     }
+    },
+    {
+     "id": "already",
+     "text": "I’ve already apologised.",
+     "quality": "bad",
+     "why": "A formal tone shows you want to close the subject. The person needs to be heard, not to get a checkmark.",
+     "react": {
+      "direct": {
+       "say": "What do you mean, “already”?"
+      },
+      "evasive": {
+       "say": "You sound like you’re in a business meeting."
+      }
+     }
+    },
+    {
+     "id": "remind",
+     "text": "You could have reminded me in advance.",
+     "quality": "bad",
+     "why": "Shifting the blame brings you back to arguing: the responsibility for missing it is yours.",
+     "react": {
+      "direct": {
+       "say": "Seriously? I was supposed to remind you?"
+      },
+      "evasive": {
+       "say": "So it’s my fault too?"
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Hear the consequences",
+    "src": "Rogers & Farson, «Active Listening», 1957",
+    "text": "Let the person speak without objections: understand what the event meant to them."
+   },
+   "hint": "What will help you understand how it was for them?",
+   "boss": {
+    "direct": {
+     "say": "I waited. I kept asking everyone where you were.",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "Do you even understand what it meant to me?",
+     "expr": "stern"
+    }
+   }
+  },
+  {
+   "id": "mirror",
+   "stage": "cafe",
+   "pos": 2,
+   "heroExpr": "calm",
+   "narr": "Your friend is sharing feelings. Now it’s important not to argue.",
+   "ask": "How do you respond?",
+   "options": [
+    {
+     "id": "reflect",
+     "text": "You felt hurt and lonely in that moment. I understand.",
+     "quality": "good",
+     "why": "Reflecting a feeling shows you heard the person. You don’t have to agree with everything: it’s enough to name what they’re going through.",
+     "react": {
+      "direct": {
+       "say": "Yes. Exactly. It matters to me that you hear that."
+      },
+      "evasive": {
+       "say": "Well… yes. That’s how it was."
+      }
+     }
+    },
+    {
+     "id": "exaggerate",
+     "text": "Don’t exaggerate.",
+     "quality": "bad",
+     "why": "This is dismissive: the person is already vulnerable, and you’re telling them their feelings are too strong.",
+     "react": {
+      "direct": {
+       "say": "Exaggerate?! I was standing there!"
+      },
+      "evasive": {
+       "say": "Oh, I see. So I imagined it?"
+      }
+     }
+    },
+    {
+     "id": "also",
+     "text": "You forget things sometimes too.",
+     "quality": "bad",
+     "why": "A counter-complaint shifts attention to you. Anything about their part can be discussed another time.",
+     "react": {
+      "direct": {
+       "say": "We’re not talking about me right now."
+      },
+      "evasive": {
+       "say": "That’s not what I came here to talk about."
+      }
+     }
+    },
+    {
+     "id": "flog",
+     "text": "Fine, fine, it’s all my fault.",
+     "quality": "bad",
+     "why": "Self-blame forces your friend to comfort you and moves away from their feelings. Responsibility should be precise, not loud.",
+     "react": {
+      "direct": {
+       "say": "Oh, don’t be so dramatic…"
+      },
+      "evasive": {
+       "say": "Don’t play the victim."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Reflecting feelings",
+    "src": "Rogers & Farson, «Active Listening», 1957",
+    "text": "Name the other person’s feelings in your own words, without judging or arguing."
+   },
+   "hint": "How to show you heard their feelings?",
+   "boss": {
+    "direct": {
+     "say": "It really hurt. And I was a bit embarrassed that I’d told everyone you’d come.",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "I felt awful. I stood there like an idiot.",
+     "expr": "stern"
+    }
+   }
+  },
+  {
+   "id": "repair",
+   "stage": "cafe",
+   "pos": 3,
+   "heroExpr": "calm",
+   "narr": "One question remains: what next.",
+   "ask": "What do you suggest?",
+   "options": [
+    {
+     "id": "fix",
+     "text": "I want to make it right: I’ll come on Sunday to see the work, and for the next exhibition I’ll set a reminder in advance.",
+     "quality": "good",
+     "why": "A specific offer to make things right is an important part of an apology: words are backed by an action you will really do.",
+     "react": {
+      "direct": {
+       "say": "Sunday… yes, come. I’d like that."
+      },
+      "evasive": {
+       "say": "OK. Come on Sunday."
+      }
+     }
+    },
+    {
+     "id": "ask",
+     "text": "Tell me, what do you need to feel better?",
+     "quality": "ok",
+     "why": "The question is fair, but it hands your friend the job of inventing how to forgive you. Stronger: suggest your own option and ask if it works.",
+     "react": {
+      "direct": {
+       "say": "Hm. Well… come see the work, I guess."
+      },
+      "evasive": {
+       "say": "I don’t know. Think of something."
+      }
+     }
+    },
+    {
+     "id": "late",
+     "text": "Well, what’s done is done.",
+     "quality": "bad",
+     "why": "This phrase closes off any repair: the person hears that you don’t care.",
+     "react": {
+      "direct": {
+       "say": "Exactly, it’s done."
+      },
+      "evasive": {
+       "say": "Fine. Then there’s nothing to talk about."
+      }
+     }
+    },
+    {
+     "id": "gift",
+     "text": "Let me buy you something to make up for it.",
+     "quality": "bad",
+     "why": "A gift instead of attention reads as a pay-off: you’re paying for forgiveness instead of fixing what you did.",
+     "react": {
+      "direct": {
+       "say": "I don’t need your gifts."
+      },
+      "evasive": {
+       "say": "You think this can be bought?"
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "An offer to make it right",
+    "src": "Lewicki, Polin & Lount, Negotiation and Conflict Management Research, 2016",
+    "text": "A specific action that restores trust: not a promise of “never again”, but a clear step."
+   },
+   "hint": "What exactly will you do to make it right?",
+   "boss": {
+    "direct": {
+     "say": "So what now?",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "So what now, an apology and that’s it?",
+     "expr": "impatient"
+    }
+   }
+  },
+  {
+   "id": "close",
+   "stage": "cafe",
+   "pos": 4,
+   "heroExpr": "calm",
+   "narr": "The conversation is coming to an end. It’s important to finish honestly.",
+   "ask": "How do you finish?",
+   "options": [
+    {
+     "id": "thanks",
+     "text": "Thanks for the talk. I’ll come on Sunday as we agreed, and I’ll text you the day before.",
+     "quality": "good",
+     "why": "Confirming the agreement with a specific step restores trust: the words are backed by a date.",
+     "react": {
+      "direct": {
+       "say": "Deal. I’ll be waiting."
+      },
+      "evasive": {
+       "say": "OK. See you on Sunday."
+      }
+     }
+    },
+    {
+     "id": "peace",
+     "text": "Well, that’s nice, friends again?",
+     "quality": "bad",
+     "why": "Asking “friends again?” demands immediate forgiveness. The person needs time, and they have every right to it.",
+     "react": {
+      "direct": {
+       "say": "Friends… not so fast."
+      },
+      "evasive": {
+       "say": "Don’t rush me."
+      }
+     }
+    },
+    {
+     "id": "vow",
+     "text": "It will never happen again, I swear!",
+     "quality": "bad",
+     "why": "A big promise is easy to break, and a broken promise costs more. A specific step is more reliable than vows.",
+     "react": {
+      "direct": {
+       "say": "I’ve heard promises like that before."
+      },
+      "evasive": {
+       "say": "Don’t swear. Just do it."
+      }
+     }
+    },
+    {
+     "id": "rush",
+     "text": "Well, OK, I have to go.",
+     "quality": "bad",
+     "why": "Leaving abruptly after a hard conversation makes it feel like it didn’t matter that much to you.",
+     "react": {
+      "direct": {
+       "say": "Bye."
+      },
+      "evasive": {
+       "say": "Off you go."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Confirm the agreement",
+    "src": "Gollwitzer, «Implementation intentions», American Psychologist, 1999",
+    "text": "End the conversation with a specific promise: when and what exactly you’ll do."
+   },
+   "hint": "How to finish in a way that restores trust?",
+   "boss": {
+    "direct": {
+     "say": "Good. It mattered to me to hear that.",
+     "expr": "listening"
+    },
+    "evasive": {
+     "say": "OK. We’ll see how it goes.",
+     "expr": "neutral"
+    }
+   }
+  }
+ ],
+ "finale": {
+  "boss": {
+   "direct": {
+    "say": "Thanks. See you on Sunday.",
+    "expr": "smile"
+   },
+   "evasive": {
+    "say": "OK. Till Sunday.",
+    "expr": "smile"
+   }
+  },
+  "title": "An apology that makes things lighter",
+  "lead": "Your friend was heard, responsibility was named, and a step to repair was taken. Here’s what it relied on:",
+  "carry": [
+   "Naming the specific thing, not “it just happened”.",
+   "Listening and naming feelings instead of defending yourself.",
+   "Offering an action you will do, and keeping your word."
+  ],
+  "prompt": "How would your apology sound in a real situation? Write down your version to come back to before the meeting."
+ }
+}

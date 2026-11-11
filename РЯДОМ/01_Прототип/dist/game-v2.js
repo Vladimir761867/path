@@ -65,7 +65,9 @@
   function prep(j) { j.byId = {}; j.scenes.forEach(sc => { j.byId[sc.id] = sc; }); return j; }
   function loadStory(id) {
     if (STORIES[id]) return Promise.resolve(STORIES[id]);
-    return fetch('stories/' + id + '.json').then(r => { if (!r.ok) throw new Error('http'); return r.json(); })
+    const ru = 'stories/' + id + '.json', p = window.RyadomI18n ? window.RyadomI18n.contentPath('stories', id) : ru;
+    const get = u => fetch(u).then(r => { if (!r.ok) throw new Error('http'); return r.json(); });
+    return get(p).catch(e => { if (p !== ru) return get(ru); throw e; })
       .catch(() => { if (window.QC_INLINE && window.QC_INLINE[id]) return window.QC_INLINE[id]; throw new Error('story-load'); })
       .then(j => { STORIES[id] = prep(j); return STORIES[id]; });
   }
@@ -322,9 +324,11 @@
    * на этом движке; остальные 11 — прежние заготовки с честным рендером.
    * ===================================================================== */
   const ENGINE_WORLDS = { 0: 'granitsy' };
-  const bond = v => (v < 35 ? 'напряжённо' : v < 55 ? 'неопределённо' : v < 72 ? 'теплее' : 'близко');
+  const bond = v => { const w = v < 35 ? 'напряжённо' : v < 55 ? 'неопределённо' : v < 72 ? 'теплее' : 'близко'; return window.RyadomI18n ? window.RyadomI18n.t(w) : w; };
   renderWorld = function () {
-    const spec = worldSpecs[activeWorld], s = worldState, root = worldFrame(); s.picks = s.picks || [];
+    const tr = x => typeof x === 'string' ? (window.RyadomI18n ? window.RyadomI18n.t(x) : x) : Array.isArray(x) ? x.map(tr) : x;
+    const raw = worldSpecs[activeWorld], spec = Object.assign({}, raw, { title: tr(raw.title), hero: tr(raw.hero), other: tr(raw.other), relation: tr(raw.relation), agency: tr(raw.agency), scenes: tr(raw.scenes) });
+    const s = worldState, root = worldFrame(); s.picks = s.picks || [];
     if (s.chapter >= 4) {
       const box = h('div', 'story-ending world-ending'); box.append(h('span', 'eyebrow', 'Зарисовка пройдена'), h('h2', null, spec.title), h('p', null, 'Вот путь, который сложился:'));
       const ul = h('ul', 'world-recap'); s.picks.forEach((pick, i) => { const sc = spec.scenes[i], o = sc[5 + pick]; const li = h('li'); li.append(h('b', null, sc[0] + ': '), document.createTextNode(o[0] + ' — ' + o[1])); ul.append(li); });

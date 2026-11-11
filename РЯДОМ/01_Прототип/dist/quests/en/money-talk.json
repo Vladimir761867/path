@@ -1,0 +1,493 @@
+{
+ "id": "money-talk",
+ "title": "Talking about money",
+ "kicker": "QUEST · CONVERSATION TRAINER",
+ "tag": "QUEST · 5 STEPS · 2 STYLES",
+ "intro": {
+  "title": "Money without a quarrel",
+  "paragraphs": [
+   "Shared expenses are split unevenly, and it’s building up. Talking about it feels awkward: you’re afraid of offending them or starting a row.",
+   "You try to discuss it so that you find a solution, not a winner.",
+   "Choose what to say. If an answer doesn’t work, you stay where you are, see the reaction and understand why."
+  ],
+  "note": "The other person’s styles are patterns of behaviour, not types of people: the same person acts differently on different days. Real people react differently, so this is practice with wording, not a prediction.",
+  "disclaimer": "A learning simulation. The material draws on well-known communication methods (sources are given at each step), but it has not yet been reviewed by a psychologist."
+ },
+ "pick": "Who are you talking to?",
+ "variants": [
+  {
+   "id": "direct",
+   "name": "Defensive, irritable",
+   "desc": "Quickly hears blame and gets defensive.",
+   "boss": {
+    "name": "Kirill",
+    "look": {
+     "style": "short",
+     "skin": "#d9a882",
+     "hair": "#3a2f27",
+     "top": "#6b7a5c",
+     "pants": "#2f3844"
+    },
+    "expr": {
+     "fail": "impatient",
+     "good": "listening",
+     "soft": "softened",
+     "smile": "smile"
+    }
+   }
+  },
+  {
+   "id": "evasive",
+   "name": "Avoids the topic",
+   "desc": "Puts off the conversation, feels shy, worries silently.",
+   "boss": {
+    "name": "Vera",
+    "look": {
+     "style": "bun",
+     "skin": "#e8bf9c",
+     "hair": "#5b4636",
+     "top": "#b57a6a",
+     "pants": "#3b3440"
+    },
+    "expr": {
+     "fail": "tense",
+     "good": "listening",
+     "soft": "softened",
+     "smile": "smile"
+    }
+   }
+  }
+ ],
+ "nodes": [
+  {
+   "id": "soft",
+   "stage": "kitchen",
+   "pos": 0,
+   "heroExpr": "tense",
+   "narr": "An evening in the kitchen. You need to discuss shared expenses: over the last few months your contributions have been uneven.",
+   "ask": "How do you start?",
+   "options": [
+    {
+     "id": "soft",
+     "text": "I’d like to calmly discuss our shared expenses so it’s clear and fair for both of us. When suits you: now or tomorrow evening?",
+     "quality": "good",
+     "why": "A “soft start-up” without blame and with a choice of time lowers the other person’s defences. The topic sounds like a shared task, not a complaint.",
+     "react": {
+      "direct": {
+       "say": "Let’s do it now, since we’ve started. I’m listening."
+      },
+      "evasive": {
+       "say": "Let’s do tomorrow evening. Good that I get a choice."
+      }
+     }
+    },
+    {
+     "id": "ambush",
+     "text": "We urgently need to talk about money, you’re spending everything again.",
+     "quality": "bad",
+     "why": "Blame and “urgently” trigger defensiveness. The talk turns into an argument about character, not expenses.",
+     "react": {
+      "direct": {
+       "say": "Here we go again."
+      },
+      "evasive": {
+       "say": "Here it comes. I don’t want to hear it."
+      }
+     }
+    },
+    {
+     "id": "hint",
+     "text": "Everything’s become so expensive, hasn’t it?",
+     "quality": "bad",
+     "why": "A hint leaves the other person guessing what you want. A hidden reproach is heard as an accusation.",
+     "react": {
+      "direct": {
+       "say": "What are you getting at?"
+      },
+      "evasive": {
+       "say": "Do you want to say something? Say it straight."
+      }
+     }
+    },
+    {
+     "id": "wait",
+     "text": "Oh, nothing, everything’s fine. We’ll sort it out sometime.",
+     "quality": "bad",
+     "why": "Built-up resentment will grow and burst out later, at the worst moment. Better to talk before it builds up.",
+     "react": {
+      "direct": {
+       "say": "Say nothing? OK."
+      },
+      "evasive": {
+       "say": "OK, as you say."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "A soft start to the conversation",
+    "src": "Gottman & Silver, «The Seven Principles for Making Marriage Work», 1999",
+    "text": "Starting with a description of the problem, without blame and with respect, makes a constructive outcome more likely."
+   },
+   "hint": "How to start so the other person doesn’t get defensive?",
+   "boss": {
+    "direct": {
+     "say": "Did something happen? You look serious.",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "Not today, please, I’m tired.",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "facts",
+   "stage": "kitchen",
+   "pos": 1,
+   "heroExpr": "calm",
+   "narr": "The other person is ready to listen.",
+   "ask": "How do you describe the situation?",
+   "options": [
+    {
+     "id": "facts",
+     "text": "Over the last three months shared expenses averaged 60 thousand. My share was about 40, yours about 20. I want to work out how we can make it more even.",
+     "quality": "good",
+     "why": "Facts without judgements (numbers, not character) let you discuss the problem together. You describe instead of accusing.",
+     "react": {
+      "direct": {
+       "say": "Hm, that’s right. I didn’t think the difference was that big."
+      },
+      "evasive": {
+       "say": "I didn’t count it was that much. Let’s look."
+      }
+     }
+    },
+    {
+     "id": "blame",
+     "text": "You don’t think about money at all, almost all the payments are on me.",
+     "quality": "bad",
+     "why": "The generalisation “at all” and the label “you don’t think” trigger defensiveness. And “it’s all on me” sounds like a martyr’s position.",
+     "react": {
+      "direct": {
+       "say": "That’s unfair. I contribute too."
+      },
+      "evasive": {
+       "say": "You see, you’re blaming me."
+      }
+     }
+    },
+    {
+     "id": "past",
+     "text": "And last year it was exactly the same.",
+     "quality": "bad",
+     "why": "Going back to old episodes distracts from the current problem and heats up the conversation.",
+     "react": {
+      "direct": {
+       "say": "What does last year have to do with it?"
+      },
+      "evasive": {
+       "say": "You’re digging up the past again."
+      }
+     }
+    },
+    {
+     "id": "vague",
+     "text": "Well, money isn’t really working out somehow…",
+     "quality": "bad",
+     "why": "A vague description gives nothing to hold on to. The other person doesn’t understand what the talk is about.",
+     "react": {
+      "direct": {
+       "say": "I don’t get it. More specifically?"
+      },
+      "evasive": {
+       "say": "What exactly isn’t working?"
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Describe without judging",
+    "src": "Linehan, 1993 (DEAR MAN, «Describe»)",
+    "text": "Describe facts anyone could see: numbers, dates, actions. Leave judgements and labels out."
+   },
+   "hint": "What here is a fact anyone can see, and what is a judgement?",
+   "boss": {
+    "direct": {
+     "say": "Go on then, what is it.",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "OK, go ahead. Just no reproaches.",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "hear",
+   "stage": "kitchen",
+   "pos": 2,
+   "heroExpr": "calm",
+   "narr": "The other person answers and explains their side.",
+   "ask": "What do you do?",
+   "options": [
+    {
+     "id": "reflect",
+     "text": "You didn’t want to burden me, and because of that it was hard for you on your own. Do I understand right?",
+     "quality": "good",
+     "why": "Reflecting what you heard shows you understood the reason. It eases the tension and opens the way to a solution.",
+     "react": {
+      "direct": {
+       "say": "Yes, roughly. Thanks for hearing me."
+      },
+      "evasive": {
+       "say": "Yes… I felt awkward. Thanks for hearing me."
+      }
+     }
+    },
+    {
+     "id": "fix",
+     "text": "You should have said so right away, not hidden it.",
+     "quality": "bad",
+     "why": "Advice with a reproach brings back guilt. First understand, then look for solutions.",
+     "react": {
+      "direct": {
+       "say": "So now it’s my fault too."
+      },
+      "evasive": {
+       "say": "I already feel ashamed, don’t add to it."
+      }
+     }
+    },
+    {
+     "id": "shrug",
+     "text": "OK, it’s nothing, forget it.",
+     "quality": "bad",
+     "why": "Dismissing it closes the topic, and the imbalance will stay. The other person hears: “I’m not interested”.",
+     "react": {
+      "direct": {
+       "say": "To you it’s nothing, but I was worried."
+      },
+      "evasive": {
+       "say": "If it’s nothing, why are we talking?"
+      }
+     }
+    },
+    {
+     "id": "own",
+     "text": "I had unexpected expenses too, so we’re in the same boat.",
+     "quality": "ok",
+     "why": "Being open in return is fine, but first show that you heard them. Otherwise it looks like a counter-argument.",
+     "react": {
+      "direct": {
+       "say": "Well, it happens to you too. OK."
+      },
+      "evasive": {
+       "say": "OK, so it’s hard for both of us."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Reflecting feelings",
+    "src": "Rogers & Farson, «Active Listening», 1957",
+    "text": "Say in your own words what you heard and ask if it’s right. This lowers defences and clarifies the reason."
+   },
+   "hint": "What to do before looking for a solution?",
+   "boss": {
+    "direct": {
+     "say": "I had unexpected expenses, and I didn’t want to tell you so as not to burden you.",
+     "expr": "tense"
+    },
+    "evasive": {
+     "say": "I was too embarrassed to say my income is lower for now.",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "plan",
+   "stage": "kitchen",
+   "pos": 3,
+   "heroExpr": "calm",
+   "narr": "You both see the picture. Now suggest how to split the expenses.",
+   "ask": "What do you suggest?",
+   "options": [
+    {
+     "id": "prop",
+     "text": "Let’s contribute in proportion to income: each of us pays our share of the total. If that doesn’t suit you, we can come up with another option together.",
+     "quality": "good",
+     "why": "A specific proposal plus willingness to look for another: you name an option and leave room for a joint decision. This is the principle of interests instead of positions.",
+     "react": {
+      "direct": {
+       "say": "In proportion… That’s fair. Let’s work it out."
+      },
+      "evasive": {
+       "say": "That’s fair. Let’s work it out together."
+      }
+     }
+    },
+    {
+     "id": "half",
+     "text": "Half and half, and that’s it.",
+     "quality": "bad",
+     "why": "A rigid position that ignores the difference in income brings pushback or formal agreement with resentment behind it.",
+     "react": {
+      "direct": {
+       "say": "That doesn’t suit me. Let’s discuss."
+      },
+      "evasive": {
+       "say": "If it’s half and half, I can’t manage."
+      }
+     }
+    },
+    {
+     "id": "you",
+     "text": "You just need to pay more.",
+     "quality": "bad",
+     "why": "An ultimatum without discussion closes the dialogue. The decision should be shared.",
+     "react": {
+      "direct": {
+       "say": "Don’t order me around."
+      },
+      "evasive": {
+       "say": "Are you telling me what to do?"
+      }
+     }
+    },
+    {
+     "id": "later",
+     "text": "Let’s think more and discuss it later.",
+     "quality": "bad",
+     "why": "Postponing without a date leaves the problem unsolved. Deadlines are needed so the topic doesn’t dissolve.",
+     "react": {
+      "direct": {
+       "say": "“Later” again?"
+      },
+      "evasive": {
+       "say": "OK, let’s think. Although it’s being put off again."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Interests instead of positions",
+    "src": "Fisher & Ury, «Getting to Yes», 1981",
+    "text": "Discuss what matters to each of you and look for an option where both sides win."
+   },
+   "hint": "How to propose a specific solution without closing the discussion?",
+   "boss": {
+    "direct": {
+     "say": "And what do you suggest?",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "Just don’t complicate things. What do you want?",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "seal",
+   "stage": "kitchen",
+   "pos": 4,
+   "heroExpr": "calm",
+   "narr": "There’s an agreement; now it needs locking in.",
+   "ask": "How do you lock it in?",
+   "options": [
+    {
+     "id": "date",
+     "text": "Let’s pay our shares from the first of the month and check in a month whether it works for us. I’ll set a reminder.",
+     "quality": "good",
+     "why": "A specific date and a check-in turn an intention into a plan. A review after a month removes the fear of “forever”.",
+     "react": {
+      "direct": {
+       "say": "OK, from the first. And we’ll check in."
+      },
+      "evasive": {
+       "say": "Deal. Remind me a couple of days before."
+      }
+     }
+    },
+    {
+     "id": "promise",
+     "text": "The main thing is that it doesn’t happen again.",
+     "quality": "bad",
+     "why": "A general phrase sets no actions and sounds like a reproach. You need specific steps and a date.",
+     "react": {
+      "direct": {
+       "say": "Yeah, it won’t happen again."
+      },
+      "evasive": {
+       "say": "OK, I’ll try."
+      }
+     }
+    },
+    {
+     "id": "fine",
+     "text": "Good, then we won’t talk about it again.",
+     "quality": "bad",
+     "why": "Closing the topic “for good” leaves no room for adjustment. If the scheme doesn’t work, it will be awkward to bring it up again.",
+     "react": {
+      "direct": {
+       "say": "Well, as you say."
+      },
+      "evasive": {
+       "say": "OK."
+      }
+     }
+    },
+    {
+     "id": "thanks",
+     "text": "Thanks for the talk.",
+     "quality": "ok",
+     "why": "Thanks matter. Stronger: add a date — when exactly you start and when you check in.",
+     "react": {
+      "direct": {
+       "say": "You’re welcome. Let’s pin down the dates."
+      },
+      "evasive": {
+       "say": "Thanks. Let’s write down the dates."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "A specific “if–then” plan",
+    "src": "Gollwitzer, American Psychologist, 1999",
+    "text": "Decide when and how exactly it will be done. Specific plans increase the chance of follow-through."
+   },
+   "hint": "What will make the agreement real?",
+   "boss": {
+    "direct": {
+     "say": "OK, let’s do that.",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "Fine. Let’s just not forget.",
+     "expr": "neutral"
+    }
+   }
+  }
+ ],
+ "finale": {
+  "boss": {
+   "direct": {
+    "say": "Let’s start from the first. Good that we talked.",
+    "expr": "smile"
+   },
+   "evasive": {
+    "say": "Good. I feel calmer now.",
+    "expr": "smile"
+   }
+  },
+  "title": "Money without a quarrel",
+  "lead": "The conversation started softly, stayed with the facts and ended with a dated plan. Here’s what it relied on:",
+  "carry": [
+   "Starting without blame and offering a choice of time.",
+   "Speaking in numbers and facts, not labels.",
+   "Hearing first, proposing second; locking it in with a date."
+  ],
+  "prompt": "What do you want to agree on about money? Write down the first sentence."
+ }
+}

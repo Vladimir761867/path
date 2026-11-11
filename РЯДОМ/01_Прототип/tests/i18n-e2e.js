@@ -34,6 +34,22 @@ let fail = 0; const ok = (c, m) => { console.log((c ? 'ok   ' : 'FAIL ') + m); i
     }
     await p.evaluate(() => view('library')); await p.evaluate(() => openPractice(Object.keys(practices)[0])); await p.waitForTimeout(150);
     (await cyr()).forEach(s => seen.add('practice: ' + s)); await p.keyboard.press('Escape');
+    // Квесты и истории — для языков, на которые они уже переведены
+    if (await p.evaluate(() => window.RyadomI18n.hasContent())) {
+      const q = new Set();
+      await p.evaluate(() => view('games')); await p.waitForTimeout(150);
+      await p.evaluate(() => document.querySelector('.qz-card').click()); await p.waitForTimeout(400);
+      for (let i = 0; i < 6; i++) {
+        (await cyr()).forEach(s => q.add('quest: ' + s));
+        await p.evaluate(() => { const b = [...document.querySelectorAll('#gamePlay button, .qz-wrap button')].filter(x => x.offsetParent && !/←/.test(x.textContent)); if (b.length) b[b.length - 1].click(); });
+        await p.waitForTimeout(200);
+      }
+      await p.evaluate(() => { view('games'); window.RyadomStory.open('tihiy-gorod'); }); await p.waitForTimeout(500);
+      (await cyr()).forEach(s => q.add('story: ' + s));
+      await p.evaluate(() => { view('games'); startWorld(3, true); }); await p.waitForTimeout(300);
+      (await cyr()).forEach(s => q.add('sketch: ' + s));
+      ok(q.size === 0, L + ': квесты и истории без русского текста' + (q.size ? ' → ' + [...q].slice(0, 4).join(' | ') : ''));
+    }
     ok(seen.size === 0, L + ': экраны без русского текста' + (seen.size ? ' → ' + [...seen].slice(0, 4).join(' | ') : ''));
     await p.evaluate(() => view('today')); await p.waitForTimeout(100);
     const bot = await p.$$eval('.messages .bubble:not(.me)', bs => bs.map(x => x.innerText).join(' '));

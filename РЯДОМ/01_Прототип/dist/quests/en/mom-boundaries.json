@@ -1,0 +1,510 @@
+{
+ "id": "mom-boundaries",
+ "title": "Talking to Mum about boundaries",
+ "kicker": "QUEST · CONVERSATION TRAINER",
+ "tag": "QUEST · 5 STEPS · 2 STYLES",
+ "intro": {
+  "title": "Care and a boundary",
+  "paragraphs": [
+   "Mum is asking about your move again. Her care is real, but the pressure feels heavy. You want to keep the closeness and your right to decide.",
+   "Choose what to say. If an answer doesn’t work, you stay where you are, see the reaction and understand why."
+  ],
+  "note": "The other person’s styles are patterns of behaviour, not types of people: the same person acts differently on different days. Real people react differently, so this is practice with wording, not a prediction.",
+  "disclaimer": "A learning simulation. The material draws on well-known communication methods (sources are given at each step), but it has not yet been reviewed by a psychologist."
+ },
+ "pick": "What kind of mum?",
+ "variants": [
+  {
+   "id": "direct",
+   "name": "Anxious, lots of advice",
+   "desc": "Worries, asks questions and warns.",
+   "boss": {
+    "name": "Lyubov",
+    "look": {
+     "style": "bun",
+     "skin": "#e2b894",
+     "hair": "#a8a3a0",
+     "top": "#7c9a8a",
+     "under": "#f6f0e6",
+     "suit": "blazer",
+     "pants": "#3b3440"
+    },
+    "expr": {
+     "fail": "tense",
+     "good": "listening",
+     "soft": "softened",
+     "smile": "smile"
+    }
+   }
+  },
+  {
+   "id": "evasive",
+   "name": "Critical and touchy",
+   "desc": "Compares, reproaches and is easily offended.",
+   "boss": {
+    "name": "Nina",
+    "look": {
+     "style": "bun",
+     "skin": "#dcae88",
+     "hair": "#4a3a35",
+     "top": "#9a5a5a",
+     "under": "#f6f0e6",
+     "suit": "blazer",
+     "pants": "#3b3440"
+    },
+    "expr": {
+     "fail": "impatient",
+     "good": "listening",
+     "soft": "softened",
+     "smile": "smile"
+    }
+   }
+  }
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "stage": "kitchen",
+   "pos": 0,
+   "heroExpr": "tense",
+   "narr": "Sunday, your parents’ kitchen. Tea, pie — and Mum’s question about your plans. Conversations like this used to end in hurt feelings.",
+   "ask": "What do you answer?",
+   "options": [
+    {
+     "id": "validate",
+     "text": "Mum, I understand you’re worried. I’ll tell you what I’m deciding, but the decision stays mine.",
+     "quality": "good",
+     "why": "You acknowledge Mum’s feelings and at the same time clearly name the boundary: “the decision is mine”. It’s not a refusal of closeness but a clarification of roles.",
+     "react": {
+      "direct": {
+       "say": "Oh… well, all right. Tell me."
+      },
+      "evasive": {
+       "say": "Well… suppose so. Go on."
+      }
+     }
+    },
+    {
+     "id": "leave",
+     "text": "Stay out of my life!",
+     "quality": "bad",
+     "why": "A harsh phrase turns care, however clumsy, into an attack. Mum will feel hurt, not a boundary.",
+     "react": {
+      "direct": {
+       "say": "What a tone! I’m your mother, I’m allowed to worry."
+      },
+      "evasive": {
+       "say": "So that’s how you talk to your mother…"
+      }
+     }
+    },
+    {
+     "id": "hide",
+     "text": "I’m not thinking anything, everything’s fine.",
+     "quality": "bad",
+     "why": "Hiding the topic leaves the tension. Mum will sense something unsaid and keep asking.",
+     "react": {
+      "direct": {
+       "say": "You’re not telling me something…"
+      },
+      "evasive": {
+       "say": "There you go, closing off again."
+      }
+     }
+    },
+    {
+     "id": "justify",
+     "text": "Explain in detail: the salary, the city, the friends, every reason.",
+     "quality": "bad",
+     "why": "A detailed report gives Mum the right to judge every decision. You don’t have to prove your decision is “good enough”.",
+     "react": {
+      "direct": {
+       "say": "Those are all weak reasons. Suit yourself."
+      },
+      "evasive": {
+       "say": "But it could have been done differently…"
+      }
+     }
+    },
+    {
+     "id": "fold",
+     "text": "You’re right, maybe it’s better to stay.",
+     "quality": "bad",
+     "why": "Agreeing just to end the conversation only postpones the conflict. You’ll have to decide again, now with the feeling you weren’t heard.",
+     "react": {
+      "direct": {
+       "say": "You see, Mum won’t give bad advice."
+      },
+      "evasive": {
+       "say": "There, that’s right, should have done it long ago."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Describe, express, assert",
+    "src": "Linehan, “Skills Training Manual”, 1993 (DEAR MAN technique)",
+    "text": "Acknowledge the other person’s feelings and clearly state your position in a calm tone, without excuses."
+   },
+   "hint": "How to acknowledge Mum’s feelings and still keep the right to decide for yourself?",
+   "boss": {
+    "direct": {
+     "say": "So, are you still thinking about this move? I didn’t sleep all night.",
+     "expr": "tense"
+    },
+    "evasive": {
+     "say": "These plans of yours again. Others your age have already settled down.",
+     "expr": "impatient"
+    }
+   }
+  },
+  {
+   "id": "doubt",
+   "stage": "kitchen",
+   "pos": 1,
+   "heroExpr": "tense",
+   "narr": "Mum goes on. Now about what might go wrong.",
+   "ask": "What do you say?",
+   "options": [
+    {
+     "id": "nvc",
+     "text": "When we discuss the move and I hear predictions of failure, I get more anxious. I need your support. For now, could you just ask how I’m preparing?",
+     "quality": "good",
+     "why": "The structure of nonviolent communication: observation, feeling, need, request. You name what’s happening to you and ask for something specific, without blame.",
+     "react": {
+      "direct": {
+       "say": "All right… tell me how you’re preparing."
+      },
+      "evasive": {
+       "say": "Go on then… tell me."
+      }
+     }
+    },
+    {
+     "id": "doubt",
+     "text": "You always doubt me.",
+     "quality": "bad",
+     "why": "The generalisation “always” sounds like an accusation and triggers defensiveness. The conversation drifts into an argument about who feels what.",
+     "react": {
+      "direct": {
+       "say": "I don’t doubt you! I worry, that’s different."
+      },
+      "evasive": {
+       "say": "No, not at all, I just want the best."
+      }
+     }
+    },
+    {
+     "id": "sarcasm",
+     "text": "If it doesn’t work out, it doesn’t. I’ll survive.",
+     "quality": "bad",
+     "why": "Sarcasm and bravado shut the conversation down: Mum hears coldness, not a request for support.",
+     "react": {
+      "direct": {
+       "say": "How hard you’ve become."
+      },
+      "evasive": {
+       "say": "Oh, what a tone."
+      }
+     }
+    },
+    {
+     "id": "topic",
+     "text": "Let’s talk about something else: how’s your blood pressure?",
+     "quality": "bad",
+     "why": "An abrupt change of subject leaves the conflict unresolved: Mum will come back to it later, and you’ll feel unheard again.",
+     "react": {
+      "direct": {
+       "say": "Don’t dodge the conversation."
+      },
+      "evasive": {
+       "say": "There you go, wriggling out again."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Observation, feeling, need, request",
+    "src": "Rosenberg, «Nonviolent Communication», 1999",
+    "text": "Talk about what you see and feel and ask for a specific action, without blaming."
+   },
+   "hint": "How to say what you need without blaming?",
+   "boss": {
+    "direct": {
+     "say": "And what if it doesn’t work out there? Who will help you?",
+     "expr": "tense"
+    },
+    "evasive": {
+     "say": "You always give up on what you start.",
+     "expr": "stern"
+    }
+   }
+  },
+  {
+   "id": "guilt",
+   "stage": "kitchen",
+   "pos": 2,
+   "heroExpr": "calm",
+   "narr": "Mum moves to the hardest part: feelings.",
+   "ask": "How do you respond?",
+   "options": [
+    {
+     "id": "hold",
+     "text": "Thank you for caring. I know you mean well, but the decision will still be mine.",
+     "quality": "good",
+     "why": "You acknowledge the care without giving up your decision. Gratitude and a boundary can sound in one sentence.",
+     "react": {
+      "direct": {
+       "say": "Well… all right. I’m trying to understand."
+      },
+      "evasive": {
+       "say": "OK. But this is hard for me."
+      }
+     }
+    },
+    {
+     "id": "manip",
+     "text": "You’re manipulating me!",
+     "quality": "bad",
+     "why": "The label “manipulation” causes hurt and defensiveness. Even if you’re right, an argument about intentions takes you off topic.",
+     "react": {
+      "direct": {
+       "say": "How can you say that to your mother!"
+      },
+      "evasive": {
+       "say": "Well, thank you, now I’m a manipulator."
+      }
+     }
+    },
+    {
+     "id": "forget",
+     "text": "Sorry, I don’t want to hurt you. Let’s forget it all.",
+     "quality": "bad",
+     "why": "Asking to “forget it” devalues your boundary. Mum will decide she can carry on, and you’ll be left with the same question.",
+     "react": {
+      "direct": {
+       "say": "Good, so you’re not going."
+      },
+      "evasive": {
+       "say": "Good, that’s better."
+      }
+     }
+    },
+    {
+     "id": "pause",
+     "text": "I need a pause. Let’s continue tomorrow.",
+     "quality": "ok",
+     "why": "A time-out is appropriate if emotions are too strong: you’re not running away, you’re setting a time to come back. Stronger: first say that you heard her.",
+     "react": {
+      "direct": {
+       "say": "All right. Tomorrow it is."
+      },
+      "evasive": {
+       "say": "Well… let’s do tomorrow."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Acknowledge and hold",
+    "src": "Linehan, «Skills Training Manual», 1993 (DEAR MAN)",
+    "text": "Acknowledge a loved one’s feelings and repeat your decision without arguing about intentions."
+   },
+   "hint": "How to respond to being called ungrateful?",
+   "boss": {
+    "direct": {
+     "say": "I only want the best for you. I’m your mum, it hurts me.",
+     "expr": "tense"
+    },
+    "evasive": {
+     "say": "Ingratitude — that’s what I get for everything.",
+     "expr": "stern"
+    }
+   }
+  },
+  {
+   "id": "deal",
+   "stage": "kitchen",
+   "pos": 3,
+   "heroExpr": "calm",
+   "narr": "The tension has eased. What remains is what Mum really wants to keep: the connection.",
+   "ask": "How do you reach an agreement?",
+   "options": [
+    {
+     "id": "rhythm",
+     "text": "Let’s agree: I’ll call on Sunday evenings and text when I arrive. Does that work?",
+     "quality": "good",
+     "why": "A realistic agreement is better than promises that are hard to keep: it eases Mum’s anxiety and keeps your independence.",
+     "react": {
+      "direct": {
+       "say": "Sunday evenings… all right, I’ll be waiting."
+      },
+      "evasive": {
+       "say": "At least that. OK."
+      }
+     }
+    },
+    {
+     "id": "promise",
+     "text": "Of course, I’ll call every day!",
+     "quality": "bad",
+     "why": "A promise you can’t keep will create new hurt. Better to name what’s realistic.",
+     "react": {
+      "direct": {
+       "say": "Every day? That’s good. Don’t forget."
+      },
+      "evasive": {
+       "say": "Really? Well, mind you, every day."
+      }
+     }
+    },
+    {
+     "id": "demand",
+     "text": "Don’t demand anything from me.",
+     "quality": "bad",
+     "why": "Refusing any agreement reads as coldness. The closeness is left without a form.",
+     "react": {
+      "direct": {
+       "say": "There you go. I can’t even ask."
+      },
+      "evasive": {
+       "say": "Of course, who am I, I’m nobody."
+      }
+     }
+    },
+    {
+     "id": "maybe",
+     "text": "We’ll see.",
+     "quality": "bad",
+     "why": "A vague answer leaves the anxiety open: Mum is left imagining the worst.",
+     "react": {
+      "direct": {
+       "say": "What does “we’ll see” mean?"
+      },
+      "evasive": {
+       "say": "“We’ll see” again… I knew it."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "A realistic agreement",
+    "src": "Linehan, 1993 (Negotiate); Gollwitzer, American Psychologist, 1999",
+    "text": "Agree on a specific rhythm of contact you can keep."
+   },
+   "hint": "How to suggest a way of staying in touch you can actually manage?",
+   "boss": {
+    "direct": {
+     "say": "All right… but you’ll call? At least once a day?",
+     "expr": "tense"
+    },
+    "evasive": {
+     "say": "Well, fine. But don’t expect me to be happy about it.",
+     "expr": "neutral"
+    }
+   }
+  },
+  {
+   "id": "end",
+   "stage": "kitchen",
+   "pos": 4,
+   "heroExpr": "calm",
+   "narr": "The main thing has been said. Now choose how to finish.",
+   "ask": "What do you say as you leave?",
+   "options": [
+    {
+     "id": "love",
+     "text": "Thanks for listening. It matters to me that you know: I love you, and that doesn’t change.",
+     "quality": "good",
+     "why": "A warm phrase after a hard conversation brings back closeness. A boundary doesn’t cancel love — it helps it last.",
+     "react": {
+      "direct": {
+       "say": "I love you too. Take care."
+      },
+      "evasive": {
+       "say": "Well… I love you too. Call me."
+      }
+     }
+    },
+    {
+     "id": "see",
+     "text": "You see, everything’s fine.",
+     "quality": "bad",
+     "why": "This sounds like a victory and may sting. It’s better to end with warmth than with the outcome of an argument.",
+     "react": {
+      "direct": {
+       "say": "Well, fine… If that’s how it seems to you."
+      },
+      "evasive": {
+       "say": "What’s fine? Nothing is fine."
+      }
+     }
+    },
+    {
+     "id": "hurt",
+     "text": "The main thing is that you’re not upset.",
+     "quality": "bad",
+     "why": "Asking someone “not to be upset” shifts responsibility for their feelings. Mum has the right to be sad, and you can bear that.",
+     "react": {
+      "direct": {
+       "say": "Not be upset… I’ll try."
+      },
+      "evasive": {
+       "say": "I’m not upset. I’m just sad."
+      }
+     }
+    },
+    {
+     "id": "go",
+     "text": "OK, I’ll go.",
+     "quality": "bad",
+     "why": "Leaving without a warm phrase leaves an aftertaste of coldness, even though the talk went well.",
+     "react": {
+      "direct": {
+       "say": "Go. See you."
+      },
+      "evasive": {
+       "say": "Well, go."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Strengthen the connection",
+    "src": "Linehan, “Skills Training Manual”, 1993 (“Reinforce” technique)",
+    "text": "End a difficult conversation with words of closeness: a boundary and love don’t contradict each other."
+   },
+   "hint": "How to finish so the closeness remains?",
+   "boss": {
+    "direct": {
+     "say": "All right… you’re so independent.",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "Do as you see fit.",
+     "expr": "neutral"
+    }
+   }
+  }
+ ],
+ "finale": {
+  "boss": {
+   "direct": {
+    "say": "Off you go, the pie is getting cold.",
+    "expr": "smile"
+   },
+   "evasive": {
+    "say": "OK. Call on Sunday.",
+    "expr": "smile"
+   }
+  },
+  "title": "Care and a boundary",
+  "lead": "Mum was heard, the boundary was named, there’s an agreement. Here’s what it relied on:",
+  "carry": [
+   "Acknowledging a loved one’s feelings and still keeping the decision your own.",
+   "Speaking in “I” statements and asking for something specific instead of blaming.",
+   "Agreeing on a rhythm of contact you can really keep."
+  ],
+  "prompt": "How would this sound in your conversation with someone close? Write down your version to come back to before you meet."
+ }
+}

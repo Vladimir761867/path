@@ -1,0 +1,493 @@
+{
+ "id": "ask-help",
+ "title": "Asking for help",
+ "kicker": "QUEST · CONVERSATION TRAINER",
+ "tag": "QUEST · 5 STEPS · 2 STYLES",
+ "intro": {
+  "title": "It’s OK to ask",
+  "paragraphs": [
+   "You’re moving things on Saturday and don’t have enough hands. Asking feels awkward: it seems like being a burden.",
+   "You try to ask in a way that makes it easy for the person both to agree and to say no.",
+   "Choose what to say. If an answer doesn’t work, you stay where you are, see the reaction and understand why."
+  ],
+  "note": "The other person’s styles are patterns of behaviour, not types of people: the same person acts differently on different days. Real people react differently, so this is practice with wording, not a prediction.",
+  "disclaimer": "A learning simulation. The material draws on well-known communication methods (sources are given at each step), but it has not yet been reviewed by a psychologist."
+ },
+ "pick": "Who are you talking to?",
+ "variants": [
+  {
+   "id": "direct",
+   "name": "Busy and brief",
+   "desc": "Speaks briefly, is in a hurry, values specifics.",
+   "boss": {
+    "name": "Dmitry",
+    "look": {
+     "style": "short",
+     "skin": "#d9a882",
+     "hair": "#2f2a26",
+     "top": "#8a6f5c",
+     "pants": "#2f3844"
+    },
+    "expr": {
+     "fail": "impatient",
+     "good": "listening",
+     "soft": "softened",
+     "smile": "smile"
+    }
+   }
+  },
+  {
+   "id": "evasive",
+   "name": "Kind but unsure",
+   "desc": "Wants to help but is afraid of not managing.",
+   "boss": {
+    "name": "Olga",
+    "look": {
+     "style": "bun",
+     "skin": "#e2b894",
+     "hair": "#7a4f35",
+     "top": "#6a8fa8",
+     "pants": "#3b3440"
+    },
+    "expr": {
+     "fail": "tense",
+     "good": "listening",
+     "soft": "softened",
+     "smile": "smile"
+    }
+   }
+  }
+ ],
+ "nodes": [
+  {
+   "id": "ask",
+   "stage": "cafe",
+   "pos": 0,
+   "heroExpr": "tense",
+   "narr": "You’re moving on Saturday and don’t have enough hands. You need to ask someone you know for help, and you’ve met for coffee to ask.",
+   "ask": "How do you start the request?",
+   "options": [
+    {
+     "id": "clear",
+     "text": "I need help on Saturday: I’m moving and need a hand for 2–3 hours from 11 a.m. Can you?",
+     "quality": "good",
+     "why": "A clear request says what, when and how much. It’s easier to answer “yes” or “no” when the scope is clear.",
+     "react": {
+      "direct": {
+       "say": "Saturday, 11 a.m.… Let’s see."
+      },
+      "evasive": {
+       "say": "Oh, a move! So what exactly needs doing?"
+      }
+     }
+    },
+    {
+     "id": "apol",
+     "text": "Sorry to bother you again, you probably have a lot on, but maybe it’ll work…",
+     "quality": "bad",
+     "why": "Apologising in advance and offering a way out yourself sounds like “asking is awkward”. The request loses weight, and “no” is practically suggested.",
+     "react": {
+      "direct": {
+       "say": "If you think so, maybe better not."
+      },
+      "evasive": {
+       "say": "Well, if it’s inconvenient, let’s not."
+      }
+     }
+    },
+    {
+     "id": "vague",
+     "text": "Please help, I really need it.",
+     "quality": "bad",
+     "why": "A vague request makes the other person guess how long it will take. An unknown scope often brings a cautious “no”.",
+     "react": {
+      "direct": {
+       "say": "Need what? Say it properly."
+      },
+      "evasive": {
+       "say": "Help with what? I didn’t get it."
+      }
+     }
+    },
+    {
+     "id": "martyr",
+     "text": "Nobody will help me, but fine, I’ll at least ask you.",
+     "quality": "bad",
+     "why": "This makes the other person your “last chance” and puts them in a guilty position. It’s pressure, not a request.",
+     "react": {
+      "direct": {
+       "say": "Great, now you’re holding a grudge too."
+      },
+      "evasive": {
+       "say": "Oh, that sounds like a reproach."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "A clear request",
+    "src": "Linehan, «Skills Training Manual», 1993 (DEAR MAN)",
+    "text": "A request is clear when it names the specific action, time and scope, without hints or apologies."
+   },
+   "hint": "What does the person need to know to answer honestly: what, when, how much?",
+   "boss": {
+    "direct": {
+     "say": "I’m listening. I have about fifteen minutes.",
+     "expr": "impatient"
+    },
+    "evasive": {
+     "say": "Hi! Did something happen? You look worried. I’m swamped today, though.",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "free",
+   "stage": "cafe",
+   "pos": 1,
+   "heroExpr": "calm",
+   "narr": "The other person hesitates and delays answering.",
+   "ask": "What do you say?",
+   "options": [
+    {
+     "id": "right",
+     "text": "If it doesn’t work out, that’s fine. I want your honest answer.",
+     "quality": "good",
+     "why": "Saying out loud that they can refuse increases the chance of agreement and the honesty of the answer: the person doesn’t feel cornered.",
+     "react": {
+      "direct": {
+       "say": "Then honestly: I can help a bit, let’s see."
+      },
+      "evasive": {
+       "say": "Thanks for saying that. Let’s think about what I can definitely help with."
+      }
+     }
+    },
+    {
+     "id": "press",
+     "text": "Oh please, what’s it to you!",
+     "quality": "bad",
+     "why": "Pressure turns the talk into persuasion. Agreement under pressure usually leaves the person with a bad aftertaste and you with a feeling of debt.",
+     "react": {
+      "direct": {
+       "say": "It’s exactly this kind of pressure that makes me not want to."
+      },
+      "evasive": {
+       "say": "Please don’t push, I already feel awkward."
+      }
+     }
+    },
+    {
+     "id": "debt",
+     "text": "We’ve always helped each other, so you’ll help me too.",
+     "quality": "bad",
+     "why": "Reminding someone of debts turns help into a calculation. A request stays a request as long as the answer can be “no”.",
+     "react": {
+      "direct": {
+       "say": "Was that a reproach just now?"
+      },
+      "evasive": {
+       "say": "You think I owe you?"
+      }
+     }
+    },
+    {
+     "id": "drop",
+     "text": "Fine, forget it. I’ll manage somehow.",
+     "quality": "bad",
+     "why": "Leaving in a huff closes the topic and damages the relationship. You never learn what the person could have offered.",
+     "react": {
+      "direct": {
+       "say": "Fine. Whatever you want."
+      },
+      "evasive": {
+       "say": "Oh, don’t be upset…"
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "The right to say no",
+    "src": "Carpenter, Social Influence, 2013 («But you are free»)",
+    "text": "A phrase that gives the person back their freedom of choice has been shown in studies to increase agreement without harming the relationship."
+   },
+   "hint": "How to give the person freedom to say “no” without weakening the request?",
+   "boss": {
+    "direct": {
+     "say": "Saturday is packed. I don’t know.",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "Oh, I’d like to, but I’m afraid I’ll just get in the way…",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "part",
+   "stage": "cafe",
+   "pos": 2,
+   "heroExpr": "calm",
+   "narr": "The other person is ready to help, but not fully.",
+   "ask": "How do you respond to a partial “yes”?",
+   "options": [
+    {
+     "id": "use",
+     "text": "An hour will help a lot too. Let’s do this: at 11 we carry out the heavy furniture together.",
+     "quality": "good",
+     "why": "A partial yes is worth accepting and putting straight into the plan. A specific task for that hour makes the help useful.",
+     "react": {
+      "direct": {
+       "say": "Good, I’ll take the heavy stuff at 11."
+      },
+      "evasive": {
+       "say": "The heavy stuff, right? I can do that. Agreed, 11."
+      }
+     }
+    },
+    {
+     "id": "nothx",
+     "text": "An hour? Then maybe it’s not worth it.",
+     "quality": "bad",
+     "why": "By rejecting part of it, you lose everything. A little help is often more important than it seems.",
+     "react": {
+      "direct": {
+       "say": "As you say. So, no."
+      },
+      "evasive": {
+       "say": "Then sorry I even agreed."
+      }
+     }
+    },
+    {
+     "id": "more",
+     "text": "An hour is nothing, make it at least two.",
+     "quality": "bad",
+     "why": "Bargaining right after agreement devalues it. The person has already named their limit.",
+     "react": {
+      "direct": {
+       "say": "I said an hour. I didn’t choose two."
+      },
+      "evasive": {
+       "say": "But I said: only for an hour."
+      }
+     }
+    },
+    {
+     "id": "thanks",
+     "text": "Thanks, an hour works.",
+     "quality": "ok",
+     "why": "Accepting the offer is already good. Stronger: add what exactly you’ll use that hour for — that seals the agreement.",
+     "react": {
+      "direct": {
+       "say": "OK. Then at 11."
+      },
+      "evasive": {
+       "say": "Fine, at 11."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Accept a partial “yes”",
+    "src": "Fisher & Ury, «Getting to Yes», 1981",
+    "text": "A realistic agreement is better than a perfect answer: take what the person is ready to give and define the task."
+   },
+   "hint": "What to do when they agreed to only part of it?",
+   "boss": {
+    "direct": {
+     "say": "I can only do an hour. No more.",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "I can do an hour, no more… Will that even help?",
+     "expr": "tense"
+    }
+   }
+  },
+  {
+   "id": "back",
+   "stage": "cafe",
+   "pos": 3,
+   "heroExpr": "calm",
+   "narr": "The other person offers an exchange.",
+   "ask": "What do you answer?",
+   "options": [
+    {
+     "id": "yes",
+     "text": "I’d be glad to help you in return. Tell me when it suits you.",
+     "quality": "good",
+     "why": "Being ready to reciprocate makes the help equal. Relationships rest on exchange, not debt.",
+     "react": {
+      "direct": {
+       "say": "Deal. I’ll let you know."
+      },
+      "evasive": {
+       "say": "Good. That makes me feel easier."
+      }
+     }
+    },
+    {
+     "id": "nothing",
+     "text": "You don’t need to return anything, it’s nothing.",
+     "quality": "bad",
+     "why": "Refusing reciprocity can devalue your exchange and leave the person with a sense of debt they can’t settle.",
+     "react": {
+      "direct": {
+       "say": "Well, if it’s nothing, then fine."
+      },
+      "evasive": {
+       "say": "Oh, it’s still awkward."
+      }
+     }
+    },
+    {
+     "id": "self",
+     "text": "No, no, there’s no need, I’ll manage somehow.",
+     "quality": "bad",
+     "why": "You just asked for help, and now you’re refusing an exchange. This confuses the other person.",
+     "react": {
+      "direct": {
+       "say": "Make up your mind."
+      },
+      "evasive": {
+       "say": "Wait, aren’t you the one asking for help?"
+      }
+     }
+    },
+    {
+     "id": "owe",
+     "text": "Help isn’t a free service — expect to return the favour.",
+     "quality": "bad",
+     "why": "A cold phrase makes the relationship look like a deal. Reciprocity is better expressed with warmth.",
+     "react": {
+      "direct": {
+       "say": "Sounds like a condition."
+      },
+      "evasive": {
+       "say": "Oh, that’s harsh."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Reciprocity",
+    "src": "Gouldner, American Sociological Review, 1960",
+    "text": "The norm of reciprocity: people like knowing help can be returned. It strengthens the bond."
+   },
+   "hint": "How to show help is mutual without turning it into a deal?",
+   "boss": {
+    "direct": {
+     "say": "OK. And later maybe you’ll help me with something.",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "Well… if anything, you’ll help me sometime too, right?",
+     "expr": "neutral"
+    }
+   }
+  },
+  {
+   "id": "thank",
+   "stage": "cafe",
+   "pos": 4,
+   "heroExpr": "calm",
+   "narr": "The conversation is coming to an end. All that’s left is to say thank you.",
+   "ask": "How do you finish?",
+   "options": [
+    {
+     "id": "spec",
+     "text": "Thank you, your willingness really helps. I’ll text you on Friday to confirm the time.",
+     "quality": "good",
+     "why": "Specific thanks names what exactly mattered and seals the agreement with a next step.",
+     "react": {
+      "direct": {
+       "say": "Great. I’ll wait for your message."
+      },
+      "evasive": {
+       "say": "Deal. Text me on Friday."
+      }
+     }
+    },
+    {
+     "id": "finally",
+     "text": "Finally we agreed.",
+     "quality": "bad",
+     "why": "These words sound like a reproach for the long bargaining. Thanks should be about the person, not the conversation.",
+     "react": {
+      "direct": {
+       "say": "What do you mean, “finally”?"
+      },
+      "evasive": {
+       "say": "That sounded like a reproach to me."
+      }
+     }
+    },
+    {
+     "id": "without",
+     "text": "I could have managed without you too.",
+     "quality": "bad",
+     "why": "This phrase takes value away from someone’s help and spoils the impression.",
+     "react": {
+      "direct": {
+       "say": "Then why ask?"
+      },
+      "evasive": {
+       "say": "I see. Then maybe it’s not needed?"
+      }
+     }
+    },
+    {
+     "id": "bye",
+     "text": "OK, bye.",
+     "quality": "bad",
+     "why": "Leaving without thanks and without a specific step leaves the agreement vague.",
+     "react": {
+      "direct": {
+       "say": "Bye."
+      },
+      "evasive": {
+       "say": "Well, talk later."
+      }
+     }
+    }
+   ],
+   "tech": {
+    "name": "Specific thanks",
+    "src": "Algoe, «Find, Remind, and Bind», 2012",
+    "text": "Name what exactly helped and why it matters: that way thanks strengthens the relationship instead of staying a formality."
+   },
+   "hint": "What to say so the person feels their help matters?",
+   "boss": {
+    "direct": {
+     "say": "OK. Anything else?",
+     "expr": "neutral"
+    },
+    "evasive": {
+     "say": "Fine. Do you need anything else?",
+     "expr": "neutral"
+    }
+   }
+  }
+ ],
+ "finale": {
+  "boss": {
+   "direct": {
+    "say": "Deal. See you on Saturday.",
+    "expr": "smile"
+   },
+   "evasive": {
+    "say": "OK, I’ll come. Text me on Friday.",
+    "expr": "smile"
+   }
+  },
+  "title": "It’s OK to ask",
+  "lead": "The request was clear and free, and it ended with a specific agreement. Here’s what it relied on:",
+  "carry": [
+   "Asking specifically: what, when, how much.",
+   "Leaving the person the right to say no.",
+   "Accepting a partial “yes” and anchoring it with a task."
+  ],
+  "prompt": "What request are you putting off? Write it down as one specific sentence."
+ }
+}
