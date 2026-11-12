@@ -14,5 +14,5 @@
 .sos-status{min-height:1.2em;margin:6px 0 0;font-size:13.5px;color:#4f6156}
 .sos-field{display:block;font-size:14px;font-weight:650;margin:10px 0 0}
 .sos-field textarea{display:block;width:100%;margin-top:5px;border:1px solid #dce5db;border-radius:12px;padding:9px 11px;font:inherit;font-weight:400;resize:vertical;background:#fff}
-.sos-note{font-size:13px;color:#6d7a72;line-height:1.45;margin:6px 0 14px}
+.sos-note{font-size:13px;color:#56645c;line-height:1.45;margin:6px 0 14px}
 html[dir=rtl] .sos-lines li{text-align:right}

@@ -19,7 +19,7 @@
 .pv-card p{margin:0 0 12px;color:#566a5e;font-size:14px;line-height:1.5}
 .pv-list{margin:0 0 14px;padding:0;list-style:none;display:grid;gap:6px;font-size:13.5px}
 .pv-list li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #edf0e9;padding:6px 0}
-.pv-list span:last-child{color:#6d7a72;white-space:nowrap}
+.pv-list span:last-child{color:#56645c;white-space:nowrap}
 .pv-card textarea{width:100%;min-height:90px;border:1px solid #dce5db;border-radius:12px;padding:10px;font:inherit;font-size:13px;background:#fafbf7;color:inherit}
 .pv-msg{margin:10px 0 0;font-size:13.5px;line-height:1.45;color:#2f5a44}
 .pv-msg.err{color:#9a4a3b}

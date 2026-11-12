@@ -139,7 +139,7 @@
     const first = (S.phase === 'scene' || S.phase === 'result') && isOpener(S);
     when.append(h('b', null, final ? ST.final.dayLabel : first ? ST.openerWhen : ST.days[Math.min(S.day, ST.days.length - 1)] + ' · ' + ST.slots[S.slot]));
     when.append(h('small', null, ST.deadline)); bar.append(when);
-    const track = h('div', 'qc-track'); track.setAttribute('aria-label', 'Время');
+    const track = h('div', 'qc-track'); track.setAttribute('role', 'img'); track.setAttribute('aria-label', 'Время');
     const idx = final ? nSlots() : slotIndex(S);
     for (let i = 0; i < nSlots(); i++) { const seg = h('i'); if (i < idx) seg.className = 'done'; else if (i === idx) seg.className = 'now'; track.append(seg); }
     bar.append(track);
