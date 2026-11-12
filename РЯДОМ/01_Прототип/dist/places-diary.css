@@ -3,7 +3,7 @@
 .diary-places{border-top:1px solid #e3e9df;margin-top:24px;padding-top:19px}
 .diary-places-heading{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px}
 .diary-places-heading h5{font-size:16px;margin:0;letter-spacing:-.02em}
-.diary-places-heading span{font-size:11px;color:#7b907e}
+.diary-places-heading span{font-size:11px;color:#56695a}
 .places-empty,.place-privacy{color:#768a79;font-size:12px;line-height:1.5}
 .diary-place-card{border:1px solid #dce8dc;background:#f8fbf7;border-radius:15px;padding:12px;margin:9px 0}
 .diary-place-top{display:flex;align-items:center;gap:10px}

@@ -121,6 +121,8 @@
      ['Важно', 'Приложение не является медицинским изделием и не заменяет помощь специалиста. Это прототип, и тексты ещё не проверены психологом.']
     ].forEach(r => { const p = $('p'); p.append($('b', null, r[0] + '. '), document.createTextNode(r[1])); det.append(p); });
     card.append(det);
+    const pol = $('a', 'pv-link', 'Полная политика конфиденциальности'); pol.href = 'privacy-policy.html'; pol.target = '_blank'; pol.rel = 'noopener';
+    card.append(pol);
     const again = $('button', 'pv-link', 'Показать вводную ещё раз'); again.type = 'button'; again.onclick = () => showConsent(null, true);
     card.append(again, $('p', 'pv-crisis', 'Если сейчас очень тяжело или есть риск навредить себе, позвони по номеру 112 или обратись к близкому человеку.'));
     return card;

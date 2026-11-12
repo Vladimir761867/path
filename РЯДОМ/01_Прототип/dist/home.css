@@ -1,9 +1,9 @@
 .start-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 16px}
 .start-row[hidden]{display:none}
-.start-lab{grid-column:1/-1;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#6b7d72;font-weight:700}
+.start-lab{grid-column:1/-1;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#53655a;font-weight:700}
 .start-btn{display:flex;flex-direction:column;gap:3px;text-align:left;padding:12px 14px;border:1px solid #dbe6dc;border-radius:16px;background:#fffdf9;cursor:pointer;font:inherit;color:#26332c;min-width:0}
 .start-btn:hover{border-color:#6e9a7a;background:#f3f8f3}
-.start-btn b{font-size:15px}.start-btn small{color:#6b7d72;font-size:12.5px;line-height:1.3}
+.start-btn b{font-size:15px}.start-btn small{color:#53655a;font-size:12.5px;line-height:1.3}
 @media(max-width:720px){.start-row{grid-template-columns:1fr}.start-btn{flex-direction:row;align-items:baseline;justify-content:space-between;gap:10px}.start-btn small{text-align:right}}
 .now-box{margin:0 0 26px}
 .now-why{color:#5c6e63;margin:4px 0 12px}
@@ -13,14 +13,14 @@
 .chain{border:1px solid #dbe6dc;border-radius:16px;background:#fffdf9;padding:4px 14px;min-width:0}
 .chain summary{display:flex;justify-content:space-between;gap:10px;align-items:baseline;padding:10px 0;cursor:pointer;list-style:none}
 .chain summary::-webkit-details-marker{display:none}
-.chain summary small{color:#6b7d72;white-space:nowrap}
+.chain summary small{color:#53655a;white-space:nowrap}
 .chain ol{list-style:none;margin:0;padding:0 0 10px;display:flex;flex-direction:column;gap:6px}
 .chain li{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px;padding:8px 10px;border-radius:12px;background:#f5f8f4}
 .chain li.done{opacity:.7}
 .chain-open{border:0;background:none;font:inherit;color:#26332c;text-align:left;cursor:pointer;padding:0;min-width:0}
 .chain-tag{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#a0624c;font-weight:700}
 .chain-chk{border:1px solid #cfdccf;background:#fff;border-radius:999px;padding:4px 10px;font:inherit;font-size:12.5px;cursor:pointer;color:#315f4c}
-.stat-box{margin-top:18px}.stat-note{color:#6b7d72;font-size:13px}
+.stat-box{margin-top:18px}.stat-note{color:#53655a;font-size:13px}
 .stat-list{margin:8px 0 12px;padding-left:18px}.stat-row{display:flex;gap:10px;flex-wrap:wrap}
 
 .mine-box{margin-top:26px}.mine-idea{background:#eef5ee;border-radius:14px;padding:12px 14px;margin:0 0 12px}

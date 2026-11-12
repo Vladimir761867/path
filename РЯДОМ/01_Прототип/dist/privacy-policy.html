@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>«Рядом» — политика конфиденциальности</title>
+<meta name="description" content="Как приложение «Рядом» обращается с данными: что хранится на устройстве, что и куда передаётся, как всё удалить.">
+<style>
+:root{--ink:#23342f;--muted:#5d6f66;--paper:#f5f3ed;--card:#fffdf9;--line:#e5e7df;--green:#315f4c}
+@media (prefers-color-scheme:dark){:root{--ink:#e8efe9;--muted:#a9b8ae;--paper:#141c19;--card:#1b2521;--line:#2c3a34;--green:#8cc5a5}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:760px;margin:0 auto;padding:32px max(18px,env(safe-area-inset-left)) 60px}
+h1{font-size:clamp(28px,5vw,40px);letter-spacing:-.03em;line-height:1.15;margin:0 0 6px}
+h2{font-size:20px;margin:34px 0 8px}
+p,li{color:var(--ink)}
+.muted{color:var(--muted);font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin:18px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;vertical-align:top;padding:8px 6px;border-top:1px solid var(--line)}
+th{font-weight:700}
+.wrap{overflow-x:auto}
+nav a,a{color:var(--green)}
+.todo{background:#fff3cd;color:#5c4400;border-radius:6px;padding:0 4px}
+@media (prefers-color-scheme:dark){.todo{background:#4d3f12;color:#ffe9a8}}
+</style>
+</head>
+<body>
+<main>
+<nav class="muted"><a href="#ru">Русский</a> · <a href="#en">English</a></nav>
+
+<section id="ru" lang="ru">
+<h1>Политика конфиденциальности приложения «Рядом»</h1>
+<p class="muted">Редакция от 12 ноября 2026 года. Действует для веб-версии и приложений для Android и iOS.</p>
+
+<div class="card">
+<b>Коротко.</b> «Рядом» не требует регистрации и не хранит ваши записи на сервере. Дневник, разговоры, план безопасности и всё, что вы пишете, остаются на вашем устройстве. Наружу данные уходят только в трёх случаях: при поиске мест на карте, в режиме с сервером и ИИ (если он включён) и при голосовом вводе через службы устройства. Подробности ниже.
+</div>
+
+<h2>1. Кто отвечает за данные</h2>
+<p>Оператор: <span class="todo">[имя или название ИП / организации]</span>. Связь по вопросам данных: <span class="todo">[адрес электронной почты]</span>. Мы отвечаем в течение 10 рабочих дней.</p>
+
+<h2>2. Что хранится на устройстве</h2>
+<p>Всё перечисленное хранится только в памяти браузера или приложения на вашем устройстве. Мы не получаем к этому доступа.</p>
+<div class="wrap"><table>
+<tr><th>Данные</th><th>Зачем</th></tr>
+<tr><td>Отметки состояния и заметки дня</td><td>Дневник, календарь и графики</td></tr>
+<tr><td>Тексты разговоров с «Рядом»</td><td>Архив разговоров по дням</td></tr>
+<tr><td>Раздел «Обо мне» (что помогает, кому можно написать и т. п.)</td><td>Подбор поддержки под вас</td></tr>
+<tr><td>План безопасности</td><td>Открыть его в трудную минуту</td></tr>
+<tr><td>Отмеченные и любимые места, выбранный город</td><td>Раздел «Места» и дневник</td></tr>
+<tr><td>Прогресс в играх и практиках, язык, настройки голоса</td><td>Продолжить с того же места</td></tr>
+</table></div>
+<p>Тексты практики «Письмо себе из детства» и подобных упражнений не сохраняются вовсе: в истории остаётся только отметка, что практика пройдена.</p>
+
+<h2>3. Что передаётся наружу и кому</h2>
+<div class="wrap"><table>
+<tr><th>Когда</th><th>Что уходит</th><th>Куда</th></tr>
+<tr><td>Поиск мест «рядом со мной» или по городу</td><td>Текст запроса и, если вы разрешили, примерные координаты</td><td>Сервисы карт на данных OpenStreetMap: Photon (komoot) и Nominatim (OpenStreetMap Foundation)</td></tr>
+<tr><td>Режим с сервером и ИИ (включается отдельно, в базовой версии выключен)</td><td>Текст ваших сообщений в текущем разговоре</td><td>Наш сервер и ИИ-провайдер <span class="todo">[название и страна провайдера]</span>. Сервер не хранит и не записывает тексты</td></tr>
+<tr><td>Голосовой ввод и озвучка</td><td>Звук вашего голоса</td><td>Службы распознавания и синтеза речи вашего устройства или браузера (например, Google или Apple)</td></tr>
+<tr><td>Кнопки «Позвонить» и «Отправить» на экране помощи</td><td>Ничего не уходит автоматически: открывается звонилка или окно «Поделиться»</td><td>Выбранное вами приложение</td></tr>
+</table></div>
+<p>Мы не продаём данные, не показываем рекламу и не используем данные для профилирования. В приложении нет сторонней аналитики и рекламных библиотек. <span class="todo">[Если подключите аналитику или отчёты о сбоях — перечислите здесь.]</span></p>
+
+<h2>4. Данные о здоровье</h2>
+<p>Записи о настроении и состоянии могут относиться к сведениям о здоровье. Поэтому они хранятся только у вас и не передаются нам. Если включён режим с ИИ, тексты сообщений обрабатываются только для ответа и не сохраняются на сервере.</p>
+<p>«Рядом» — помощник для самоподдержки. Приложение не является медицинским изделием, не ставит диагнозов и не лечит. По вопросам здоровья обращайтесь к врачу или психологу. Если есть риск для жизни, звоните 112.</p>
+
+<h2>5. Разрешения в приложении</h2>
+<ul>
+<li><b>Примерное местоположение</b> — только по нажатию «Рядом со мной», для поиска мест. Не сохраняется в дневник.</li>
+<li><b>Уведомления</b> — для напоминаний, которые вы сами включили. Напоминания создаются на устройстве.</li>
+<li><b>Интернет</b> — для поиска мест и режима с ИИ.</li>
+</ul>
+
+<h2>6. Как посмотреть, сохранить или удалить данные</h2>
+<p>В разделе «Обо мне» есть экран с данными: там видно, что хранится, можно сохранить копию файлом и удалить всё одной кнопкой. Удаление приложения или очистка данных браузера тоже стирает всё. Так как мы не храним ваши записи, восстановить их после удаления невозможно.</p>
+
+<h2>7. Дети</h2>
+<p>Приложение рассчитано на людей от 18 лет. <span class="todo">[Уточните возраст и, если допускаете подростков, добавьте условия.]</span></p>
+
+<h2>8. Изменения политики</h2>
+<p>Если мы изменим порядок обработки данных, обновим эту страницу и дату редакции, а о существенных изменениях сообщим в приложении.</p>
+</section>
+
+<hr style="border:0;border-top:1px solid var(--line);margin:48px 0">
+
+<section id="en" lang="en">
+<h1>“Ryadom” Privacy Policy</h1>
+<p class="muted">Version of 12 November 2026. Applies to the web version and the Android and iOS apps.</p>
+<div class="card"><b>In short.</b> Ryadom needs no account and keeps no records on a server. Your diary, conversations, safety plan and everything you write stay on your device. Data leaves the device only when you search for places, when the optional server + AI mode is enabled, and when you use voice input through your device's services.</div>
+<h2>1. Who is responsible</h2>
+<p>Controller: <span class="todo">[name / company]</span>. Contact: <span class="todo">[email]</span>. We reply within 10 business days.</p>
+<h2>2. Stored on your device only</h2>
+<p>Mood check-ins and day notes; conversation history; the “About me” section; your safety plan; saved places and city; game and practice progress, language and voice settings. We have no access to them. Texts of exercises such as “A letter to my younger self” are not stored at all.</p>
+<h2>3. What leaves the device</h2>
+<ul>
+<li><b>Place search:</b> the search text and, if you allow it, approximate coordinates go to OpenStreetMap-based map services: Photon (komoot) and Nominatim (OpenStreetMap Foundation).</li>
+<li><b>Server + AI mode</b> (off in the basic version): the text of your messages goes to our server and to the AI provider <span class="todo">[provider, country]</span> to produce a reply. The server does not store or log texts.</li>
+<li><b>Voice input and read-aloud:</b> audio is processed by your device's or browser's speech services.</li>
+</ul>
+<p>We do not sell data, show ads or build profiles. There are no third-party analytics or ad libraries.</p>
+<h2>4. Health information</h2>
+<p>Mood records may count as health information, so they stay with you. Ryadom is a self-help companion. It is not a medical device and does not diagnose, treat, cure, or prevent any medical condition. Please consult a healthcare professional for medical advice. In an emergency, call your local emergency number.</p>
+<h2>5. Permissions</h2>
+<p>Approximate location (only when you tap “Near me”), notifications (only for reminders you set), internet (place search and AI mode).</p>
+<h2>6. Access and deletion</h2>
+<p>“About me” → data screen: see what is stored, export a copy, or delete everything. Uninstalling the app or clearing browser data also deletes everything; we cannot restore it.</p>
+<h2>7. Age</h2>
+<p>Intended for people aged 18 and over.</p>
+<h2>8. Changes</h2>
+<p>We will update this page and its date, and announce significant changes in the app.</p>
+</section>
+</main>
+</body>
+</html>

@@ -1,15 +1,15 @@
 /* «Тихий город: неделя решений» — стили игры v2. Префикс .qc- ничего не пересекает со старыми слоями. */
-.qc{--qc-green:#315f4c;--qc-accent:#aa785d;--qc-line:#ecece5;--qc-soft:#f5f3ed;color:var(--ink,#23342f)}
+.qc{--qc-green:#315f4c;--qc-accent:#8a5a40;--qc-line:#ecece5;--qc-soft:#f5f3ed;color:var(--ink,#23342f)}
 .qc *{box-sizing:border-box}
 .qc button{font:inherit;cursor:pointer}
 .qc-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px}
 .qc-top button{border:1px solid #cddbd0;background:#fffdf9;border-radius:12px;padding:10px 13px;color:var(--qc-green);font-weight:700}
-.qc-top span{font-size:11px;letter-spacing:.14em;color:#64766b}
+.qc-top span{font-size:11px;letter-spacing:.14em;color:#4f6157}
 
 .qc-head{margin:6px 0 12px}
 .qc-kicker{display:inline-block;font-size:11px;letter-spacing:.15em;color:var(--qc-accent);font-weight:800}
 .qc-head h2,.qc-epilogue h2,.qc-intro-screen h2{font-size:clamp(30px,4vw,44px);letter-spacing:-.045em;line-height:1.08;margin:7px 0 5px}
-.qc-head p{margin:0;color:#657b6a;font-size:13px}
+.qc-head p{margin:0;color:#4f6455;font-size:13px}
 
 .qc-status{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;background:#fffdf9;border:1px solid var(--qc-line);border-radius:16px;padding:11px 15px;margin-bottom:14px}
 .qc-when{display:grid;gap:2px;min-width:150px}
@@ -19,7 +19,7 @@
 .qc-track i{height:6px;flex:1;border-radius:99px;background:#dce4dc}
 .qc-track i.done{background:#b5876d}
 .qc-track i.now{background:var(--qc-green)}
-.qc-energy{display:flex;align-items:center;gap:6px;font-size:12px;color:#657b6a}
+.qc-energy{display:flex;align-items:center;gap:6px;font-size:12px;color:#4f6455}
 .qc-energy b{width:11px;height:11px;border-radius:50%;background:#dce4dc;display:inline-block}
 .qc-energy b.on{background:var(--qc-green)}
 
@@ -30,11 +30,11 @@
 .qc-card h3{margin:0 0 10px;font-size:15px}
 .qc-moods,.qc-notes{list-style:none;margin:0;padding:0;display:grid;gap:9px}
 .qc-moods li{display:flex;justify-content:space-between;gap:10px;font-size:14px;align-items:baseline}
-.qc-moods em{font-style:normal;color:#657b6a;font-size:13px}
+.qc-moods em{font-style:normal;color:#4f6455;font-size:13px}
 .qc-notes li{font-size:13px;line-height:1.45;color:#43564d;padding-left:13px;position:relative}
 .qc-notes li:before{content:"";position:absolute;left:0;top:.6em;width:5px;height:5px;border-radius:50%;background:var(--qc-accent)}
-.qc-notes li.empty{color:#8b978f}.qc-notes li.empty:before{display:none}.qc-notes li.empty{padding-left:0}
-.qc-hint{margin:10px 0 0;font-size:12px;line-height:1.45;color:#7a867f}
+.qc-notes li.empty{color:#5f6c64}.qc-notes li.empty:before{display:none}.qc-notes li.empty{padding-left:0}
+.qc-hint{margin:10px 0 0;font-size:12px;line-height:1.45;color:#59655e}
 
 /* Сцена */
 .qc-stage{position:relative;height:230px;border-radius:23px 23px 0 0;overflow:hidden;background-size:cover;background-position:54% 46%;box-shadow:0 13px 25px #253a3330}
@@ -63,10 +63,10 @@
 .qc-obj.seen{border-style:solid;background:#f0f6f1}
 .qc-obj-icon{grid-row:1/3;font-size:20px}
 .qc-obj-label{font-weight:700;font-size:13px}
-.qc-obj small{font-size:11px;color:#7a867f}
+.qc-obj small{font-size:11px;color:#59655e}
 .qc-info{display:grid;gap:7px;margin:0 0 12px;padding:12px 14px;border-radius:14px;background:#f1f6ee;font-size:14px;line-height:1.5;color:#34493f}
 .qc-info p{margin:0}
-.qc-tip{margin:10px 0 0;font-size:12px;color:#7a867f}
+.qc-tip{margin:10px 0 0;font-size:12px;color:#59655e}
 
 .qc-ask{margin:18px 0 10px;font-size:17px}
 .qc-choices{display:grid;gap:9px}
@@ -80,7 +80,7 @@
 .qc-result{border-top:1px solid var(--qc-line);padding-top:16px;margin-top:6px}
 .qc-tag{font-size:10px;letter-spacing:.14em;color:var(--qc-accent);font-weight:800}
 .qc-picked{margin:6px 0 10px;font-weight:700;line-height:1.5}
-.qc-trace{margin:8px 0 0;font-size:12px;color:#7a867f;font-style:italic}
+.qc-trace{margin:8px 0 0;font-size:12px;color:#59655e;font-style:italic}
 .qc-next{margin-top:18px;border:0;background:var(--qc-green);color:#fff;border-radius:13px;padding:13px 22px;font-weight:700}
 .qc-next:hover{filter:brightness(1.08)}
 .qc-ghost{margin-top:18px;border:1px solid #cddbd0;background:#fffdf9;color:var(--qc-green);border-radius:13px;padding:13px 20px;font-weight:700}
@@ -93,7 +93,7 @@
 .qc-act.urgent{border-color:#e0b9a5;background:#fff8f3}
 .qc-act-icon{font-size:24px}
 .qc-act b{font-size:16px;margin-top:2px}
-.qc-act-who{font-size:11px;color:#8a978f;letter-spacing:.05em;text-transform:uppercase}
+.qc-act-who{font-size:11px;color:#5f6c64;letter-spacing:.05em;text-transform:uppercase}
 .qc-act p{margin:4px 0 6px;font-size:13px;line-height:1.45;color:#43564d}
 .qc-act-meta{font-style:normal;font-size:11px;color:#8a5a43}
 .qc-badge{position:absolute;right:12px;top:12px;background:#f6e0d3;color:#8a4a2f;font-size:10px;letter-spacing:.06em;border-radius:99px;padding:3px 8px}
@@ -110,12 +110,12 @@
 .qc-recap h3:not(:first-child){margin-top:16px}
 .qc-recap ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:14px;line-height:1.4}
 .qc-recap li b{display:inline-block;min-width:76px;color:var(--qc-accent);font-size:12px;letter-spacing:.04em}
-.qc-missed li{color:#7a867f}
+.qc-missed li{color:#59655e}
 .qc-actions{display:flex;gap:12px;flex-wrap:wrap}
 
 /* Зарисовки */
 .world-recap{list-style:none;margin:10px 0 14px;padding:0;display:grid;gap:8px;max-width:640px;font-size:14px;line-height:1.45}
-.world-recap li b{color:#aa785d}
+.world-recap li b{color:#8a5a40}
 
 @media(max-width:860px){
   .qc-shell{grid-template-columns:1fr}

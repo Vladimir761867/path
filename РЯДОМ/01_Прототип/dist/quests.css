@@ -1,9 +1,9 @@
 /* Квесты-тренажёры разговоров (префикс .qz-) */
-.qz{--g:#315f4c;--a:#aa785d;--line:#ecece5;color:var(--ink,#23342f)}
+.qz{--g:#315f4c;--a:#8a5a40;--line:#ecece5;color:var(--ink,#23342f)}
 .qz *{box-sizing:border-box}.qz button{font:inherit;cursor:pointer}
 .qz-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px}
 .qz-top button{border:1px solid #cddbd0;background:#fffdf9;border-radius:12px;padding:10px 13px;color:var(--g);font-weight:700}
-.qz-top span{font-size:11px;letter-spacing:.14em;color:#64766b}
+.qz-top span{font-size:11px;letter-spacing:.14em;color:#4f6157}
 .qz-kicker{display:inline-block;font-size:11px;letter-spacing:.15em;color:var(--a);font-weight:800}
 
 /* вход */
@@ -18,7 +18,7 @@
 .qz-variant{display:grid;gap:3px;text-align:left;border:2px solid #dfe8df;background:#fff;border-radius:16px;padding:13px 15px;color:#23342f}
 .qz-variant small{color:#8a5a43;font-size:12px}.qz-variant span{font-size:13px;line-height:1.45;color:#5b6a62}
 .qz-variant.on{border-color:var(--g);background:#eef5ef}
-.qz-note{font-size:12.5px;color:#7a867f;line-height:1.5;max-width:640px;margin:8px 0}
+.qz-note{font-size:12.5px;color:#59655e;line-height:1.5;max-width:640px;margin:8px 0}
 .qz-next{border:0;background:var(--g);color:#fff;border-radius:13px;padding:13px 22px;font-weight:700;margin-top:6px}
 .qz-next:hover{filter:brightness(1.08)}
 .qz-ghost{border:1px solid #cddbd0;background:#fffdf9;color:var(--g);border-radius:13px;padding:12px 18px;font-weight:700}
@@ -36,10 +36,10 @@
 @keyframes qz-shake{0%,100%{translate:0 0}20%{translate:-9px 0}40%{translate:8px 0}60%{translate:-6px 0}80%{translate:4px 0}}
 .qz-hand{transform-origin:center;transform-box:fill-box}
 .qz-meter{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:11px 16px;background:#fffdf9;border-top:1px solid var(--line);line-height:1.2}
-.qz-step{font-size:12px;font-weight:800;color:#64766b;letter-spacing:.06em}
+.qz-step{font-size:12px;font-weight:800;color:#4f6157;letter-spacing:.06em}
 .qz-steps{display:flex;gap:4px;flex:1;min-width:110px}.qz-steps i{flex:1;height:6px;border-radius:99px;background:#dce4dc}
 .qz-steps i.done{background:#b5876d}.qz-steps i.now{background:var(--g)}
-.qz-tension{display:flex;align-items:center;gap:5px;font-size:12px;color:#657b6a}
+.qz-tension{display:flex;align-items:center;gap:5px;font-size:12px;color:#4f6455}
 .qz-tension b{width:11px;height:11px;border-radius:50%;background:#dce4dc;display:inline-block}.qz-tension b.on{background:#c2765a}
 
 /* панель диалога */
@@ -66,7 +66,7 @@
 .qz-feedback.ok{background:#f3f1e3;border:1px solid #ddd8b5}.qz-feedback.ok>b{color:#7a6a22}
 .qz-tech{margin-top:10px;padding:11px 13px;background:#fffdf9;border-radius:12px;border:1px dashed #b9cbbc;display:grid;gap:3px}
 .qz-tag{font-size:10px;letter-spacing:.14em;color:var(--a);font-weight:800}
-.qz-tech p{margin:0;font-size:13.5px}.qz-tech small{color:#7a867f;font-size:12px;line-height:1.4}
+.qz-tech p{margin:0;font-size:13.5px}.qz-tech small{color:#59655e;font-size:12px;line-height:1.4}
 
 /* финал */
 .qz-end .qz-stage{position:static;margin-bottom:18px}
@@ -80,11 +80,11 @@
 .qz-mine{max-width:640px;margin:14px 0}.qz-mine label{display:block;font-weight:700;margin-bottom:8px;line-height:1.45}
 .qz-mine textarea{width:100%;border:1px solid #d5dfd3;border-radius:14px;padding:12px 14px;background:#fbfaf6;font:inherit;resize:vertical}
 .qz-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
-.qz-saved{font-size:13px;color:#657b6a}
+.qz-saved{font-size:13px;color:#4f6455}
 
 /* карточки в «Играх» */
 .qz-section{margin:30px 0 8px}.qz-section h2{font-size:23px;letter-spacing:-.03em;margin:0 0 6px}
-.qz-sub{margin:0 0 14px;color:#6d7a72;font-size:14px}
+.qz-sub{margin:0 0 14px;color:#56645c;font-size:14px}
 .qz-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:14px}
 .qz-card{position:relative;display:grid;gap:6px;text-align:left;border:1px solid #e0e6dc;border-radius:22px;padding:18px;background:linear-gradient(160deg,#fffdf9 0,#eef4ec 100%);box-shadow:0 12px 28px #253a3314;transition:.2s;color:#23342f}
 .qz-card:hover{transform:translateY(-2px);border-color:#b8cdbd}
