@@ -50,6 +50,17 @@ let fail = 0; const ok = (c, m) => { console.log((c ? 'ok   ' : 'FAIL ') + m); i
       (await cyr()).forEach(s => q.add('sketch: ' + s));
       ok(q.size === 0, L + ': квесты и истории без русского текста' + (q.size ? ' → ' + [...q].slice(0, 4).join(' | ') : ''));
     }
+    // Практика «Письмо себе из детства»: первые шаги без русского текста
+    await p.evaluate(() => openPractice('childhood')); await p.waitForTimeout(150);
+    (await cyr()).forEach(s => seen.add('childhood: ' + s));
+    await p.evaluate(() => { const o = document.querySelector('.child-overlay'); o.querySelector('.focus-option').click(); });
+    await p.evaluate(() => { const o = document.querySelector('.child-overlay'); [...o.querySelectorAll('.focus-scale-button')][3].click(); });
+    await p.evaluate(() => document.querySelector('.child-overlay .focus-main').click());
+    await p.evaluate(() => document.querySelector('.child-overlay .focus-main').click());
+    await p.evaluate(() => document.querySelector('.child-overlay .focus-main').click());
+    await p.evaluate(() => [...document.querySelectorAll('.child-overlay .focus-option')].slice(0, 2).forEach(b => b.click()));
+    (await cyr()).forEach(s => seen.add('childhood: ' + s));
+    await p.keyboard.press('Escape');
     await p.click('#sosBtn'); await p.waitForTimeout(150);
     (await cyr()).forEach(s => seen.add('sos: ' + s));
     ok(await p.$$eval('.sos-lines li', li => li.length >= 2 && li.some(x => /112/.test(x.textContent))), L + ': экран помощи открыт, есть 112');
