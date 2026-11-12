@@ -122,8 +122,13 @@
     const f = h('span', 'qc-face', (name || '?').charAt(0).toUpperCase()); if (!isHero && ST.npcs[k]) f.style.setProperty('--ink', ST.npcs[k].ink);
     p.append(f, h('b', null, name)); if (word) p.append(h('small', null, word)); return p;
   }
+  const HERO_LOOK = { top: '#3d6b57', hair: '#3a2a22', skin: 1, style: 'curly' };
+  function lookOf(k) { const n = ST.npcs[k] || {}; return Object.assign({ top: n.ink, style: 'short', skin: 0, hair: '#3a2a22' }, n.look || {}); }
   function stage(sc, whoList) {
-    const st = h('div', 'qc-stage qc-bg-' + (sc.bg || 'street'));
+    const F = window.RyadomFigures, art = F && F.has(sc.bg);
+    const st = h('div', 'qc-stage ' + (art ? 'qc-artstage' : 'qc-bg-' + (sc.bg || 'street')));
+    if (art) { const call = sc.icon === '☎' || sc.icon === '📱'; const hero = Object.assign({}, HERO_LOOK, ST.hero.look || {}, call ? { hold: 'phone' } : {});
+      st.insertAdjacentHTML('afterbegin', F.scene(sc.bg, [hero].concat(call ? [] : (whoList || []).map(lookOf)), sc.place)); }
     st.append(h('span', 'qc-place', sc.place + ' · ' + whenOf(sc, S)));
     const people = h('div', 'qc-people'); people.append(portrait('hero', S.name, headWord(S), true));
     (whoList || []).forEach(k => people.append(portrait(k, ST.npcs[k].name, moodWord(S, k))));
@@ -323,7 +328,15 @@
    * Зарисовки (worlds.js). №1 «Границы без ссоры» теперь полноценная история
    * на этом движке; остальные 11 — прежние заготовки с честным рендером.
    * ===================================================================== */
-  const ENGINE_WORLDS = { 0: 'granitsy' };
+  // Все миры — полноценные истории на этом движке. Обложки — свои векторные сцены (assets/scenes).
+  const WORLD_STORIES = ['granitsy', 'trevoga', 'kritik', 'razgovor', 'net-sil', 'svoi-resheniya', 's-soboy', 'odinochestvo', 'vygoranie', 'poterya', 'telo', 'primirenie'];
+  const WORLD_COVERS = ['boxes', 'night', 'studio', 'cafe2', 'calm', 'family', 'balcony', 'party', 'office', 'street2', 'park', 'metro'];
+  // Полные истории есть по-русски; на других языках — по мере перевода (stories/<язык>/), иначе остаётся переведённая зарисовка.
+  const STORY_LANGS = { ru: WORLD_STORIES, en: ['granitsy'] };
+  const uiLang = window.RyadomI18n ? window.RyadomI18n.lang : 'ru';
+  const READY = window.RYADOM_STORIES_READY || STORY_LANGS[uiLang] || ['granitsy'];
+  const ENGINE_WORLDS = {}; WORLD_STORIES.forEach((id, i) => { if (READY.includes(id)) ENGINE_WORLDS[i] = id; });
+  window.RyadomWorldStories = ENGINE_WORLDS;
   const bond = v => { const w = v < 35 ? 'напряжённо' : v < 55 ? 'неопределённо' : v < 72 ? 'теплее' : 'близко'; return window.RyadomI18n ? window.RyadomI18n.t(w) : w; };
   renderWorld = function () {
     const tr = x => typeof x === 'string' ? (window.RyadomI18n ? window.RyadomI18n.t(x) : x) : Array.isArray(x) ? x.map(tr) : x;
@@ -361,7 +374,12 @@
     return prevStart(i, restart);
   };
   const grid = document.querySelector('#gameGrid');
-  if (grid && grid.children[0]) { const sm = grid.children[0].querySelector('small'); if (sm) sm.textContent = 'ИГРАТЬ · 2 ДНЯ'; }
+  if (grid) [...grid.children].forEach((card, i) => {
+    if (!card.querySelector('.gc-cover') && WORLD_COVERS[i]) { const c = h('span', 'gc-cover'); c.setAttribute('aria-hidden', 'true'); c.style.backgroundImage = "url('assets/scenes/covers/" + WORLD_COVERS[i] + ".svg')"; card.prepend(c); }
+    const sm = card.querySelector('small'); if (sm && ENGINE_WORLDS[i]) sm.textContent = 'ИГРАТЬ · 2 ДНЯ';
+  });
   const note2 = document.querySelector('.game-note');
-  if (note2) note2.textContent = 'Первая история — полноценная, на том же движке, что «Тихий город». Остальные одиннадцать — короткие зарисовки на четыре сцены, их предстоит переписать так же.';
+  if (note2) note2.textContent = Object.keys(ENGINE_WORLDS).length === WORLD_STORIES.length
+    ? 'Все истории полноценные: два дня, встречи на выбор, ограниченные силы и финал, который складывается из твоих решений.'
+    : 'Первая история — полноценная, на том же движке, что «Тихий город». Остальные одиннадцать — короткие зарисовки на четыре сцены, их предстоит переписать так же.';
 })();

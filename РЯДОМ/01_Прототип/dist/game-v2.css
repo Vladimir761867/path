@@ -130,3 +130,12 @@
   .qc-choice>span{flex-basis:100%}
 }
 @media(prefers-reduced-motion:reduce){.qc *{transition:none!important}}
+
+/* Свои векторные сцены для историй (assets/scenes) и обложки карточек */
+.game-card .gc-cover{display:block;margin:-22px -22px 4px;height:122px;background-size:cover;background-position:50% 60%;border-bottom:1px solid #ffffff1a}
+.game-card .gc-cover+.emoji{display:none}
+.game-card .gc-cover~h3{margin-top:12px}
+@media(max-width:700px){.game-card .gc-cover{height:140px}}
+.qc-artstage{background:#1d2b27}
+.qc-artstage .qc-art{position:absolute;inset:0;width:100%;height:100%;display:block}
+.qc-artstage .qc-place,.qc-artstage .qc-people{z-index:1}
