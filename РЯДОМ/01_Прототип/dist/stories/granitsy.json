@@ -48,7 +48,12 @@
     "напряжённо",
     "ровно",
     "близко"
-   ]
+   ],
+   "look": {
+    "style": "long",
+    "hair": "#6b4a2f",
+    "skin": 0
+   }
   },
   "dima": {
    "name": "Дима",
@@ -61,6 +66,11 @@
    ],
    "showIf": {
     "clue": "helpers"
+   },
+   "look": {
+    "style": "short",
+    "hair": "#1f1a17",
+    "skin": 2
    }
   }
  },
@@ -78,7 +88,7 @@
    ],
    "title": "Сообщение от Ани",
    "place": "Диван",
-   "bg": "room",
+   "bg": "calm",
    "icon": "☎",
    "when": "Среда, вечер",
    "cost": 0,
@@ -206,7 +216,7 @@
    "who": [],
    "title": "Свои дела",
    "place": "Рабочий стол",
-   "bg": "room",
+   "bg": "calm",
    "slots": "both",
    "cost": 0,
    "icon": "📋",
@@ -284,7 +294,7 @@
    ],
    "title": "Звонок Ане",
    "place": "Телефон",
-   "bg": "room",
+   "bg": "calm",
    "slots": "eve",
    "cost": 1,
    "icon": "☎",
@@ -419,7 +429,7 @@
    ],
    "title": "Дима с машиной",
    "place": "Улица",
-   "bg": "street",
+   "bg": "street2",
    "slots": "day",
    "cost": 1,
    "icon": "🚐",
@@ -512,7 +522,7 @@
    ],
    "title": "Кофе с Аней",
    "place": "Кафе",
-   "bg": "cafe",
+   "bg": "cafe2",
    "slots": "day",
    "cost": 1,
    "icon": "☕",
@@ -620,7 +630,7 @@
    "who": [],
    "title": "Чувство вины",
    "place": "Комната",
-   "bg": "room",
+   "bg": "calm",
    "slots": "both",
    "cost": 0,
    "icon": "💭",
@@ -670,7 +680,7 @@
    "who": [],
    "title": "Ответ Ане",
    "place": "Стол",
-   "bg": "room",
+   "bg": "calm",
    "slots": "eve",
    "cost": 1,
    "icon": "✎",
@@ -751,7 +761,7 @@
    "who": [],
    "title": "Прогулка",
    "place": "Город",
-   "bg": "street",
+   "bg": "street2",
    "slots": "both",
    "cost": 0,
    "icon": "↗",
@@ -803,7 +813,7 @@
   "title": "Решение",
   "place": "У подъезда Ани",
   "subtitle": "грузчики приедут в девять",
-  "bg": "street",
+  "bg": "street2",
   "ask": "Что говоришь Ане?",
   "onEnter": [
    {
