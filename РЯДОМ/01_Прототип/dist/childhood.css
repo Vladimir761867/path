@@ -1,0 +1,9 @@
+/* Практика «Письмо себе из детства» — поверх стилей flagship-practice.css */
+.child-scale{flex-wrap:wrap;gap:6px}.child-scale .focus-scale-button{flex:1 0 34px;height:42px;min-width:34px}
+.child-chips{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.child-field{display:block;font-weight:750;font-size:13px;margin:18px 0 0}
+.child-field textarea{display:block;width:100%;margin-top:8px;border:1px solid #d2ded2;border-radius:12px;background:#fffefa;padding:12px;font:inherit;font-weight:400;line-height:1.5;resize:vertical;color:#243e34}
+.child-accept{display:grid;gap:10px;margin:22px 0}.child-accept p{margin:0;padding:14px 18px;border-radius:14px;background:#f1e9df;color:#334a3d;font-size:17px;line-height:1.45;font-family:Georgia,serif}
+.child-pause{margin-top:26px}.child-stop{border:1px solid #d6a493;background:#fbeee9;color:#8a3d2d;border-radius:12px;padding:10px 14px;font:inherit;font-weight:700;cursor:pointer}
+.child-warn{background:#fbeee9;color:#8a3d2d}
+.focus-callout{margin:16px 0}
