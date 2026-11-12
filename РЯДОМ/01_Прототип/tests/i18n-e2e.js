@@ -50,6 +50,10 @@ let fail = 0; const ok = (c, m) => { console.log((c ? 'ok   ' : 'FAIL ') + m); i
       (await cyr()).forEach(s => q.add('sketch: ' + s));
       ok(q.size === 0, L + ': квесты и истории без русского текста' + (q.size ? ' → ' + [...q].slice(0, 4).join(' | ') : ''));
     }
+    await p.click('#sosBtn'); await p.waitForTimeout(150);
+    (await cyr()).forEach(s => seen.add('sos: ' + s));
+    ok(await p.$$eval('.sos-lines li', li => li.length >= 2 && li.some(x => /112/.test(x.textContent))), L + ': экран помощи открыт, есть 112');
+    await p.keyboard.press('Escape');
     ok(seen.size === 0, L + ': экраны без русского текста' + (seen.size ? ' → ' + [...seen].slice(0, 4).join(' | ') : ''));
     await p.evaluate(() => view('today')); await p.waitForTimeout(100);
     const bot = await p.$$eval('.messages .bubble:not(.me)', bs => bs.map(x => x.innerText).join(' '));

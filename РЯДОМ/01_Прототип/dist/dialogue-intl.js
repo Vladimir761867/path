@@ -10,7 +10,7 @@
   if (!I || I.lang === 'ru') return;
   const T = (s, v) => I.t(s, v);
   const lex = () => I.lex || {};
-  const RISK = t => (window.RyadomRisk ? window.RyadomRisk.riskOf(t) : null);
+  const RISK = t => (window.RyadomRisk ? (window.RyadomRisk.assess || window.RyadomRisk.riskOf)(t) : null);
 
   let st = fresh();
   function fresh() { return { phase: 'open', emo: null, theme: null, listen: 0, turns: [], usedListen: [] }; }
@@ -127,7 +127,7 @@
     else if (kind === 'danger') say('То, что ты описываешь, звучит небезопасно. Твоя безопасность важнее всего. Если опасность рядом прямо сейчас — постарайся уйти в безопасное место и позвони в экстренную службу.');
     else say('Спасибо, что ты об этом говоришь. Твоя безопасность сейчас важнее всего. С этим не нужно справляться без поддержки: позвони на линию помощи или человеку, которому доверяешь.');
     helpLines();
-    chips([['Показать текст для близкого', 'helptext'], ['Сейчас я в безопасности', 'safe']]);
+    chips([['Открыть экран помощи', 'sos'], ['Показать текст для близкого', 'helptext'], ['Сейчас я в безопасности', 'safe']]);
   }
   function helpLines() {
     const h = I.help || {};
@@ -161,9 +161,14 @@
     } catch (e) { st.turns.pop(); return false; } finally { clearTimeout(timer); }
   }
 
-  function onText(text) {
-    const risk = RISK(text);
+  function onText(text, skipRisk) {
+    const risk = skipRisk ? null : RISK(text);
     if (risk === 'self' || risk === 'others' || risk === 'danger') return safety(risk);
+    if (risk === 'check' && !st.riskAsked && st.phase !== 'safety') {
+      st.riskAsked = true; st.pending = text; st.phase = 'riskcheck';
+      say('Прежде чем продолжить, хочу спросить прямо, потому что это важно: ты сейчас думаешь о том, чтобы причинить себе вред или не жить?');
+      return chips([['Да', 'risk:yes'], ['Не знаю', 'risk:unsure'], ['Нет, это другое', 'risk:no']]);
+    }
     const d = detect(text);
     if (d.theme) st.theme = d.theme;
     if (d.intent === 'bye') return finish();
@@ -201,6 +206,12 @@
   function onCommand(v) {
     const [a, b] = v.split(':');
     switch (a) {
+      case 'risk': {
+        if (b !== 'no') return safety('self');
+        const t = st.pending; st.pending = null; st.phase = 'open';
+        say('Спасибо за ответ. Продолжим.');
+        return t ? onText(t, true) : undefined;
+      }
       case 'emo': if (b === 'other') { st.phase = 'open'; say('Расскажи, что ещё происходит.'); return; } return onEmotion(b, false);
       case 'need':
         if (b === 'talk') { st.phase = 'listen'; say('Я слушаю. Можно писать как получается — кусками, без порядка.'); return; }
@@ -216,6 +227,7 @@
       case 'places': if (typeof view === 'function') view('places'); return;
       case 'games': if (typeof view === 'function') view('games'); return;
       case 'safe': say('Хорошо. Если станет хуже — линии помощи выше, и можно вернуться сюда в любой момент.'); return chips([['Просто выговориться', 'need:talk'], ['Небольшой шаг, чтобы стало легче', 'need:step']]);
+      case 'sos': if (window.RyadomSOS) window.RyadomSOS.open(); return;
       case 'helptext': sayRaw(T('Можно отправить близкому:') + '\n«' + T('Мне сейчас очень тяжело. Пожалуйста, побудь со мной или позвони мне сейчас. Помоги обратиться за помощью.') + '»'); return chips([['Сейчас я в безопасности', 'safe']]);
       case 'better': case 'same': case 'worse': return afterPractice(a);
       default: return askNeed();
