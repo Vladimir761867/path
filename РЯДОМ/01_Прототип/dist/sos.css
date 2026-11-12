@@ -1,0 +1,18 @@
+/* Кнопка «Мне очень плохо» и экран помощи (вид листа — как у privacy.css) */
+.sos-btn{border:1.5px solid #c9826f;background:#fbeee9;color:#8a3d2d;border-radius:100px;padding:7px 13px;font:inherit;font-size:13px;font-weight:750;cursor:pointer;white-space:nowrap;min-height:36px}
+.sos-btn:hover{background:#f6ddd4}
+.sos-btn:focus-visible{outline:3px solid #8a3d2d;outline-offset:2px}
+@media(max-width:520px){.top>div{gap:8px!important}.top .date{display:none}.sos-btn{font-size:12.5px;padding:6px 11px}}
+.sos-sheet h3{margin:0 0 8px;font-size:17px}
+.sos-block{border-top:1px solid #e5e7df;padding:14px 0}
+.sos-block>p{margin:0 0 10px;color:#4f6156;line-height:1.5;font-size:14.5px}
+.sos-lines{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:15px;line-height:1.45}
+.sos-lines li{background:#fbeee9;border-radius:12px;padding:10px 12px;overflow-wrap:anywhere}
+.sos-tel{color:#8a3d2d;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.sos-msg{background:#f2f5ef;border-radius:12px;padding:10px 12px;font-size:15px;line-height:1.45;margin:0 0 10px;user-select:text}
+.sos-row{display:flex;gap:8px;flex-wrap:wrap}.sos-row .pv-btn{width:auto;flex:1 1 140px}
+.sos-status{min-height:1.2em;margin:6px 0 0;font-size:13.5px;color:#4f6156}
+.sos-field{display:block;font-size:14px;font-weight:650;margin:10px 0 0}
+.sos-field textarea{display:block;width:100%;margin-top:5px;border:1px solid #dce5db;border-radius:12px;padding:9px 11px;font:inherit;font-weight:400;resize:vertical;background:#fff}
+.sos-note{font-size:13px;color:#6d7a72;line-height:1.45;margin:6px 0 14px}
+html[dir=rtl] .sos-lines li{text-align:right}
